@@ -1,0 +1,133 @@
+.featuredCategoriesSection {
+  background-color: white;
+  color: black;
+  min-height: 450px;
+  width: 100%;
+
+  h2 {
+    font-size: 30px;
+    text-decoration: underline red solid;
+  }
+
+  .gallerySliderContainer {
+    padding: 2.5% 0;
+  }
+  .buttonContainer {
+    margin-top: 50px;
+    width: 100%;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 50px;
+      height: 50px;
+      width: 50%;
+
+      span {
+        -webkit-transform: none;
+        transform: none;
+        transition: transform 300ms linear;
+      }
+
+      &:hover span {
+        transform: translatey(25px);
+        color: red;
+      }
+    }
+  }
+  .wrapper {
+    @include FlexColumn;
+    @include Maxsize100;
+    padding: 0 5%;
+
+    ul {
+      @include FlexRow;
+      @include Maxsize100;
+      @include UlNormalize;
+      justify-content: space-between;
+
+      .slide {
+        @include FlexColumn;
+        background-color: black;
+        color: black;
+        height: 350px;
+        justify-content: space-between;
+        outline: solid 1px lightgrey;
+        padding: 20px;
+        text-decoration: none;
+        transform: scale(1);
+        transition: transform 300ms linear, color 2s;
+        width: 300px;
+        margin-left: 20px;
+
+        h3 {
+          color: white;
+          margin: 0;
+        }
+
+        img {
+          @include Maxsize100;
+        }
+
+        &:hover h3 {
+          color: red;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          transition: transform 300ms linear, color 2s;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 499px) {
+  .featuredCategoriesSection {
+    .wrapper {
+      ul {
+        justify-content: center;
+        .slide:nth-child(n + 2) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+  .featuredCategoriesSection {
+    .wrapper {
+      ul {
+        justify-content: center;
+        .slide:nth-child(n + 2) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  .featuredCategoriesSection {
+    .wrapper {
+      ul {
+        .slide:nth-child(n + 3) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 999px) {
+  .featuredCategoriesSection {
+    .wrapper {
+      ul {
+        .slide:nth-child(n + 4) {
+          display: none;
+        }
+      }
+    }
+  }
+}

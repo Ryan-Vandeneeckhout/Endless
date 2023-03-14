@@ -1,0 +1,114 @@
+.contentPageSection {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
+
+  .bannerContent {
+    height: 10vh;
+    min-height: 250px;
+    padding: 5% 10%;
+    background-color: rgb(228, 224, 224);
+    color: red;
+  }
+
+  .wrapper {
+    @include Maxsize100;
+    padding: 5% 10% 10% 10%;
+
+    .contentList {
+      @include UlNormalize;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+      grid-gap: 10px 20px;
+      align-items: baseline;
+      width: 100%;
+      outline: solid purple 5px;
+
+      .contentItem {
+        background-color: transparent;
+        box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+      4px 4px 6px rgba(0, 0, 0, 0.2),
+      inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+      inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+        font-size: 20px;
+        height: 100%;
+        opacity: 0;
+        outline: solid lightgrey 1px;
+        padding: 10px;
+        text-align: center;
+        transform: translatey(0px);
+        transition: filter 0.5s ease, background-color 0.5s;
+        transition: transform 300ms linear;
+        width: 100%;
+
+        &:hover {
+          filter: contrast(0.7);
+          color: red;
+          transform: translatey(-10px);
+          transition: transform 300ms linear;
+        }
+
+        p {
+          margin: 2px;
+          font-size: 16px;
+          text-transform: capitalize;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+        }
+        .imageContainer {
+          width: 200px;
+          border: solid black 2px;
+          height: 175px;
+          position: relative;
+
+          img {
+            @include Maxsize100;
+          }
+
+          .bottomBar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+          }
+        }
+      }
+
+      .animationActiveProject {
+        animation: fadein 2s 1;
+        @include FlexColumnCenter;
+        opacity: 1;
+      }
+
+      a {
+        color: black;
+      }
+    }
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

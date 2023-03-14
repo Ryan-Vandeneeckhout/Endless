@@ -1,0 +1,37 @@
+.TermsandConditions {
+  background-color: white;
+  background-image: url("../../../public/assets//images/signup&LoginPagesImages/002.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+  min-height: 100vh;
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0% clamp(1.875rem, -1.7736rem + 18.2432vw, 18.75rem);
+
+    .content {
+        background-color: rgb(233, 231, 231);
+        height: 100%;
+        max-width: 800px;
+        padding: 100px 20px;
+    }
+    ul {
+      @include UlNormalize;
+      .height100 {
+        height: 100%;
+      }
+      .height0 {
+        height: 0;
+      }
+      p{
+        overflow: hidden;
+      }
+
+      .openCloseTermSection {
+        margin-right: 20px;
+      }
+    }
+  }
+}

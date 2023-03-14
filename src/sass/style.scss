@@ -1,0 +1,55 @@
+@import "./defaultGlobalStyles/setup.scss";
+@import "./defaultGlobalStyles/styleGuide.scss";
+@import "./defaultGlobalStyles/variables.scss";
+@import "./navigation/navigation";
+@import "./sideMenus/sideMenu";
+@import "./overlays/overlays";
+@import "./landingPageSass/landingPage.scss";
+@import "./defaultGlobalStyles/defaultGlobalStyles.scss";
+@import "./userInputPageSass/userInputPageSass.scss";
+@import "./contentPageSass/contentPage.scss";
+@import "./termsAndConditionsPageSass/terms&Conditions.scss";
+
+
+input:placeholder-shown {
+  border-bottom: 2px solid goldenrod;
+}
+.redText {
+  color: red;
+}
+.redTextO {
+  color: red;
+  outline: solid red 2px;
+}
+.thinn {
+  font-weight: 900;
+  color: grey;
+}
+.Order1 {
+    order: 1;
+}
+
+.Order2 {
+    order: 2;
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #acacac #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: auto;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #acacac;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }

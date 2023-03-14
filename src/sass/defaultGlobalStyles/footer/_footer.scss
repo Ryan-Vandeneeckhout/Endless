@@ -1,0 +1,88 @@
+footer {
+  background-color: black;
+  color: lightgrey;
+  height: fit-content;
+  min-height: 150px;
+  width: 100%;
+
+  .wrapper {
+    @include FlexRow;
+    @include Maxsize100;
+    justify-content: space-between;
+    padding: 0 10%;
+
+    h3 {
+      color: white;
+      margin: none;
+      text-transform: none;
+
+      .colorCredits {
+        color: goldenrod;
+      }
+    }
+    p {
+      margin: 0;
+      color: rgb(136, 132, 132);
+    }
+
+    .credits {
+      @include FlexColumn;
+      justify-content: center;
+      text-align: left;
+      width: 80%;
+    }
+
+    aside {
+      @include FlexRow;
+      justify-content: center;
+      padding: 2.5%;
+      width: 20%;
+
+      ul {
+        @include FlexColumn;
+        @include UlNormalize;
+        border-left: lightgrey solid 1px;
+        justify-content: center;
+        padding: 0 25px;
+        li {
+          margin: 2px;
+        }
+        a {
+          color: white;
+          font-weight: 800;
+          &:hover {
+            color: red;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  footer {
+    background-color: black;
+    color: lightgrey;
+    height: fit-content;
+    min-height: 150px;
+    text-align: center;
+    width: 100%;
+
+    .wrapper {
+      @include FlexColumn;
+      justify-content: center;
+      align-content: center;
+      .credits {
+        text-align: center;
+        padding: 20px 0;
+        width: 100%;
+        white-space: nowrap ;
+      }
+
+      aside {
+       display: none;
+      }
+    }
+  }
+}

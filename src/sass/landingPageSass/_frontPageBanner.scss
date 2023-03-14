@@ -1,0 +1,27 @@
+.frontPageBanner {
+  max-height: 50%;
+  height: 25vh;
+  width: 100%;
+  outline: solid lightgrey 1px;
+  background-image: url("../../../public/assets/images/landingPageImages/frontPageBanners/0011200.png");
+  background-repeat: repeat;
+  background-size: contain;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .frontPageBanner {
+    background-image: url("../../../public/assets/images/landingPageImages/frontPageBanners/001400.png");
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .frontPageBanner {
+    background-image: url("../../../public/assets/images/landingPageImages/frontPageBanners/001600.png");
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .frontPageBanner {
+    background-image: url("../../../public/assets/images/landingPageImages/frontPageBanners/001600.png");
+  }
+}

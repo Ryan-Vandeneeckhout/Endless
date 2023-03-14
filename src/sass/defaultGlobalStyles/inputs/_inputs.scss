@@ -1,0 +1,42 @@
+@import "./progressBar.scss";
+
+.gotoArrow {
+  display: flex;
+  font-size: 2em;
+  justify-content: flex-end;
+  width: 90%;
+
+  a {
+    -webkit-transform: none;
+    color: #9b001a;
+    text-align: center;
+    transform: none;
+    transition: transform 300ms linear;
+
+    &:hover {
+      -webkit-transform: translateX(25%);
+      transform: translateX(25%);
+      transition: transform 300ms linear;
+    }
+  }
+}
+
+.pausePlayButton {
+    align-items: center;
+    background-color: #9b001a;
+    border-radius: 90%;
+    bottom: 10%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    outline: white solid 2px;
+    position: fixed;
+    right: 2.5%;
+    width: 40px;
+    z-index: 99;
+    &:hover {
+        color: goldenrod;
+    }
+}

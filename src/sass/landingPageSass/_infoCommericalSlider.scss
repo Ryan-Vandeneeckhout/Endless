@@ -1,0 +1,177 @@
+@mixin defaultWidthAndHeight {
+  height: 100%;
+  width: 50%;
+}
+
+.rotatingInfoCommericalSliderSection {
+  @include FlexRow;
+  background-color: white;
+  height: 50vh;
+  min-height: 450px;
+  width: 100%;
+  padding: 1%;
+
+  h2 {
+    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+      4px 4px 6px rgba(0, 0, 0, 0.2),
+      inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+      inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .infoCommericalSliderImageContainer {
+    @include defaultWidthAndHeight;
+    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+      4px 4px 6px rgba(0, 0, 0, 0.2),
+      inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+      inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s, color 0.5s;
+    position: relative;
+    &:hover .slideArrowRight {
+      transform: translatex(-20px);
+      transition: transform 300ms linear, opacity 0.5s ease-out;
+      opacity: 1;
+      transition: background 0.5s linear;
+    }
+
+    &:hover .slideArrowLeft {
+      transform: translatex(20px);
+      transition: transform 300ms linear, opacity 0.5s ease-out;
+      opacity: 1;
+    }
+    span {
+      height: 50%;
+    }
+
+    .slideArrowRight {
+      -webkit-transform: none;
+      background-color: transparent;
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+      right: 2.5%; 
+      top: 50%;
+      transform: none;
+      transition: transform 300ms linear, opacity 0.5s ease-out;
+    }
+    .slideArrowLeft {
+      -webkit-transform: none;
+      background-color: transparent;
+      cursor: pointer;
+      left: 2.5%; 
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: none;
+      transition: transform 300ms linear, opacity 0.5s ease-out;
+    }
+
+    .sliderButton {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      height: 100%;
+      min-width: 30px;
+      position: absolute;
+      width: 10%;
+    }
+
+    .left {
+      left: 0;
+    }
+    .right {
+      right: 0;
+    }
+
+    .currentSlide {
+      @include Maxsize100;
+      background-color: black;
+      padding: 1%;
+      img {
+        @include Maxsize100;
+      }
+    }
+  }
+
+  .contentInfoCommericalContainer {
+    @include defaultWidthAndHeight;
+    color: black;
+
+    .wrapper {
+      @include Maxsize100;
+      box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+        4px 4px 6px rgba(0, 0, 0, 0.2),
+        inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+        inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+      padding: 10%;
+      text-align: center;
+    }
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .rotatingInfoCommericalSliderSection {
+    @include FlexColumn;
+    max-height: fit-content;
+    height: fit-content;
+    width: 100%;
+    .infoCommericalSliderImageContainer {
+      height: 45vh;
+      max-height: 300px;
+      width: 100%;
+    }
+    .contentInfoCommericalContainer {
+      height: fit-content;
+      max-height: 350px;
+      padding: 2.5%;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .rotatingInfoCommericalSliderSection {
+    @include FlexColumn;
+    height: fit-content;
+    min-height: fit-content;
+    width: 100%;
+    .infoCommericalSliderImageContainer {
+      height: 45vh;
+      max-height: 300px;
+      width: 100%;
+    }
+    .contentInfoCommericalContainer {
+      height: fit-content;
+      max-height: 350px;
+      padding: 2.5%;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .rotatingInfoCommericalSliderSection {
+    width: 100%;
+    max-height: 340px;
+    height: fit-content;
+
+    .infoCommericalSliderImageContainer {
+      width: 70%;
+    }
+    .contentInfoCommericalContainer {
+      padding: 2.5%;
+      width: 40%;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .rotatingInfoCommericalSliderSection {
+    .infoCommericalSliderImageContainer {
+      width: 60%;
+    }
+    .contentInfoCommericalContainer {
+      width: 40%;
+      padding: 5%;
+    }
+  }
+}
