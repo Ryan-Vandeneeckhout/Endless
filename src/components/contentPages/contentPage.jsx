@@ -36,7 +36,7 @@ export const ContentPage = () => {
         console.log(response.data);
         setError(false);
       })
-      .catch(function (error) {
+      .catch(function () {
         setError(true);
       });
   }, [itembuttonText.itembuttonText]);
