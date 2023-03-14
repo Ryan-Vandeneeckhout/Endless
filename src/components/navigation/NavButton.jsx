@@ -20,7 +20,7 @@ export const NavButton = (props) => {
       <span className="arrowDown">
         <FontAwesomeIcon
           size="1x"
-          icon={hover ? "fa-caret-down" : "fa-caret-up"}
+          icon={hover ? "fa-caret-up" : "fa-caret-down"}
         />
       </span>
     </li>

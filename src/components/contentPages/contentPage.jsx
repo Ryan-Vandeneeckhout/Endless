@@ -1,13 +1,14 @@
-import { useAPICall } from "../hooks/globalhooks/useAPICall";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import ContentItem from "./ContentItem";
 import { useEffect } from "react";
 import { BrandsMap } from "../makeupMaps/BrandsMap";
+import { useState } from "react";
 
 export const ContentPage = () => {
   const itembuttonText = useParams();
-
-  const { APICall, dataResponse, error } = useAPICall();
+  const [error, setError] = useState(null);
+  const [dataResponse, setDataResponse] = useState([]);
 
   useEffect(() => {
     let urlCode = `https://web-production-5976.up.railway.app/https://makeup-api.herokuapp.com/api/v1/products.json`;
@@ -22,7 +23,22 @@ export const ContentPage = () => {
         product_type: itembuttonText.itembuttonText,
       };
     }
-    APICall(urlCode, paramsAPI);
+
+    var config = {
+      method: "get",
+      url: urlCode,
+      params: paramsAPI,
+    };
+
+    axios(config)
+      .then(function (response) {
+        setDataResponse(response.data);
+        console.log(response.data);
+        setError(false);
+      })
+      .catch(function (error) {
+        setError(true);
+      });
   }, [itembuttonText.itembuttonText]);
 
   const renderResultsLength = () => {
