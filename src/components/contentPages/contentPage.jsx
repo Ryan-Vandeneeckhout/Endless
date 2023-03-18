@@ -13,14 +13,10 @@ export const ContentPage = () => {
   const [, setPriceSort, sortPriceRef] = useState("");
   const [dataResponse, setDataResponse, dataResponseRef] = useState([]);
   const [, setBrandState, brandStateRef] = useState("");
-  const [
-    productTypeSelected,
-    setProductTypeSelected,
-    productTypeRef,
-  ] = useState("");
-  const [, setProductCatgorySelected, productCatgorySelectedRef] = useState("");
+  const [, , ,] = useState("");
+  const [, , productCatgorySelectedRef] = useState("");
   const [, setPrice, priceRef] = useState("");
-  const [tagsarray, setTagsArray, TagsArrayRef] = useState([]);
+  const [, , TagsArrayRef] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const IndividualProductPageMakeupAPI = () => {
   const [individualProducts, setIndividualProduct] = useState({});
@@ -18,14 +18,9 @@ export const IndividualProductPageMakeupAPI = () => {
   //Destructure the passed props of indidvualproducts
   const {
     api_featured_image,
-    description,
-    product_link,
+
     brand,
     name,
-    rating,
-    tag_list,
-    product_colors,
-    price,
   } = individualProducts;
 
   return (
