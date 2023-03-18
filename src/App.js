@@ -17,10 +17,16 @@ import LoginPage from "./components/userLoginSignupLogoutComponents/login/loginP
 import { ContentPage } from "./components/contentPages/contentPage";
 import { ShoppingCart } from "./components/sideMenus/shoppingCartMenu/ShoppingCart";
 import { TermsAndConditions } from "./components/termsAndConditions/TermsAndConditions";
+import { UserSettingsMenu } from "./components/sideMenus/userSettingsMenu/userSettingsMenu";
+import { ChatIcon } from "./components/sideBarIcons/contactChatMenu/ChatIcon";
+import { ContactMenu } from "./components/sideMenus/contactMenu/contactMenu";
+import { IndividualProductPageMakeupAPI } from "./components/contentPages/individualContentPage/individualProductPageMakeupAPI";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showShoppingCart, setShowShoppingCart] = useState(false);
+  const [chatState, setChatState] = useState(false);
+  const [showUserSettingsState, setShowUserSettingsState] = useState(false);
   const [MusicPlaying, setMusicPlaying] = useState(false);
   const { user, authIsReady } = useAuthContext();
 
@@ -37,13 +43,35 @@ function App() {
 
   const ShowShoppingCart = () => {
     setShowShoppingCart((x) => !x);
+    setShowUserSettingsState(false);
+  };
+
+  const showUserSettings = () => {
+    setShowUserSettingsState((x) => !x);
+    setShowShoppingCart(false);
+  };
+
+  const showChat = () => {
+    setChatState((x) => !x);
+    setShowShoppingCart(false);
+    setShowUserSettingsState(false);
   };
 
   //Check local browser storage for user settings
   let htmlElement = document.documentElement;
 
   useEffect(() => {
-    const onPageLoad = () => {};
+    const onPageLoad = () => {
+      if (
+        window.localStorage.getItem("dataNumber") === undefined ||
+        window.localStorage.getItem("dataNumber") === null
+      ) {
+        window.localStorage.setItem(
+          "dataNumber",
+          Math.floor(100000 + Math.random() * 900000)
+        );
+      }
+    };
 
     // Check if the page has already loaded
     if (document.readyState === "complete") {
@@ -66,6 +94,7 @@ function App() {
               setShowMenu={setShowMenu}
               setShowShoppingCart={setShowShoppingCart}
               ShowShoppingCart={ShowShoppingCart}
+              showUserSettings={showUserSettings}
             />
           </header>
           <SideMenu
@@ -73,13 +102,19 @@ function App() {
             MusicPlayingTracker={MusicPlayingTracker}
             MusicPlayingTrackerButton={MusicPlayingTrackerButton}
           />
+          <ContactMenu showMenu={chatState} />
           <MusicIcon
             MusicPlayingTracker={MusicPlayingTracker}
             MusicPlaying={MusicPlaying}
           />
+          <ChatIcon showChat={showChat} chatState={chatState} />
           <ShoppingCart
             showShoppingCart={showShoppingCart}
             ShowShoppingCart={ShowShoppingCart}
+          />
+          <UserSettingsMenu
+            showUserSettingsState={showUserSettingsState}
+            showUserSettings={showUserSettings}
           />
           <main>
             <Routes>
@@ -102,13 +137,20 @@ function App() {
                 path="/content/:itembuttonText"
                 element={<ContentPage />}
               />
+
+              <Route
+                path="/:itemid"
+                element={<IndividualProductPageMakeupAPI />}
+              />
               <Route path="*" element={<Error404 />} />
             </Routes>
             <DevMenuOverlay
               setShowMenu={setShowMenu}
               setShowShoppingCart={setShowShoppingCart}
               showMenu={showMenu}
+              setShowUserSettingsState={setShowUserSettingsState}
               showShoppingCart={showShoppingCart}
+              showUserSettingsState={showUserSettingsState}
             />
           </main>
           <Footer />

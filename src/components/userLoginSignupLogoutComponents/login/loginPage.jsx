@@ -25,6 +25,10 @@ export default function LoginPage() {
     }
   };
 
+  const signInGoogle = () => {
+    signInWithGoogle();
+  };
+
   return (
     <SectionWrappers sectionWrapperClassName="LoginSignUpSection login">
       <div className="contentItemBox">
@@ -61,7 +65,7 @@ export default function LoginPage() {
             <h2>
               Endless <span className="colorYellow">Demands</span>
             </h2>
-            <button onClick={signInWithGoogle}>Sign up With Google</button>
+            <button onClick={signInGoogle}>Sign up With Google</button>
           </div>
         </div>
       </div>

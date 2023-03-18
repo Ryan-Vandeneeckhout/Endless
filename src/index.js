@@ -29,6 +29,7 @@ import {
   faUser,
   faUserAlt,
   faUserCircle,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
 // FontAwesome Global Icons Added
 library.add(
@@ -37,6 +38,7 @@ library.add(
   faAngleRight,
   faCaretDown,
   faCaretUp,
+  faComment,
   faAngleUp,
   faArrowLeftLong,
   faArrowRightFromBracket,

@@ -1,9 +1,11 @@
 export const FooterNavMap = [
   {
     NavButton: "Home",
+    NavLink: "/",
   },
   {
     NavButton: "Makeup",
+    NavLink: "/content/lipstick",
   },
   {
     NavButton: "FAQ",

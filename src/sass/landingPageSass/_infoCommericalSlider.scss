@@ -12,75 +12,50 @@
   padding: 1%;
 
   h2 {
-    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
-      4px 4px 6px rgba(0, 0, 0, 0.2),
-      inset -1px -1px 4px rgba(255, 255, 255, 0.05),
-      inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    @include boxShadowFrontPage;
     padding: 10px;
   }
 
   .infoCommericalSliderImageContainer {
+    @include boxShadowFrontPage;
     @include defaultWidthAndHeight;
-    box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
-      4px 4px 6px rgba(0, 0, 0, 0.2),
-      inset -1px -1px 4px rgba(255, 255, 255, 0.05),
-      inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-      transition: transform 0.5s, color 0.5s;
+
+    transition: transform 0.5s, color 0.5s;
     position: relative;
+
+    &:hover button {
+      opacity: 1;
+      transition: transform 300ms linear, opacity 0.5s ease-out;
+    }
     &:hover .slideArrowRight {
       transform: translatex(-20px);
-      transition: transform 300ms linear, opacity 0.5s ease-out;
-      opacity: 1;
-      transition: background 0.5s linear;
     }
 
     &:hover .slideArrowLeft {
       transform: translatex(20px);
-      transition: transform 300ms linear, opacity 0.5s ease-out;
-      opacity: 1;
     }
     span {
       height: 50%;
     }
-
-    .slideArrowRight {
+    @mixin ArrowSettings {
       -webkit-transform: none;
-      background-color: transparent;
-      cursor: pointer;
-      opacity: 0;
-      position: absolute;
-      right: 2.5%; 
-      top: 50%;
-      transform: none;
-      transition: transform 300ms linear, opacity 0.5s ease-out;
-    }
-    .slideArrowLeft {
-      -webkit-transform: none;
-      background-color: transparent;
-      cursor: pointer;
-      left: 2.5%; 
-      opacity: 0;
-      position: absolute;
-      top: 50%;
-      transform: none;
-      transition: transform 300ms linear, opacity 0.5s ease-out;
-    }
-
-    .sliderButton {
       background-color: transparent;
       border: none;
       cursor: pointer;
-      height: 100%;
-      min-width: 30px;
+      opacity: 0;
       position: absolute;
-      width: 10%;
+      top: 50%;
+      transform: none;
+      transition: transform 300ms linear, opacity 0.5s ease-out;
     }
 
-    .left {
-      left: 0;
+    .slideArrowRight {
+      @include ArrowSettings;
+      right: 2.5%;
     }
-    .right {
-      right: 0;
+    .slideArrowLeft {
+      @include ArrowSettings;
+      left: 2.5%;
     }
 
     .currentSlide {
@@ -98,11 +73,8 @@
     color: black;
 
     .wrapper {
+      @include boxShadowFrontPage;
       @include Maxsize100;
-      box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
-        4px 4px 6px rgba(0, 0, 0, 0.2),
-        inset -1px -1px 4px rgba(255, 255, 255, 0.05),
-        inset 1px 1px 1px rgba(0, 0, 0, 0.1);
       padding: 10%;
       text-align: center;
     }

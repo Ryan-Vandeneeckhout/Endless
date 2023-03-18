@@ -46,7 +46,7 @@ const ContentItem = (props) => {
               </div>
             ) : null}
           </div>
-          {props.itemBrand ? <p>{props.itemBrand}</p> : null}
+          {props.itemBrand ? <p className="brandp">{props.itemBrand}</p> : null}
           <p>{props.itemname}</p>
           {renderPrice()}
           {props.itemRating ? (

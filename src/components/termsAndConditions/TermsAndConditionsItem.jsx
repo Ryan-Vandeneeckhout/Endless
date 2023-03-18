@@ -11,7 +11,7 @@ export const TermsAndConditionsItem = (props) => {
     <>
       <h3>
         <span className="openCloseTermSection" onClick={showContent}>
-          <FontAwesomeIcon icon="fa-caret-down" />
+          <FontAwesomeIcon icon={open ? "fa-caret-up" : "fa-caret-down"} />
         </span>
         {props.termsTitle}{" "}
       </h3>

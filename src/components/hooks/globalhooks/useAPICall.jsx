@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import useState from "react-usestateref";
 
 export const useAPICall = () => {
   const [error, setError] = useState(null);
-  const [dataResponse, setDataResponse] = useState([]);
+  const [, setDataResponse, dataResponseAPIRef] = useState([]);
 
   const APICall = (urlCode, paramsAPI) => {
     var config = {
@@ -22,5 +22,5 @@ export const useAPICall = () => {
         setError(true);
       });
   };
-  return { error, APICall, dataResponse };
+  return { error, APICall, dataResponseAPIRef };
 };

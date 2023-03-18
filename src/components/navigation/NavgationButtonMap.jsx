@@ -48,23 +48,6 @@ export const NavigationButtonMap = [
     ],
   },
   {
-    NavText: "Nails",
-    href: "content/nails",
-    ariaLabel: "Go to nails nav button",
-    ButtonColor: "#8b0000",
-    ButtonType: false,
-
-    arraylist: [
-      { buttonText: `annabelle`, buttonValueText: "annabelle" },
-      { buttonText: `benefit`, buttonValueText: "benefit" },
-      { buttonText: `boosh`, buttonValueText: "boosh" },
-      { buttonText: `almay`, buttonValueText: "almay" },
-      { buttonText: `alva`, buttonValueText: "alva" },
-      { buttonText: `clinique`, buttonValueText: "clinique" },
-      { buttonText: `covergirl`, buttonValueText: "covergirl" },
-    ],
-  },
-  {
     NavText: "Trending",
     href: "user/blog",
     ariaLabel: "Collection of stories by site users",

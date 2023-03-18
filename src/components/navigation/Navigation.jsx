@@ -6,15 +6,14 @@ import { useState } from "react";
 import { brandsMap } from "./submenuMaps/brandsMap.jsx";
 import { MakeupMap } from "./submenuMaps/makeupMap.jsx";
 import { useAuthContext } from "../hooks/firebase/useAuthContext.js";
-import { useLogout } from "../hooks/firebase/useLogout.js";
 import { NavButton } from "./NavButton.jsx";
+import { NavSubMenuButton } from "./NavSubMenuButton.jsx";
 
 const Navigation = (props) => {
   const [hoverOpen, setHoverOpen] = useState(false);
   const [hoverOpenIcon, setHoverOpenIcon] = useState(false);
   const [subMenu, setSubMenu] = useState("");
   const location = useLocation();
-  const { logout } = useLogout();
   const { user } = useAuthContext();
 
   //destructuring pathname from location
@@ -48,10 +47,10 @@ const Navigation = (props) => {
             {brandsMap.map((item, index) => {
               return (
                 <li key={index}>
-                  {" "}
-                  <Link to={`content/${item.buttonValueText}`}>
-                    {item.buttonText}
-                  </Link>{" "}
+                  <NavSubMenuButton
+                    buttonText={item.buttonText}
+                    buttonValueText={item.buttonValueText}
+                  />
                 </li>
               );
             })}
@@ -69,9 +68,10 @@ const Navigation = (props) => {
             {MakeupMap.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link to={`content/${item.buttonValueText}`}>
-                    {item.buttonText}
-                  </Link>{" "}
+                  <NavSubMenuButton
+                    buttonText={item.buttonText}
+                    buttonValueText={item.buttonValueText}
+                  />
                 </li>
               );
             })}
@@ -103,14 +103,17 @@ const Navigation = (props) => {
             })}
           </ul>
           <div className="userIcons">
-            <div className="shoppingCartOpen" onClick={shoppingCartOpen}>
+            <div className="shoppingCartIcon" onClick={shoppingCartOpen}>
               <FontAwesomeIcon size="1x" icon="fa-shopping-bag" />
             </div>
-            <p onClick={logout}>Log out</p>
             {user ? (
-              <div>
+              <div className="userIcon">
                 {" "}
-                <FontAwesomeIcon size="1x" icon="fa-user-circle" />
+                <FontAwesomeIcon
+                  onClick={props.showUserSettings}
+                  size="1x"
+                  icon="fa-user-circle"
+                />
               </div>
             ) : (
               <Link

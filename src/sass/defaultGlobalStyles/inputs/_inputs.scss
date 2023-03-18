@@ -22,21 +22,41 @@
 }
 
 .pausePlayButton {
-    align-items: center;
-    background-color: #9b001a;
-    border-radius: 90%;
-    bottom: 10%;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    outline: white solid 2px;
-    position: fixed;
-    right: 2.5%;
-    width: 40px;
-    z-index: 99;
-    &:hover {
-        color: goldenrod;
-    }
+  align-items: center;
+  background-color: #9b001a;
+  border-radius: 90%;
+  bottom: 100px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  outline: white solid 2px;
+  position: fixed;
+  right: 2.5%;
+  width: 40px;
+  z-index: 99;
+  &:hover {
+    color: goldenrod;
+  }
+}
+
+.chatIcon {
+  align-items: center;
+  background-color: #9b001a;
+  border-radius: 90%;
+  bottom: 50px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  outline: white solid 2px;
+  position: fixed;
+  right: 2.5%;
+  width: 40px;
+  z-index: 99;
+  &:hover {
+    color: goldenrod;
+  }
 }
