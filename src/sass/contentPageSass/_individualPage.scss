@@ -1,0 +1,57 @@
+.individualContentProductPage {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
+
+  .wrapper {
+    padding: 100px clamp(1.25rem, -3.6149rem + 24.3243vw, 23.75rem);
+
+    .uppperContent {
+        margin-bottom: 10%;
+        width: 100%;
+
+      @include FlexRow;
+      .imageContainer {
+        padding: 5%;
+        width: 50%;
+
+        img {
+            height: 150px;
+            width: 200px;
+        }
+      }
+      .productInfomation {
+        width: 40%;
+      }
+    }
+
+    .bottomContent {
+      background-color: black;
+      display: flex;
+      padding: 2.5%;
+      overflow: hidden;
+      width: 100%;
+
+      .colorContainer {
+        align-items: baseline;
+        display: grid;
+        grid-gap: 10px 20px;
+        grid-template-columns: repeat(auto-fill, minmax(60px, 100px));
+        width: 100%;
+      }
+
+      .colourCircle {
+        font-weight: 900;
+        padding: 5px;
+      }
+
+      .colourItem {
+        color: white;
+        margin: 5px;
+        padding: 0;
+        text-align: center;
+        width: 100px;
+      }
+    }
+  }
+}

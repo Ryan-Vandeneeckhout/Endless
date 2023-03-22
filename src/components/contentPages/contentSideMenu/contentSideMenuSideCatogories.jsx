@@ -10,76 +10,73 @@ export const ContentSideMenuSideCatogories = (props) => {
     setShowList((showList) => !showList);
   };
 
-  const renderBrandOrProductType = (item) => {
-    return (
-      <>
-        <RadioButton
-          buttonText={item.buttonText}
-          setStateValue={props.setBrandState}
-          buttonValue={props.buttonValue}
-          buttonValueText={item.buttonValueText}
-          renderData={props.QueryAPIdata}
-          groupradioName={props.asideTextHeader}
-        />
-      </>
-    );
-  };
+  const SwitchFunctionContentCatogories = (item) => {
+    switch (props.buttonValue) {
+      case "Brand":
+        return (
+          <RadioButton
+            buttonText={item.buttonText}
+            setStateValue={props.setBrandState}
+            buttonValue={props.buttonValue}
+            buttonValueText={item.buttonValueText}
+            renderData={props.QueryAPIdata}
+            groupradioName={props.asideTextHeader}
+          />
+        );
+      case "Price":
+        return (
+          <>
+            <RadioButton
+              buttonText={item.buttonText}
+              setStateValue={props.setPrice}
+              buttonValue={props.buttonValue}
+              buttonValueText={item.buttonValueText}
+              renderData={props.QueryAPIdata}
+              groupradioName={props.asideTextHeader}
+            />
+          </>
+        );
+      case "Sort_By_Rating":
+        return (
+          <>
+            <RadioButton
+              buttonText={item.buttonText}
+              setAPIRating={props.setAPIRating}
+              buttonValue={props.buttonValue}
+              buttonValueText={item.buttonValueText}
+              renderData={props.QueryAPIdata}
+              groupradioName={props.asideTextHeader}
+            />
+          </>
+        );
+      case "Sort_By_Price":
+        return (
+          <>
+            <RadioButton
+              buttonText={item.buttonText}
+              setStateValue={props.setPriceSort}
+              buttonValue={props.buttonValue}
+              buttonValueText={item.buttonValueText}
+              renderData={props.handlePriceSortOption}
+              groupradioName={props.asideTextHeader}
+            />
+          </>
+        );
+      case "Sort_By_Tags":
+        return (
+          <CheckboxInput
+            buttonText={item.buttonText}
+            setAPIRating={props.setAPIRating}
+            buttonValue={props.buttonValue}
+            buttonValueText={item.buttonValueText}
+            renderData={props.QueryAPIdata}
+            groupradioName={props.asideTextHeader}
+          />
+        );
 
-  const renderPrice = (item) => {
-    return (
-      <>
-        <RadioButton
-          buttonText={item.buttonText}
-          setStateValue={props.setPrice}
-          buttonValue={props.buttonValue}
-          buttonValueText={item.buttonValueText}
-          renderData={props.QueryAPIdata}
-          groupradioName={props.asideTextHeader}
-        />
-      </>
-    );
-  };
-
-  const renderSortPrice = (item) => {
-    return (
-      <>
-        <RadioButton
-          buttonText={item.buttonText}
-          setStateValue={props.setPriceSort}
-          buttonValue={props.buttonValue}
-          buttonValueText={item.buttonValueText}
-          renderData={props.handlePriceSortOption}
-          groupradioName={props.asideTextHeader}
-        />
-      </>
-    );
-  };
-
-  const renderRating = (item) => {
-    return (
-      <>
-        <RadioButton
-          buttonText={item.buttonText}
-          setAPIRating={props.setAPIRating}
-          buttonValue={props.buttonValue}
-          buttonValueText={item.buttonValueText}
-          renderData={props.QueryAPIdata}
-          groupradioName={props.asideTextHeader}
-        />
-      </>
-    );
-  };
-  const renderTags = (item) => {
-    return (
-      <CheckboxInput
-        buttonText={item.buttonText}
-        setAPIRating={props.setAPIRating}
-        buttonValue={props.buttonValue}
-        buttonValueText={item.buttonValueText}
-        renderData={props.QueryAPIdata}
-        groupradioName={props.asideTextHeader}
-      />
-    );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -99,21 +96,7 @@ export const ContentSideMenuSideCatogories = (props) => {
           {props.arraylist.map((item, index) => {
             return (
               <div key={index} className="subMenuButtons">
-                {props.buttonValue === "Brand" ? (
-                  <>{renderBrandOrProductType(item)} </>
-                ) : null}
-                {props.buttonValue === "Price" ? (
-                  <>{renderPrice(item)}</>
-                ) : null}
-                {props.buttonValue === "Sort_By_Rating" ? (
-                  <>{renderRating(item)}</>
-                ) : null}
-                {props.buttonValue === "Sort_By_Price" ? (
-                  <>{renderSortPrice(item)} </>
-                ) : null}
-                {props.buttonValue === "Sort_By_Tags" ? (
-                  <>{renderTags(item)}</>
-                ) : null}
+                {SwitchFunctionContentCatogories(item)}
               </div>
             );
           })}

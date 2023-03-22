@@ -9,16 +9,31 @@ const ContentItem = (props) => {
   const ShowButtonList = () => {
     setShowList((showList) => !showList);
   };
+  let objectItem = props.objectItem;
+
+  const {
+    api_featured_image,
+    description,
+    product_link,
+    id,
+    brand,
+    name,
+    rating,
+    tag_list,
+    product_colors,
+    product_type,
+    price,
+  } = objectItem;
 
   if (
-    props.itemImage_url === null ||
-    props.itemImage_url === undefined ||
-    props.itemImage_url === ""
+    api_featured_image === null ||
+    api_featured_image === undefined ||
+    api_featured_image === ""
   );
   else {
     const renderPrice = () => {
-      if (props.price > 1) {
-        return <p>${parseFloat(props.price).toFixed(2)} </p>;
+      if (price > 1) {
+        return <p>${parseFloat(price).toFixed(2)} </p>;
       } else {
         return <p>Price not available</p>;
       }
@@ -28,8 +43,7 @@ const ContentItem = (props) => {
         onMouseEnter={ShowButtonList}
         onMouseLeave={ShowButtonList}
         ref={contentItemView}
-        key={props.index}
-        to={`/${props.itemid}`}
+        to={{ pathname: `/${id}`, state: objectItem }}
       >
         <div
           className={`contentItem${
@@ -39,21 +53,17 @@ const ContentItem = (props) => {
           }`}
         >
           <div className="imageContainer">
-            <img src={props.itemImage_url} alt={`${props.itemname}`} />
+            <img src={api_featured_image} alt={`${name}`} />
             {showList ? (
               <div className="bottomBar">
-                <p>{props.itemProductType}</p>
+                <p>{product_type}</p>
               </div>
             ) : null}
           </div>
-          {props.itemBrand ? <p className="brandp">{props.itemBrand}</p> : null}
-          <p>{props.itemname}</p>
+          {brand ? <p className="brandp">{brand}</p> : null}
+          <p>{name.replaceAll("&trade;", "")}</p>
           {renderPrice()}
-          {props.itemRating ? (
-            <p>Rating: {props.itemRating}</p>
-          ) : (
-            <p>No Rating Available</p>
-          )}
+          {rating ? <p>Rating: {rating}</p> : <p>No Rating Available</p>}
         </div>
       </Link>
     );

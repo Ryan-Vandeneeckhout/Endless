@@ -138,10 +138,7 @@ function App() {
                 element={<ContentPage />}
               />
 
-              <Route
-                path="/:itemid"
-                element={<IndividualProductPageMakeupAPI />}
-              />
+              <Route path="/:id" element={<IndividualProductPageMakeupAPI />} />
               <Route path="*" element={<Error404 />} />
             </Routes>
             <DevMenuOverlay

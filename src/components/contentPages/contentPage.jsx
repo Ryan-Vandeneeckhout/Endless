@@ -13,7 +13,7 @@ export const ContentPage = () => {
   const [, setPriceSort, sortPriceRef] = useState("");
   const [dataResponse, setDataResponse, dataResponseRef] = useState([]);
   const [, setBrandState, brandStateRef] = useState("");
-  const [, , ,] = useState("");
+  const [, setProductTypeState, productTypeStateRef] = useState("");
   const [, , productCatgorySelectedRef] = useState("");
   const [, setPrice, priceRef] = useState("");
   const [, , TagsArrayRef] = useState([]);
@@ -55,18 +55,18 @@ export const ContentPage = () => {
     let paramsAPI;
 
     if (BrandsMap.includes(itembuttonText.itembuttonText)) {
-      paramsAPI = {
-        brand: itembuttonText.itembuttonText,
-      };
+      setBrandState(itembuttonText.itembuttonText);
     } else {
-      paramsAPI = {
-        product_type: itembuttonText.itembuttonText,
-        brand: brandStateRef.current,
-        price_less_than: `${priceRef.current}`,
-        product_category: `${productCatgorySelectedRef.current}`,
-        product_tags: `${TagsArrayRef.current}`,
-      };
+      setProductTypeState(itembuttonText.itembuttonText);
     }
+
+    paramsAPI = {
+      product_type: `${productTypeStateRef.current}`,
+      brand: `${brandStateRef.current}`,
+      price_less_than: `${priceRef.current}`,
+      product_category: `${productCatgorySelectedRef.current}`,
+      product_tags: `${TagsArrayRef.current}`,
+    };
 
     var config = {
       method: "get",
@@ -151,6 +151,21 @@ export const ContentPage = () => {
                 <ContentItem
                   index={index}
                   itemid={item.id}
+                  objectItem={{
+                    id: item.id,
+                    name: item.name,
+                    api_featured_image: item.api_featured_image,
+                    rating: item.rating,
+                    brand: item.brand,
+                    product_type: item.product_type,
+                    price: item.price,
+                    product_colors: item.product_colors,
+                    image_link: item.image_link,
+                    description: item.description,
+                    product_link: item.product_link,
+                    website_link: item.website_link,
+                    tag_list: item.tag_list,
+                  }}
                   itemname={item.name}
                   itemImage_url={item.api_featured_image}
                   itemRating={item.rating}

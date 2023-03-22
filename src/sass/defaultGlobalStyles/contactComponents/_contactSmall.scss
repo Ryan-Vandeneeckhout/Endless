@@ -1,107 +1,111 @@
-
 .contactMenu {
-    box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
-    background-color: white;
-    bottom: 150px;
-    min-height: 350px;
-    height: fit-content;
-    min-width: 250px;
-    outline: solid black 1px;
-    position: fixed;
-    right: 2.5%;
-    width: 15vw;
-    z-index: 999;
-    flex-direction: column;
-  
-    .upperContent {
-      @include FlexRowCenter;
+  box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
+  background-color: white;
+  bottom: 150px;
+  min-height: 350px;
+  height: fit-content;
+  min-width: 250px;
+  outline: solid black 1px;
+  position: fixed;
+  right: 2.5%;
+  width: 15vw;
+  z-index: 999;
+  flex-direction: column;
+
+  .upperContent {
+    @include FlexRowCenter;
+    background-color: black;
+    color: white;
+    flex-direction: row-reverse;
+    font-family: "Lato";
+    height: 40px;
+    justify-content: space-between;
+    padding: 5px 10%;
+
+    button {
+      align-items: center;
       background-color: black;
-      color: white;
-      flex-direction: row-reverse;
-      font-family: "Lato";
-      height: 40px;
-      justify-content: space-between;
-      padding: 5px 10%;
-  
-      button {
-        align-items: center;
-        background-color: black;
-        border: none;
-        color: white;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        padding: 5px;
-        text-align: center;
-      }
-  
-      h5 {
-        margin: 0;
-      }
-    }
-  
-    .wrapper {
-      @include FlexColumn;
-      @include Maxsize100;
-      flex-grow: 1;
-      padding: 20px 10%;
-      position: relative;
-
-      .messageContainer {
-        flex-grow: 1;
-        outline: solid 1px lightgrey;
-      }
-  
-      form {
-        @include FlexColumn;
-    }
-  }
-  }
-
-  .inputContactContainer {
-    @include FlexRow;
-    height: 30px;
-
-    input {
-      height: 100%;
       border: none;
-      outline: solid 1px lightgrey;
-    }
-      button {
-        height: 100%;
-        width: 100%;
-        outline: solid 1px lightgrey;
-        cursor: pointer;
-
-        &:hover {
-          background-color: green; 
-          color: white;
-        }
-      }
-  }
-  .messageRecevied {
-    @include FlexColumn;
-
-    p {
-      padding: 13px;
-      border-radius: 15px;
-      margin-bottom:0;
-    }
-
-    p:first-child {
-      background-color: lightgreen;
-
-    }
-
-    p:nth-child(3) {
-      background-color: lightgrey;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      padding: 5px;
+      text-align: center;
     }
 
     h5 {
       margin: 0;
-      width: 100%;
-      text-align: right;
     }
   }
+
+  .wrapper {
+    @include FlexColumn;
+    @include Maxsize100;
+    flex-grow: 1;
+    padding: 20px 10%;
+    position: relative;
+
+    .messageContainer {
+      height: 300px;
+      outline: solid 1px lightgrey;
+      overflow-y: auto;
+      width: 100%;
+      ul {
+        @include UlNormalize;
+      }
+
+      p {
+        width: 100%;
+        outline: solid 1px lightgrey;
+        margin: 0;
+        min-height: 60px;
+      }
+    }
+
+    form {
+      @include FlexColumn;
+    }
+  }
+}
+
+.inputContactContainer {
+  @include FlexRow;
+  height: 30px;
+
+  input {
+    height: 100%;
+    border: none;
+    outline: solid 1px lightgrey;
+  }
+  button {
+    height: 100%;
+    width: 100%;
+    outline: solid 1px lightgrey;
+    cursor: pointer;
+
+    &:hover {
+      background-color: green;
+      color: white;
+    }
+  }
+}
+.messageRecevied {
+  @include FlexColumn;
+
+  p:first-child {
+    background-color: lightgreen;
+  }
+
+  p:nth-child(3) {
+    background-color: lightgrey;
+  }
+
+  h5 {
+    margin: 0;
+    width: 100%;
+    text-align: right;
+  }
+}
