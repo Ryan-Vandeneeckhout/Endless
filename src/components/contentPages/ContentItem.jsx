@@ -13,14 +13,10 @@ const ContentItem = (props) => {
 
   const {
     api_featured_image,
-    description,
-    product_link,
     id,
     brand,
     name,
     rating,
-    tag_list,
-    product_colors,
     product_type,
     price,
   } = objectItem;
