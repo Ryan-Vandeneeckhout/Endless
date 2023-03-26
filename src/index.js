@@ -26,14 +26,19 @@ import {
   faShoppingBag,
   faSpa,
   faTimes,
+  faPlus,
   faUser,
   faUserAlt,
   faUserCircle,
   faComment,
+  faMinus,
+  faTruck,
+  faMailBulk,
 } from "@fortawesome/free-solid-svg-icons";
 // FontAwesome Global Icons Added
 library.add(
   faAngleDown,
+  faTruck,
   faAngleLeft,
   faAngleRight,
   faCaretDown,
@@ -48,6 +53,7 @@ library.add(
   faBuildingColumns,
   faCircleUser,
   faMusic,
+  faPlus,
   faPause,
   faPlay,
   faSearch,
@@ -56,7 +62,9 @@ library.add(
   faTimes,
   faUser,
   faUserAlt,
-  faUserCircle
+  faUserCircle,
+  faMinus,
+  faMailBulk
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,9 +1,6 @@
 .contactMenu {
-  box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
   background-color: white;
-  bottom: 150px;
+  bottom: 0px;
   min-height: 350px;
   height: fit-content;
   min-width: 250px;
@@ -55,6 +52,8 @@
       width: 100%;
       ul {
         @include UlNormalize;
+        width: 100%;
+        flex-wrap: wrap;
       }
 
       p {
@@ -62,6 +61,7 @@
         outline: solid 1px lightgrey;
         margin: 0;
         min-height: 60px;
+        word-wrap: break-word;
       }
     }
 
@@ -108,4 +108,18 @@
     width: 100%;
     text-align: right;
   }
+}
+
+.slideUp {
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+  transition: transform 300ms linear;
+  box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 5px 5px rgba(0, 0, 0, 0.75);
+}
+.slideDown {
+  -webkit-transform: translateY(102%);
+  transform: translateY(102%);
+  transition: transform 300ms linear;
 }

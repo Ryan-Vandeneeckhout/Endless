@@ -1,9 +1,34 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { IndividualProductInformationPageCard } from "./IndividualProductInfomationPageCard";
+import { OptionNumberInput } from "../../inputs/OptionNumberInput";
+import { useEffect } from "react";
+import useState from "react-usestateref";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { RadioButton } from "../../inputs/RadioButton";
+import { HighlightsMap } from "./HighlightsMap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+  updateDoc,
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+  query,
+  where,
+  onSnapshot,
+} from "firebase/firestore";
+import { db } from "../../hooks/firebase/config";
+import { useAuthContext } from "../../hooks/firebase/useAuthContext";
 
 export const IndividualProductPageMakeupAPI = () => {
   const [individualProducts, setIndividualProduct] = useState({});
+  const [shippingState, setShippingState] = useState("Standard_Shipping");
+  const [, setProductCount, productCountRef] = useState(1);
+  const { user } = useAuthContext();
+
+  const AccountId = window.localStorage.getItem("dataNumber");
+
   const itemid = useParams();
 
   //Auto Scroll User to Top if needed//
@@ -15,43 +40,101 @@ export const IndividualProductPageMakeupAPI = () => {
       setIndividualProduct(response.data);
     });
   }, [itemid.id]);
-  //Destructure the passed props of indidvualproducts
+  //Destructure objectItem of individualproducts
   const {
     api_featured_image,
-    description,
-    product_link,
-    id,
     brand,
+    description,
+    id,
     name,
+    price,
+    product_colors,
+    product_link,
+    product_type,
     rating,
     tag_list,
-    product_colors,
-    product_type,
-    price,
-    image_link,
+    website_link,
   } = individualProducts;
+
+  const updateCart = () => {
+    if (user === (undefined || null || "" || false)) {
+      const writeUserData = async () => {
+        const docSnap = await getDoc(doc(db, "Cart", AccountId));
+
+        if (docSnap.exists()) {
+          await updateDoc(doc(db, "Cart", AccountId, `${user.uid}`, name), {
+            image: api_featured_image,
+            price: price,
+            name: name,
+            count: productCountRef.current,
+            shipping: shippingState,
+            dataNumber: AccountId,
+          });
+        } else {
+          await setDoc(doc(db, "Cart", AccountId, `${user.uid}`, name), {
+            image: api_featured_image,
+            price: price,
+            name: name,
+            count: productCountRef.current,
+            shipping: shippingState,
+            dataNumber: AccountId,
+          });
+        }
+      };
+
+      writeUserData();
+    } else {
+      const writeUserData = async () => {
+        const docSnap = await getDoc(doc(db, "Cart", `${user.uid}`));
+
+        if (docSnap.exists()) {
+          await updateDoc(doc(db, "Cart", `${user.uid}`, `${user.uid}`, name), {
+            image: api_featured_image,
+            price: price,
+            name: name,
+            count: productCountRef.current,
+            shipping: shippingState,
+            dataNumber: AccountId,
+          });
+        } else {
+          await setDoc(doc(db, "Cart", `${user.uid}`, `${user.uid}`, name), {
+            image: api_featured_image,
+            price: price,
+            name: name,
+            count: productCountRef.current,
+            shipping: shippingState,
+            dataNumber: AccountId,
+          });
+        }
+      };
+
+      writeUserData();
+    }
+  };
 
   //render if the product has aviable colours map
   const renderColors = () => {
-    if (!product_colors);
-    else {
+    if (!product_colors || product_colors.length === 0) {
+      return null;
+    } else {
       return (
-        <div className="colorContainer">
-          {product_colors.slice(0, 18).map((product) => {
-            return (
-              <div className="colourItem" key={product.hex_value}>
-                <div
-                  className="colourCircle"
-                  style={{ background: `${product.hex_value}` }}
-                >
-                  {product.hex_value}
-                </div>
-                <p>{product.colour_name}</p>
-              </div>
-            );
-          })}
-
+        <div className="bottomContent">
           {showMoreColors(product_colors)}
+
+          <div className="colorContainer">
+            {product_colors.slice(0, 9).map((product) => {
+              return (
+                <div className="colourItem" key={product.hex_value}>
+                  <div
+                    className="colourCircle"
+                    style={{ background: `${product.hex_value}` }}
+                  />{" "}
+                  <p className="hexValues">{product.hex_value}</p>
+                  <p>{product.colour_name}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       );
     }
@@ -63,47 +146,93 @@ export const IndividualProductPageMakeupAPI = () => {
     }
   };
   const renderTags = () => {
-    if (!tag_list) {
+    if (tag_list === (null || undefined)) {
       return null;
     } else {
+      let arr1 = HighlightsMap;
+      let arr2 = tag_list;
+      let res = arr1.filter((item) => arr2.includes(item.name));
+
       return (
-        <div className="tagWrapper">
-          {tag_list.map((tag) => {
-            return (
-              <div>
-                <p>{tag}</p>
-              </div>
-            );
-          })}
+        <div className="highlightsContainer">
+          <div className="Highlightwrapper">
+            <div className="header">
+              <h3>HighLights</h3>
+            </div>
+            <div className="highlightsList">
+              {res.map((product, index) => {
+                return (
+                  <div className="highlightItem" key={index}>
+                    <img src={product.image} alt={product.name} />
+                    <p>{product.name}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       );
     }
   };
+
   //Render Rating Function
   const renderRating = () => {
-    return rating !== null ? (
-      <p className="productParagraph">Rating: {rating} Stars.</p>
+    if (rating !== (null || "")) {
+      const ratingStar = rating - Math.floor(rating) !== 0;
+
+      if (ratingStar) {
+        return (
+          <div className="starRatingContainer">
+            {Array.from({ length: rating }, (_, index) => (
+              <p key={index}>{index + 1}</p>
+            ))}
+            <p>Half star</p>
+          </div>
+        );
+      } else {
+        return (
+          <>
+            {Array.from({ length: rating }, (_, index) => (
+              <p key={index}>{index + 1}</p>
+            ))}
+          </>
+        );
+      }
+    } else {
+      return null;
+    }
+  };
+
+  const getdata = async () => {
+    const q = query(
+      collection(db, "Cart", user.uid, user.uid),
+      where("dataNumber", "==", AccountId)
+    );
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const cities = [];
+      querySnapshot.forEach((doc) => {
+        cities.push(doc.data().name);
+      });
+      console.log("Current cities in CA: ", cities.join(", "));
+      return () => unsubscribe();
+    });
+  };
+
+  const renderBrandName = () => {
+    return brand !== (null || "") ? (
+      <p className="boldp uppercapP">Brought to you by - {brand}</p>
+    ) : null;
+  };
+
+  const renderPrice = () => {
+    return price !== ("0.0" || "0" || null || undefined || "") ? (
+      <p className="boldp">${parseFloat(price).toFixed(2)}</p>
     ) : (
-      <p className="productParagraph">
-        Rating: Unfortunately, there is No Rating Currently Available. Be the
-        First To Rate!{" "}
-      </p>
+      <p className="boldp">Price unavailable</p>
     );
   };
-  if (
-    individualProducts === null ||
-    individualProducts === undefined ||
-    individualProducts === {} ||
-    individualProducts.length === 0
-  ) {
-    return (
-      <section className="individualContentProductPage">
-        <div className="wrapper">
-          <h2>Loading...</h2>
-        </div>
-      </section>
-    );
-  } else {
+
+  if (name !== (null || undefined || "")) {
     return (
       <section className="individualContentProductPage">
         <div className="wrapper">
@@ -113,32 +242,88 @@ export const IndividualProductPageMakeupAPI = () => {
                 src={api_featured_image ? api_featured_image : null}
                 alt={`${name}`}
               />
-              <img src={image_link ? image_link : null} alt={`${name}`} />
             </div>
             <div className="productInfomation">
-              <h3>
+              {renderBrandName()}
+              <p>
                 {name} - {product_type}
-              </h3>
-              <h4>Brought to you by - {brand}</h4>
-              <p>${parseFloat(price).toFixed(2)}</p>
-              <p>{description}</p>
-              <a>{product_link}</a>
+              </p>
+              {renderRating()}
+              {renderPrice()}
 
               <div className="shipping">
-                <p>Same Day Delivery</p>
-                <p>Standard Delivery</p>
+                <h4>Get It Shipped</h4>
+                <div className="shippingInput">
+                  <div className="input">
+                    <RadioButton
+                      buttonText={"Same day Shipping"}
+                      setStateValue={setShippingState}
+                      buttonValue={"Same_Day_Shipping"}
+                      buttonValueText={"Same Day Shipping"}
+                      renderData={"none"}
+                      groupradioName={"shipping"}
+                      checked={false}
+                    />
+                  </div>
+                  <FontAwesomeIcon icon={"fa-truck"} />
+                </div>
+                <div className="shippingInput">
+                  <div className="input">
+                    <RadioButton
+                      buttonText={"Standard Shipping"}
+                      setStateValue={setShippingState}
+                      buttonValue={"Standard_Shipping"}
+                      buttonValueText={"Standard Shipping"}
+                      renderData={"none"}
+                      groupradioName={"shipping"}
+                      checked={true}
+                    />
+                  </div>
+                  <FontAwesomeIcon icon={"fa-mail-bulk"} />
+                </div>
               </div>
               <div className="basket">
-                <select>
-                  <option>1</option>
-                </select>
-                <button>Add to Basket for Standard Shipping</button>
+                <OptionNumberInput
+                  inputSelectionLength={10}
+                  productCount={setProductCount}
+                />
+                <button onClick={updateCart} className="shippingbutton">
+                  <span>Add to Basket </span>
+                  <span>for {shippingState.replaceAll("_", " ")}</span>
+                </button>
               </div>
             </div>
           </div>
 
-          <div className="bottomContent">{renderColors()}</div>
+          <button onClick={getdata}>Get firestore Data</button>
+
+          {renderColors()}
           <div className="reviewContainer">{renderTags()}</div>
+          {description ? (
+            <IndividualProductInformationPageCard
+              description={description}
+              headerCardText={"About the Product"}
+              product_link={product_link}
+              productid={id}
+              website_link={website_link}
+            />
+          ) : (
+            <IndividualProductInformationPageCard
+              description={"No Product Description Available"}
+              headerCardText={"About the Product"}
+              product_link={product_link}
+              productid={id}
+              website_link={website_link}
+            />
+          )}
+        </div>
+      </section>
+    );
+  } else {
+    return (
+      <section className="individualContentProductPage">
+        <div className="wrapper">
+          <h2>Loading...</h2>
         </div>
       </section>
     );

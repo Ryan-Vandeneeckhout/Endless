@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+<defs>
+  <style>
+    path, polygon, polyline, rect, circle, ellipse, line {vector-effect: non-scaling-stroke}
+  </style>
+</defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <circle cx="24" cy="24" r="24" fill="#ff585a"/>
+        <g>
+          <circle cx="24" cy="24" r="11.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="15.86827" y1="32.13173" x2="32.13173" y2="15.86827" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -25,33 +25,67 @@
     border: none;
   }
 
-
   ul {
     @include UlNormalize;
+    @include FlexColumn;
     overflow-y: auto;
     transform: scaleX(-1);
     width: 100%;
+    padding: 10px 0;
 
     .emptycardH3 {
-        transform: scaleX(-1);
-        width: 100%; 
-        text-align: center;
+      transform: scaleX(-1);
+      width: 100%;
+      text-align: center;
+    }
+    li:nth-child(even) {
+      background-color: white;
     }
     li {
       @include FlexRowCenter;
-      padding: 5px 10px;
-      min-height: 80px;
+      min-height: 35px;
+      padding: 7px 5px;
+      position: relative;
       transform: scaleX(-1);
       width: 100%;
-      outline: 1px solid black;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #817f7f;
+      }
+
+      .cartItems {
+        margin-left: 30px;
+      }
+
+      p,
+      h4 {
+        margin: 2px;
+      }
+
+      img {
+        height: 40px;
+        outline: solid black 2px;
+        width: 40px;
+      }
+
+      button {
+        right: 20px;
+        height: fit-content;
+        width: fit-content;
+        position: absolute;
+        padding: 5px;
+        background-color: transparent;
+        top: 10px;
+      }
     }
   }
 }
 .shoppingCartBottom {
   background-color: rgb(225, 225, 225);
-  bottom: 0;
-  border-top: 1px solid black;
   border-left: 1px solid black;
+  border-top: 1px solid black;
+  bottom: 0;
   max-width: 450px;
   min-width: 250px;
   position: fixed;
@@ -95,7 +129,7 @@
       }
     }
     .greyOutButton {
-        background-color: #817f7f;
-      }
+      background-color: #817f7f;
+    }
   }
 }

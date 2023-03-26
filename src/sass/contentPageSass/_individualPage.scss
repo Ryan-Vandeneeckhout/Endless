@@ -7,29 +7,109 @@
     padding: 100px clamp(1.25rem, -3.6149rem + 24.3243vw, 23.75rem);
 
     .uppperContent {
-        margin-bottom: 10%;
-        width: 100%;
+      margin-bottom: 10%;
+      width: 100%;
 
       @include FlexRow;
       .imageContainer {
-        padding: 5%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
         width: 50%;
 
         img {
-            height: 150px;
-            width: 200px;
+          height: 300px;
         }
       }
       .productInfomation {
         width: 40%;
       }
     }
+    .basket {
+      color: white;
+      @include FlexRow;
+      &:hover button, &:hover select {
+        background-color: lighten($color: #9b001a, $amount: 10%);
+      }
+
+      button {
+        @include FlexColumnCenter;
+        background-color: #9b001a;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+        color: white;
+        font-size: 12px;
+        height: 40px;
+        justify-content: center;
+        margin-left: 2px;
+        padding-right: 30px;
+        padding: 0 40px;
+        cursor: pointer;
+        &:hover {
+          background-color: lighten($color: #9b001a, $amount: 10%);
+        }
+      }
+
+      select {
+        background-color: #9b001a;
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        height: 40px;
+        padding-left: 30px;
+        padding-right: 10px;
+
+        &:hover {
+          background-color: lighten($color: #9b001a, $amount: 10%);
+        }
+
+        option {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+    .starRatingContainer {
+        @include FlexRowCenter;
+    }
+    .shipping {
+      @include FlexColumn;
+      width: 100%;
+      background-color: lightgrey;
+      padding: 20px;
+      margin-bottom: 30px;
+
+      .shippingInput {
+        @include FlexRow;
+        justify-content: space-between;
+      }
+
+      h4 {
+        margin: 0;
+        margin-bottom: 10px;
+      }
+
+      input {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      label {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+      }
+    }
 
     .bottomContent {
+      @include FlexColumn;
       background-color: black;
       display: flex;
-      padding: 2.5%;
+      flex-direction: column-reverse;
       overflow: hidden;
+      padding: 2.5%;
       width: 100%;
 
       .colorContainer {
@@ -37,12 +117,16 @@
         display: grid;
         grid-gap: 10px 20px;
         grid-template-columns: repeat(auto-fill, minmax(60px, 100px));
+        justify-content: center;
+        overflow: hidden;
         width: 100%;
       }
 
       .colourCircle {
         font-weight: 900;
-        padding: 5px;
+        outline: solid 1px white;
+        padding: 10px;
+        text-transform: uppercase;
       }
 
       .colourItem {
@@ -51,6 +135,80 @@
         padding: 0;
         text-align: center;
         width: 100px;
+
+        .hexValues {
+          text-transform: uppercase;
+        }
+      }
+    }
+    .highlightsContainer {
+        border-top: solid lightgrey 1px;
+        margin-top: 20px;
+        width: 100%;
+        padding: 20px 0;
+
+        .highlightsList {
+            @include FlexRow;
+
+            .highlightItem {
+
+                width: 100px;
+                height: 50px;
+
+                text-align: center;
+                text-transform: capitalize;
+            }
+
+            img{
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+
+    }
+    .productInfoCard {
+      border-top: 1px lightgrey solid;
+      margin-top: 5%;
+      padding: 1% 0;
+
+      .header {
+        @include FlexRow;
+        align-items: center;
+        justify-content: space-between;
+        button {
+          align-items: center;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          font-size: 30px;
+          height: 45px;
+          justify-content: center;
+          width: 45px;
+        }
+        button:focus,
+        button:hover {
+          border: solid gray 1px;
+        }
+      }
+      .contentCard {
+        @include FlexRow;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.15s ease-out;
+        .contentRight {
+          width: 50%;
+          @include FlexColumn;
+          text-transform: capitalize;
+        }
+        .contentLeft {
+          width: 50%;
+        }
+      }
+      .addHeight {
+        max-height: fit-content;
+        transition: max-height 0.15s ease-out;
       }
     }
   }

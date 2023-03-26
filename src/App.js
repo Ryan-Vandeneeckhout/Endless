@@ -102,7 +102,7 @@ function App() {
             MusicPlayingTracker={MusicPlayingTracker}
             MusicPlayingTrackerButton={MusicPlayingTrackerButton}
           />
-          <ContactMenu showMenu={chatState} />
+          <ContactMenu showMenu={chatState} showChat={showChat} />
           <MusicIcon
             MusicPlayingTracker={MusicPlayingTracker}
             MusicPlaying={MusicPlaying}

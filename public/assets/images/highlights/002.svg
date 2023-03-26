@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+<defs>
+  <style>
+    path, polygon, polyline, rect, circle, ellipse, line {vector-effect: non-scaling-stroke}
+  </style>
+</defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <circle cx="24" cy="24" r="24" fill="#c67f92"/>
+        <g>
+          <path d="M16.5,33.5s-1,2,0,2h8s0-2-1-2h-3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21.5,29.5s1.52014,1,.26007,4" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="24.375" y1="34.5" x2="26.5" y2="34.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25.5,30.5l-1,1s3,2,3,4h2s3,0,0-2a4.24145,4.24145,0,0,0,2.94049-6.14258" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M30.5,26.5s5,3,5-1c0-3-4-4-4-4s-1-6-5-6c0,0-1,5,2,7A2.51192,2.51192,0,0,0,28,25s-5.5-4.5-11.5,1.5c-4.52769,4.52769-.20785,7.486-.20785,7.486S14.5,35.5,13.5,34.5c-2.54951-2.54951,1-3,1-3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M29.42285,16.88271S29.5,15.5,30.5,15.5s2.08222,2.34595,1.54111,6.173" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28.5,18.5a4.38,4.38,0,0,1,1,3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="32.5" y1="24.5" x2="32.5" y2="24.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20.69862,13.151a2.34942,2.34942,0,0,0-3.672.65328,2.34945,2.34945,0,0,0-3.672-.65328,2.46337,2.46337,0,0,0-.00511,3.43013,27.66,27.66,0,0,0,3.49159,3.23713.29612.29612,0,0,0,.371,0,27.66545,27.66545,0,0,0,3.4916-3.23713A2.46337,2.46337,0,0,0,20.69862,13.151Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

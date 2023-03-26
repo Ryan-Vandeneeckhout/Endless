@@ -6,12 +6,22 @@ export const RadioButton = (props) => {
 
   return (
     <>
-      <input
-        type="radio"
-        onChange={RadioChange}
-        name={props.groupradioName}
-        value={props.buttonValueText}
-      />
+      {props.checked ? (
+        <input
+          type="radio"
+          onChange={RadioChange}
+          name={props.groupradioName}
+          defaultChecked
+          value={props.buttonValueText}
+        />
+      ) : (
+        <input
+          type="radio"
+          onChange={RadioChange}
+          name={props.groupradioName}
+          value={props.buttonValueText}
+        />
+      )}
       <label htmlFor={props.buttonText}>{props.buttonText}</label>
     </>
   );

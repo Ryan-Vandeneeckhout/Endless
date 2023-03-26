@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+<defs>
+  <style>
+    path, polygon, polyline, rect, circle, ellipse, line {vector-effect: non-scaling-stroke}
+  </style>
+</defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <circle cx="24" cy="24" r="24" fill="#57c971"/>
+        <g>
+          <path d="M12.5,25.683s4.79,3.56282,5.85886,6.809c0,0,7.08606-11.75731,17.14114-15.35972" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M35.5,17.13222c-17.61618-4.27539-15.241,8.907-15.241,8.907" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M23.06971,28.92912S33.24355,31.85855,35.5,17.13222" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="24.77807" y1="17.02879" x2="26.11124" y2="23.14932" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="33.68457" y1="23.35008" x2="27.94524" y2="21.55551" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="29.7291" y1="27.91448" x2="24" y2="25.24617" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -32,6 +32,8 @@ export const MakeupMap = [
   {
     buttonText: "Foundation",
     buttonValueText: "foundation",
+    imageItem:
+      "./assets/images/landingPageImages/featuredCategoriesImages/010.webp",
   },
   {
     buttonText: "Lip Liner",

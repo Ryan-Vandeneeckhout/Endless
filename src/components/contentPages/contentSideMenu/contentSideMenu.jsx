@@ -11,7 +11,6 @@ export const ContentSideMenu = (props) => {
             arraylist,
             asideTextHeader,
             ButtonType,
-            index,
             allowUserInput,
             buttonValue,
           }) => {

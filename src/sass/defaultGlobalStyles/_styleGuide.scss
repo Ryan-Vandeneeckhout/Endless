@@ -4,7 +4,7 @@ $fontSmall: clamp(0.875rem, 0.7939rem + 0.4054vw, 1.25rem);
 $fontForm: 26px;
 
 $fontHeadingType: "Archivo", Arial, Helvetica, sans-serif;
-$fontBodyType: "Lato", Arial, Helvetica, sans-serif;
+$fontBodyType: "Railway", Arial, Helvetica, sans-serif;
 
 h1 {
   font-size: $fontLarge;
@@ -19,6 +19,12 @@ h2 {
 }
 a {
   text-decoration: none;
+}
+.boldp {
+  font-weight: 600;
+}
+.uppercapP {
+  text-transform: uppercase;
 }
 h3 {
   font-family: "Archivo";
