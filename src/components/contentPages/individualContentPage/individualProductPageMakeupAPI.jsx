@@ -8,16 +8,7 @@ import { RadioButton } from "../../inputs/RadioButton";
 import { HighlightsMap } from "./HighlightsMap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import {
-  updateDoc,
-  doc,
-  setDoc,
-  getDoc,
-  collection,
-  query,
-  where,
-  onSnapshot,
-} from "firebase/firestore";
+import { updateDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../../hooks/firebase/config";
 import { useAuthContext } from "../../hooks/firebase/useAuthContext";
 
@@ -146,9 +137,9 @@ export const IndividualProductPageMakeupAPI = () => {
     }
   };
   const renderTags = () => {
-    if (tag_list === (null || undefined)) {
-      return null;
+    if (!tag_list) {
     } else {
+      console.log(tag_list);
       let arr1 = HighlightsMap;
       let arr2 = tag_list;
       let res = arr1.filter((item) => arr2.includes(item.name));
@@ -201,21 +192,6 @@ export const IndividualProductPageMakeupAPI = () => {
     } else {
       return null;
     }
-  };
-
-  const getdata = async () => {
-    const q = query(
-      collection(db, "Cart", user.uid, user.uid),
-      where("dataNumber", "==", AccountId)
-    );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const cities = [];
-      querySnapshot.forEach((doc) => {
-        cities.push(doc.data().name);
-      });
-      console.log("Current cities in CA: ", cities.join(", "));
-      return () => unsubscribe();
-    });
   };
 
   const renderBrandName = () => {
@@ -294,9 +270,6 @@ export const IndividualProductPageMakeupAPI = () => {
               </div>
             </div>
           </div>
-
-          <button onClick={getdata}>Get firestore Data</button>
-
           {renderColors()}
           <div className="reviewContainer">{renderTags()}</div>
           {description ? (
