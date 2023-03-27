@@ -48,4 +48,9 @@ export const HighlightsMap = [
     name: "purpicks",
     image: "./assets/images/highlights/purpick.jpg",
   },
+
+  {
+    name: "EWG Verified",
+    image: "./assets/images/highlights/ewg.png",
+  },
 ];

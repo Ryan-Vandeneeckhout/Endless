@@ -53,7 +53,7 @@ export const IndividualProductPageMakeupAPI = () => {
         const docSnap = await getDoc(doc(db, "Cart", AccountId));
 
         if (docSnap.exists()) {
-          await updateDoc(doc(db, "Cart", AccountId, `${user.uid}`, name), {
+          await updateDoc(doc(db, "Cart", AccountId, AccountId, name), {
             image: api_featured_image,
             price: price,
             name: name,
@@ -62,7 +62,7 @@ export const IndividualProductPageMakeupAPI = () => {
             dataNumber: AccountId,
           });
         } else {
-          await setDoc(doc(db, "Cart", AccountId, `${user.uid}`, name), {
+          await setDoc(doc(db, "Cart", AccountId, AccountId, name), {
             image: api_featured_image,
             price: price,
             name: name,
@@ -137,8 +137,12 @@ export const IndividualProductPageMakeupAPI = () => {
     }
   };
   const renderTags = () => {
-    if (!tag_list) {
-    } else {
+    if (
+      tag_list === (null || undefined || "" || []) ||
+      tag_list === undefined ||
+      tag_list.length === 0
+    );
+    else {
       console.log(tag_list);
       let arr1 = HighlightsMap;
       let arr2 = tag_list;
@@ -271,7 +275,7 @@ export const IndividualProductPageMakeupAPI = () => {
             </div>
           </div>
           {renderColors()}
-          <div className="reviewContainer">{renderTags()}</div>
+          {renderTags()}
           {description ? (
             <IndividualProductInformationPageCard
               description={description}
