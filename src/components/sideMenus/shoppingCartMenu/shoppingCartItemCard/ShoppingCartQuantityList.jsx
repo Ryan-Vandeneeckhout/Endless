@@ -67,7 +67,12 @@ export const ShoppingCartQuantityList = (props) => {
             </p>
           </div>
         </div>
-        <button onClick={deleteItem} ref={buttonRef} value={props.name}>
+        <button
+          className="deleteItemButton"
+          onClick={deleteItem}
+          ref={buttonRef}
+          value={props.name}
+        >
           X
         </button>
       </li>

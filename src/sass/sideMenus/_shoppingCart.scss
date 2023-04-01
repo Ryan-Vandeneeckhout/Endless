@@ -9,6 +9,7 @@
   bottom: 150px;
   max-width: 450px;
   min-width: 250px;
+  height: calc(100% - 200px);
   position: fixed;
   right: 0;
   top: 60px;
@@ -28,15 +29,15 @@
   ul {
     @include FlexColumn;
     @include UlNormalize;
+    background-color: #ffffff;
     overflow-y: auto;
-    padding: 10px 0;
     transform: scaleX(-1);
     width: 100%;
 
     .emptycardH3 {
+      text-align: center;
       transform: scaleX(-1);
       width: 100%;
-      text-align: center;
     }
     li:nth-child(even) {
       background-color: white;
@@ -47,35 +48,39 @@
       cursor: pointer;
       height: 60px;
       transform: scaleX(-1);
-      &:hover,&:focus            {
+      &:hover,
+      &:focus {
         background-color: #9b001a;
         color: white;
       }
     }
     .quantityButton:nth-child(even) {
       background-color: #dedcdc;
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         background-color: #9b001a;
         color: white;
       }
     }
     li {
       @include FlexRowCenter;
-      cursor: pointer;
+      max-height: fit-content;
       min-height: 80px;
-      max-height: 60px;
+      outline: dotted 1px lightgrey;
       padding: 7px 5px;
       position: relative;
       transform: scaleX(-1);
       width: 100%;
 
-      &:hover {
-        background-color: #817f7f;
-      }
-
       .cartItems {
         @include FlexRowCenter;
+        align-items: center;
         padding: 0 30px;
+        span {
+          margin-left: 30px;
+          color: rgb(3, 3, 255);
+          text-decoration: underline;
+        }
 
         img {
           margin-right: 20px;
@@ -83,7 +88,7 @@
 
         .cartitemsDescription {
           h4 {
-            word-break: break-all;
+            text-overflow: hidden;
           }
         }
       }
@@ -91,6 +96,8 @@
       p,
       h4 {
         margin: 2px;
+        font-size: 12px;
+        letter-spacing: normal;
       }
 
       img {
@@ -111,6 +118,10 @@
       }
     }
   }
+}
+.deleteItemButton {
+  outline: solid black 3px;
+  font-weight: 900;
 }
 .shoppingCartBottom {
   background-color: rgb(225, 225, 225);
@@ -153,6 +164,9 @@
       cursor: pointer;
       height: 40px;
       width: 175px;
+      font-size: 12px;
+      margin-right: 20px;
+      padding: 5px;
 
       &:hover {
         background-color: darkgreen;
@@ -166,6 +180,7 @@
       color: white;
       display: flex;
       font-family: "Lato";
+      font-size: 12px;
       font-weight: 500;
       height: 40px;
       justify-content: center;
@@ -179,5 +194,17 @@
     .greyOutButton {
       background-color: #817f7f;
     }
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 1200px) {
+  .shoppingCart {
+    bottom: 150px;
+    max-width: 320px;
+    min-width: 320px;
+  }
+
+  .shoppingCartBottom {
+    max-width: 320px;
+    min-width: 320px;
   }
 }
