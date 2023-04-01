@@ -1,3 +1,12 @@
+.shoppingCartSection {
+  position: fixed;
+  top: 60px;
+  width: 45vw;
+  z-index: 99;
+  bottom: 0;
+}
+
+
 .shoppingCart {
   -webkit-box-direction: normal;
   -webkit-box-orient: vertical;
@@ -9,7 +18,6 @@
   bottom: 150px;
   max-width: 450px;
   min-width: 250px;
-  height: calc(100% - 200px);
   position: fixed;
   right: 0;
   top: 60px;
@@ -120,7 +128,6 @@
   }
 }
 .deleteItemButton {
-  outline: solid black 3px;
   font-weight: 900;
 }
 .shoppingCartBottom {
@@ -132,7 +139,7 @@
   min-width: 250px;
   position: fixed;
   right: 0;
-  max-height: 200px;
+  height: 150px;
   padding-bottom: 40px;
   width: 45vw;
   z-index: 99;

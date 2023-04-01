@@ -6,7 +6,7 @@ import { ShoppingCartTempMenu } from "./ShoppingCartTempUser";
 export const ShoppingCart = (props) => {
   const { user } = useAuthContext();
   return (
-    <>
+    <section className="shoppingCartSection">
       {user && (
         <ShoppingCartMenu
           showShoppingCart={props.showShoppingCart}
@@ -23,6 +23,6 @@ export const ShoppingCart = (props) => {
         showShoppingCart={props.showShoppingCart}
         ShowShoppingCart={props.ShowShoppingCart}
       />
-    </>
+    </section>
   );
 };
