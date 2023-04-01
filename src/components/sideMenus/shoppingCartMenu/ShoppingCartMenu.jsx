@@ -9,22 +9,19 @@ export const ShoppingCartMenu = (props) => {
   const { user } = useAuthContext();
   const [, setArrayRef, arrayRef] = useState([]);
 
-  const AccountId = window.localStorage.getItem("dataNumber");
-
   useEffect(() => {
     const q = query(
       collection(db, "Cart", user.uid, user.uid),
-      where("dataNumber", "==", AccountId)
+      where("dataNumber", "==", user.uid)
     );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       setArrayRef([]);
       querySnapshot.forEach((doc) => {
         setArrayRef([...arrayRef.current, doc.data()]);
       });
-      console.log(arrayRef.current);
       return () => unsubscribe();
     });
-  }, [AccountId, setArrayRef, arrayRef, user.uid]);
+  }, [setArrayRef, arrayRef, user.uid]);
 
   const renderShoppingCart = () => {
     if (

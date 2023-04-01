@@ -2,16 +2,16 @@ import useState from "react-usestateref";
 import { db } from "../../hooks/firebase/config.js";
 import { collection, where, query, onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
+import { useAuthContext } from "../../hooks/firebase/useAuthContext.js";
 
-export const TotalCart = () => {
+export const TotalCartUser = () => {
   const [, setArrayRef, arrayRef] = useState([]);
-
-  const AccountId = window.localStorage.getItem("dataNumber");
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const q = query(
-      collection(db, "Cart", AccountId, AccountId),
-      where("dataNumber", "==", AccountId)
+      collection(db, "Cart", user.uid, user.uid),
+      where("dataNumber", "==", user.uid)
     );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       setArrayRef([]);
@@ -20,7 +20,7 @@ export const TotalCart = () => {
       });
       return () => unsubscribe();
     });
-  }, [AccountId, setArrayRef, arrayRef]);
+  }, [user.uid, setArrayRef, arrayRef]);
 
   const sumTotal = (arr) =>
     arr.reduce((sum, { price, count }) => sum + price * count, 0);

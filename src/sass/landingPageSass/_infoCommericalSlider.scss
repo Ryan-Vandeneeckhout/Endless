@@ -4,24 +4,29 @@
 }
 
 .rotatingInfoCommericalSliderSection {
-  @include FlexRow;
-  background-color: white;
+  @include FlexRowCenter;
+  background-color: rgb(237, 237, 237);
   height: 50vh;
-  min-height: 450px;
+  padding: 2.5% 5%;
   width: 100%;
-  padding: 1%;
+  justify-content: space-between;
+  min-height: 300px;
 
   h2 {
     @include boxShadowFrontPage;
+    background-color: white;
+    color: #9b001a;
+    font-size: clamp(1.25rem, 1.1959rem + 0.2703vw, 1.5rem);
+    letter-spacing: normal;
     padding: 10px;
   }
 
   .infoCommericalSliderImageContainer {
     @include boxShadowFrontPage;
     @include defaultWidthAndHeight;
-
-    transition: transform 0.5s, color 0.5s;
     position: relative;
+    transition: transform 0.5s, color 0.5s;
+    width: 45%;
 
     &:hover button {
       opacity: 1;
@@ -60,6 +65,9 @@
 
     .currentSlide {
       @include Maxsize100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: black;
       padding: 1%;
       img {
@@ -75,6 +83,8 @@
     .wrapper {
       @include boxShadowFrontPage;
       @include Maxsize100;
+      background-color: #9b001a;
+      color: white;
       padding: 10%;
       text-align: center;
     }
@@ -123,21 +133,24 @@
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .rotatingInfoCommericalSliderSection {
     width: 100%;
-    max-height: 340px;
     height: fit-content;
+    justify-content: space-between;
 
     .infoCommericalSliderImageContainer {
-      width: 70%;
+      width: 100%;
+      max-width: 45%;
     }
     .contentInfoCommericalContainer {
-      padding: 2.5%;
-      width: 40%;
+      width: 100%;
+      max-width: 45%;
     }
   }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
   .rotatingInfoCommericalSliderSection {
+    @include FlexColumnCenter;   
+
     .infoCommericalSliderImageContainer {
       width: 60%;
     }

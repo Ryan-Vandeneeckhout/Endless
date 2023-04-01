@@ -39,7 +39,7 @@ export const ChangeQuantity = (props) => {
       let Account = AccountId;
       writeUserData(Account);
     } else {
-      let Account = user.id;
+      let Account = `${user.uid}`;
       writeUserData(Account);
     }
   };

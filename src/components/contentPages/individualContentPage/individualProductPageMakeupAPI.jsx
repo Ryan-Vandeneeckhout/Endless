@@ -103,7 +103,7 @@ export const IndividualProductPageMakeupAPI = () => {
             name: name,
             count: productCountRef.current,
             shipping: shippingState,
-            dataNumber: AccountId,
+            dataNumber: `${user.uid}`,
           });
         } else {
           await setDoc(doc(db, "Cart", `${user.uid}`, `${user.uid}`, name), {
@@ -112,7 +112,7 @@ export const IndividualProductPageMakeupAPI = () => {
             name: name,
             count: productCountRef.current,
             shipping: shippingState,
-            dataNumber: AccountId,
+            dataNumber: `${user.uid}`,
           });
         }
       };

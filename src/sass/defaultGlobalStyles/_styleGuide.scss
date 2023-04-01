@@ -1,5 +1,5 @@
-$fontLarge: clamp(2rem, 1.5135rem + 2.1622vw, 4rem);
-$fontMedium: clamp(1rem, 0.5135rem + 2.1622vw, 3rem);
+$fontLarge: clamp(1.25rem, 0.9797rem + 1.3514vw, 2.5rem);;
+$fontMedium: clamp(1rem, 0.5135rem + 2.1622vw, 2rem);
 $fontSmall: clamp(0.875rem, 0.7939rem + 0.4054vw, 1.25rem);
 $fontForm: 26px;
 
@@ -10,6 +10,7 @@ h1 {
   font-size: $fontLarge;
   text-transform: uppercase;
   font-family: "Archivo";
+  padding: 15px;
 }
 h2 {
   font-family: "Archivo";
@@ -28,9 +29,8 @@ a {
 }
 h3 {
   font-family: "Archivo";
-  font-size: $fontSmall;
+  font-size: clamp(1rem, 0.9459rem + 0.2703vw, 1.25rem);
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
 }
 h4 {
   letter-spacing: 0.1rem;

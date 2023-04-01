@@ -2,7 +2,7 @@
   background-color: white;
   height: fit-content;
   min-height: 450px;
-  padding: 10px;
+  padding: 2.5% 2.5%;
   width: 100%;
 
   .wrapper {
@@ -47,6 +47,7 @@
       height: 100%;
       position: relative;
       width: 70%;
+      padding: 0 2.5%;
 
       .right {
         right: 0;
@@ -171,11 +172,15 @@
             text-overflow: ellipsis;
             white-space: initial;
           }
+          h3 {
+            font-size: 16px;
+          }
 
           h4 {
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 4;
             display: -webkit-box;
+            font-size: 16px;
             margin-bottom: 2px;
             margin: 0;
             text-overflow: ellipsis;
@@ -337,6 +342,7 @@
 @media screen and (min-width: 1000px) and (max-width: 1324px) {
   .productSliderSection {
     .wrapper {
+      @include FlexColumnCenter;
       .productSliderCardAndButtonContainer {
         .productCard {
           width: 200px;

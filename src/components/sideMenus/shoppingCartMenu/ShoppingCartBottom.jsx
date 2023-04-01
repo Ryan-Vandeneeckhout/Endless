@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { TotalCart } from "./TotalCart";
+import { useAuthContext } from "../../hooks/firebase/useAuthContext.js";
+import { TotalCartUser } from "./TotalCartUser";
 
 export const ShoppingCartBottom = (props) => {
   const checkoutButtonRef = useRef(null);
+  const { user } = useAuthContext();
 
   const renderCheckoutButtonColor = () => {
     if (
@@ -18,11 +21,7 @@ export const ShoppingCartBottom = (props) => {
 
   const renderTotal = () => {
     if (props.total === (0 || null || undefined)) {
-      return (
-        <>
-          <TotalCart />
-        </>
-      );
+      return <>{!user ? <TotalCart /> : <TotalCartUser />}</>;
     }
   };
   return (
