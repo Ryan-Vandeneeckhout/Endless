@@ -1,11 +1,13 @@
 import useState from "react-usestateref";
+import { useAuthContext } from "../../hooks/firebase/useAuthContext.js";
 import { db } from "../../hooks/firebase/config.js";
 import { collection, where, query, onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
-import { ShoppingCartItem } from "./ShoppingCartItem.jsx";
 
-export const ShoppingCartTempMenu = (props) => {
+export const TotalCart = (props) => {
+  const { user } = useAuthContext();
   const [, setArrayRef, arrayRef] = useState([]);
+
   const AccountId = window.localStorage.getItem("dataNumber");
 
   useEffect(() => {
@@ -22,30 +24,28 @@ export const ShoppingCartTempMenu = (props) => {
     });
   }, [AccountId, setArrayRef, arrayRef]);
 
-  const renderShoppingCart = () => {
-    if (
-      arrayRef.current === null ||
-      arrayRef.current === undefined ||
-      arrayRef.current === []
-    ) {
+  const sumTotal = (arr) =>
+    arr.reduce((sum, { price, count }) => sum + price * count, 0);
+
+  let total = sumTotal(arrayRef.current);
+
+  const renderTotal = () => {
+    if (total === 0) {
+      return (
+        <>
+          <p>Total: </p>
+          <p>$0</p>
+        </>
+      );
     } else {
-      return <ShoppingCartItem dataArray={arrayRef.current} />;
+      return (
+        <>
+          <p>Total: </p>
+          <p>${total.toFixed(2)}</p>
+        </>
+      );
     }
   };
 
-  return (
-    <aside
-      className={`shoppingCart${
-        props.showShoppingCart ? " smoothClosed" : " smoothShownRight"
-      }`}
-    >
-      <button
-        className="closeShoppingCartButton"
-        onClick={props.ShowShoppingCart}
-      >
-        Shopping Bag <span>X</span>
-      </button>
-      <ul>{renderShoppingCart()}</ul>
-    </aside>
-  );
+  return <>{renderTotal()}</>;
 };

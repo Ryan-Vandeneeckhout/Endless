@@ -22,7 +22,9 @@ export const RadioButton = (props) => {
           value={props.buttonValueText}
         />
       )}
-      <label htmlFor={props.buttonText}>{props.buttonText}</label>
+      <label htmlFor={props.buttonText}>
+        {props.buttonText} <span>{props.extraText}</span>
+      </label>
     </>
   );
 };

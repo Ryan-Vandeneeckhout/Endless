@@ -1,11 +1,12 @@
 import TextInput from "../../inputs/TextInput";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../hooks/firebase/config.js";
 import { useCollection } from "../../hooks/firebase/useFirestoreDatabase";
 
 import { useRef } from "react";
 import useState from "react-usestateref";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ContactMenuMessageItem } from "./contactMenuMessageItem";
 
 export const ContactMenu = (props) => {
   const [tagsarray, setTagsArray, tagsArrayRef] = useState([]);
@@ -30,11 +31,19 @@ export const ContactMenu = (props) => {
   };
 
   const writeUserData = async () => {
-    await updateDoc(doc(db, AccountId, "Messages"), {
-      message: tagsArrayRef.current,
-      dataNumber: AccountId,
-    });
+    const docSnap = await getDoc(doc(db, AccountId, "Messages"));
 
+    if (docSnap.exists()) {
+      await updateDoc(doc(db, AccountId, "Messages"), {
+        message: tagsArrayRef.current,
+        dataNumber: AccountId,
+      });
+    } else {
+      await setDoc(doc(db, AccountId, "Messages"), {
+        message: tagsArrayRef.current,
+        dataNumber: AccountId,
+      });
+    }
     updateScroll();
   };
 
@@ -47,20 +56,40 @@ export const ContactMenu = (props) => {
   };
 
   const renderFirebaseMessages = () => {
-    if (databaseFirestore === null) {
-      return <p>No messages</p>;
+    if (databaseFirestore === null || databaseFirestore.length === 0) {
+      return (
+        <ul>
+          <ContactMenuMessageItem
+            backgroundItem={"GreenB WhiteT"}
+            itemUser={false}
+            Text={"Welcome to Endless Demands, How can we help you today?"}
+          />
+          <li>Shipping</li>
+          <li>Customer Support</li>
+          <li>Returns</li>
+        </ul>
+      );
     } else {
       return (
         <ul>
-          {databaseFirestore.map(({ message }) => {
+          <ContactMenuMessageItem
+            backgroundItem={"GreenB WhiteT"}
+            itemUser={false}
+            Text={"Welcome to Endless Demands, How can we help you today?"}
+          />
+          {databaseFirestore.map(({ message }, index) => {
             return (
-              <>
+              <div key={index}>
                 {message ? (
                   <>
                     {message.map((item, index) => {
                       return (
-                        <div className="subMenuButtons">
-                          <p>{item.messageArray}</p>
+                        <div key={index}>
+                          <ContactMenuMessageItem
+                            backgroundItem={"GreenB WhiteT"}
+                            itemUser={true}
+                            Text={item.messageArray}
+                          />
                         </div>
                       );
                     })}
@@ -68,7 +97,7 @@ export const ContactMenu = (props) => {
                 ) : (
                   <p>No Messages</p>
                 )}
-              </>
+              </div>
             );
           })}
         </ul>
@@ -95,7 +124,9 @@ export const ContactMenu = (props) => {
               setTextInput={setMessage}
               placeholderInput="send a message..."
             />
-            <button onClick={HandleSubmitFirebase}>Send</button>
+            <button onClick={HandleSubmitFirebase}>
+              <FontAwesomeIcon icon="fa-spa" />
+            </button>
           </div>
         </form>
       </div>

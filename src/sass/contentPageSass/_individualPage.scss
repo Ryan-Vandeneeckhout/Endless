@@ -4,31 +4,77 @@
   min-height: 100vh;
 
   .wrapper {
-    padding: 100px clamp(1.25rem, -3.6149rem + 24.3243vw, 23.75rem);
+    background-color: rgb(254, 254, 254);
+    display: flex;
+    justify-content: center;
+    padding: 150px clamp(0.625rem, -1.9426rem + 12.8378vw, 12.5rem);
+
+    .content {
+      background-color: white;
+      max-width: 1100px;
+      width: 100%;
+    }
 
     .uppperContent {
+      @include FlexRow;
       margin-bottom: 10%;
       width: 100%;
-
-      @include FlexRow;
       .imageContainer {
         align-items: center;
         display: flex;
         justify-content: center;
         width: 50%;
 
-        img {
+        .container {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
           height: 300px;
+          justify-content: center;
+          outline: solid black 2px;
+          padding: 10%;
+          width: fit-content;
+          img {
+            height: 100%;
+            transform: scale(1);
+            transition: transform 300ms linear;
+            width: auto;
+
+            &:hover {
+              transform: scale(1.15);
+              transition: transform 300ms linear, color 2s;
+            }
+          }
         }
       }
       .productInfomation {
         width: 40%;
+        p {
+          margin: 0;
+          margin-bottom: 10px;
+        }
+
+        .priceLikeAskQuestionContainer {
+          @include FlexRowCenter;
+          justify-content: space-between;
+          width: 100%;
+          p {
+            margin-right: 20px;
+          }
+
+          .likesContainer {
+            @include FlexRow;
+            flex-grow: 1;
+            justify-content: flex-end;
+          }
+        }
       }
     }
     .basket {
-      color: white;
       @include FlexRow;
-      &:hover button, &:hover select {
+      color: white;
+      &:hover button,
+      &:hover select {
         background-color: lighten($color: #9b001a, $amount: 10%);
       }
 
@@ -72,14 +118,14 @@
       }
     }
     .starRatingContainer {
-        @include FlexRowCenter;
+      @include FlexRowCenter;
     }
     .shipping {
       @include FlexColumn;
-      width: 100%;
-      background-color: lightgrey;
-      padding: 20px;
+      background-color: rgb(234, 231, 231);
       margin-bottom: 30px;
+      padding: 20px;
+      width: 100%;
 
       .shippingInput {
         @include FlexRow;
@@ -92,13 +138,15 @@
       }
 
       input {
+        accent-color: red;
         font-size: 20px;
         margin-bottom: 15px;
       }
+
       label {
         font-size: 16px;
-        margin-left: 10px;
         margin-bottom: 5px;
+        margin-left: 10px;
         text-transform: capitalize;
       }
     }
@@ -142,30 +190,26 @@
       }
     }
     .highlightsContainer {
-        border-top: solid lightgrey 1px;
-        margin-top: 20px;
-        width: 100%;
-        padding: 20px 0;
+      border-top: solid lightgrey 1px;
+      margin-top: 20px;
+      padding: 20px 0;
+      width: 100%;
 
-        .highlightsList {
-            @include FlexRow;
+      .highlightsList {
+        @include FlexRow;
 
-            .highlightItem {
-
-                width: 100px;
-                height: 50px;
-
-                text-align: center;
-                text-transform: capitalize;
-            }
-
-            img{
-                width: 45px;
-                height: 45px;
-            }
+        .highlightItem {
+          height: 50px;
+          text-align: center;
+          text-transform: capitalize;
+          width: 100px;
         }
 
-
+        img {
+          height: 45px;
+          width: 45px;
+        }
+      }
     }
     .productInfoCard {
       border-top: 1px lightgrey solid;

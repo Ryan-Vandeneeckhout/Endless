@@ -1,4 +1,4 @@
-import { IndividualProductInformationPageCard } from "./IndividualProductInfomationPageCard";
+import { IndividualProductInformationPageCard } from "./individualContentPageComponents/IndividualProductInfomationPageCard";
 import { OptionNumberInput } from "../../inputs/OptionNumberInput";
 import { useEffect } from "react";
 import useState from "react-usestateref";
@@ -11,10 +11,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { updateDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../../hooks/firebase/config";
 import { useAuthContext } from "../../hooks/firebase/useAuthContext";
+import { IndividualProductInformationPageReviewsAndRatings } from "./individualContentPageComponents/IndividualProductPageReviewsAndRatings";
+import { IndividualContentProductPageUserLikes } from "./individualContentPageComponents/IndividualProductPageUserLikes";
 
 export const IndividualProductPageMakeupAPI = () => {
   const [individualProducts, setIndividualProduct] = useState({});
   const [shippingState, setShippingState] = useState("Standard_Shipping");
+  const [loading, setLoading] = useState(true);
   const [, setProductCount, productCountRef] = useState(1);
   const { user } = useAuthContext();
 
@@ -25,12 +28,27 @@ export const IndividualProductPageMakeupAPI = () => {
   //Auto Scroll User to Top if needed//
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    axios({
-      url: `https://web-production-5976.up.railway.app/https://makeup-api.herokuapp.com/api/v1/products/${itemid.id}.json`,
-    }).then((response) => {
-      setIndividualProduct(response.data);
-    });
+    async function APICall() {
+      axios({
+        url: `https://web-production-5976.up.railway.app/https://makeup-api.herokuapp.com/api/v1/products/${itemid.id}.json`,
+      })
+        .then((response) => {
+          setIndividualProduct(response.data);
+          if (response.data.length === 0) {
+            setLoading(true);
+          } else {
+            setLoading(false);
+          }
+        })
+        .catch(function (error) {
+          alert(error.message);
+          setLoading(true);
+        });
+    }
+
+    APICall();
   }, [itemid.id]);
+
   //Destructure objectItem of individualproducts
   const {
     api_featured_image,
@@ -48,7 +66,7 @@ export const IndividualProductPageMakeupAPI = () => {
   } = individualProducts;
 
   const updateCart = () => {
-    if (user === (undefined || null || "" || false)) {
+    if (user === null) {
       const writeUserData = async () => {
         const docSnap = await getDoc(doc(db, "Cart", AccountId));
 
@@ -74,7 +92,7 @@ export const IndividualProductPageMakeupAPI = () => {
       };
 
       writeUserData();
-    } else {
+    } else if (user !== null) {
       const writeUserData = async () => {
         const docSnap = await getDoc(doc(db, "Cart", `${user.uid}`));
 
@@ -212,87 +230,97 @@ export const IndividualProductPageMakeupAPI = () => {
     );
   };
 
-  if (name !== (null || undefined || "")) {
+  if (loading === false) {
     return (
       <section className="individualContentProductPage">
         <div className="wrapper">
-          <div className="uppperContent">
-            <div className="imageContainer">
-              <img
-                src={api_featured_image ? api_featured_image : null}
-                alt={`${name}`}
-              />
-            </div>
-            <div className="productInfomation">
-              {renderBrandName()}
-              <p>
-                {name} - {product_type}
-              </p>
-              {renderRating()}
-              {renderPrice()}
+          <div className="content">
+            <div className="uppperContent">
+              <div className="imageContainer">
+                <div className="container">
+                  <img
+                    src={api_featured_image ? api_featured_image : null}
+                    alt={`${name}`}
+                  />
+                </div>
+              </div>
+              <div className="productInfomation">
+                {renderBrandName()}
+                <p>
+                  {name} - {product_type}
+                </p>
+                {renderRating()}
+                <div className="priceLikeAskQuestionContainer">
+                  {renderPrice()}
+                  <IndividualContentProductPageUserLikes ItemName={name} />
+                </div>
 
-              <div className="shipping">
-                <h4>Get It Shipped</h4>
-                <div className="shippingInput">
-                  <div className="input">
-                    <RadioButton
-                      buttonText={"Same day Shipping"}
-                      setStateValue={setShippingState}
-                      buttonValue={"Same_Day_Shipping"}
-                      buttonValueText={"Same Day Shipping"}
-                      renderData={"none"}
-                      groupradioName={"shipping"}
-                      checked={false}
-                    />
+                <div className="shipping">
+                  <h4>Get It Shipped</h4>
+                  <div className="shippingInput">
+                    <div className="input">
+                      <RadioButton
+                        buttonText={"Same day Shipping"}
+                        setStateValue={setShippingState}
+                        buttonValue={"Same_Day_Shipping"}
+                        buttonValueText={"Same Day Shipping"}
+                        renderData={"none"}
+                        groupradioName={"shipping"}
+                        checked={false}
+                      />
+                    </div>
+                    <FontAwesomeIcon icon={"fa-truck"} />
                   </div>
-                  <FontAwesomeIcon icon={"fa-truck"} />
-                </div>
-                <div className="shippingInput">
-                  <div className="input">
-                    <RadioButton
-                      buttonText={"Standard Shipping"}
-                      setStateValue={setShippingState}
-                      buttonValue={"Standard_Shipping"}
-                      buttonValueText={"Standard Shipping"}
-                      renderData={"none"}
-                      groupradioName={"shipping"}
-                      checked={true}
-                    />
+                  <div className="shippingInput">
+                    <div>
+                      <RadioButton
+                        buttonText={"Standard Shipping"}
+                        setStateValue={setShippingState}
+                        buttonValue={"Standard_Shipping"}
+                        buttonValueText={"Standard Shipping"}
+                        renderData={"none"}
+                        groupradioName={"shipping"}
+                        checked={true}
+                      />
+                    </div>
+                    <FontAwesomeIcon icon={"fa-mail-bulk"} />
                   </div>
-                  <FontAwesomeIcon icon={"fa-mail-bulk"} />
                 </div>
-              </div>
-              <div className="basket">
-                <OptionNumberInput
-                  inputSelectionLength={10}
-                  productCount={setProductCount}
-                />
-                <button onClick={updateCart} className="shippingbutton">
-                  <span>Add to Basket </span>
-                  <span>for {shippingState.replaceAll("_", " ")}</span>
-                </button>
+                <div className="basket">
+                  <OptionNumberInput
+                    inputSelectionLength={10}
+                    productCount={setProductCount}
+                  />
+                  <button onClick={updateCart} className="shippingbutton">
+                    <span>Add to Basket </span>
+                    <span>for {shippingState.replaceAll("_", " ")}</span>
+                  </button>
+                </div>
               </div>
             </div>
+            {renderColors()}
+            {renderTags()}
+            {description ? (
+              <IndividualProductInformationPageCard
+                description={description}
+                headerCardText={"About the Product"}
+                product_link={product_link}
+                productid={id}
+                website_link={website_link}
+              />
+            ) : (
+              <IndividualProductInformationPageCard
+                description={"No Product Description Available"}
+                headerCardText={"About the Product"}
+                product_link={product_link}
+                productid={id}
+                website_link={website_link}
+              />
+            )}
+            <IndividualProductInformationPageReviewsAndRatings
+              ItemName={name}
+            />
           </div>
-          {renderColors()}
-          {renderTags()}
-          {description ? (
-            <IndividualProductInformationPageCard
-              description={description}
-              headerCardText={"About the Product"}
-              product_link={product_link}
-              productid={id}
-              website_link={website_link}
-            />
-          ) : (
-            <IndividualProductInformationPageCard
-              description={"No Product Description Available"}
-              headerCardText={"About the Product"}
-              product_link={product_link}
-              productid={id}
-              website_link={website_link}
-            />
-          )}
         </div>
       </section>
     );

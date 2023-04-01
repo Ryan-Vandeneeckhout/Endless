@@ -6,7 +6,7 @@
   border-left: solid grey 1px;
   border-right: solid grey 1px;
   border-top: solid grey 1px;
-  bottom: 15%;
+  bottom: 150px;
   max-width: 450px;
   min-width: 250px;
   position: fixed;
@@ -17,21 +17,21 @@
 
   .closeShoppingCartButton {
     align-content: center;
+    border: none;
     display: flex;
+    font-weight: 800;
     justify-content: space-between;
     padding: 10px 10%;
     width: 100%;
-    font-weight: 800;
-    border: none;
   }
 
   ul {
-    @include UlNormalize;
     @include FlexColumn;
+    @include UlNormalize;
     overflow-y: auto;
+    padding: 10px 0;
     transform: scaleX(-1);
     width: 100%;
-    padding: 10px 0;
 
     .emptycardH3 {
       transform: scaleX(-1);
@@ -41,21 +41,51 @@
     li:nth-child(even) {
       background-color: white;
     }
+    .quantityButton {
+      background-color: transparent;
+      border: lightgrey 1px solid;
+      cursor: pointer;
+      height: 60px;
+      transform: scaleX(-1);
+      &:hover,&:focus            {
+        background-color: #9b001a;
+        color: white;
+      }
+    }
+    .quantityButton:nth-child(even) {
+      background-color: #dedcdc;
+      &:hover, &:focus {
+        background-color: #9b001a;
+        color: white;
+      }
+    }
     li {
       @include FlexRowCenter;
-      min-height: 35px;
+      cursor: pointer;
+      min-height: 80px;
+      max-height: 60px;
       padding: 7px 5px;
       position: relative;
       transform: scaleX(-1);
       width: 100%;
-      cursor: pointer;
 
       &:hover {
         background-color: #817f7f;
       }
 
       .cartItems {
-        margin-left: 30px;
+        @include FlexRowCenter;
+        padding: 0 30px;
+
+        img {
+          margin-right: 20px;
+        }
+
+        .cartitemsDescription {
+          h4 {
+            word-break: break-all;
+          }
+        }
       }
 
       p,
@@ -70,13 +100,14 @@
       }
 
       button {
-        right: 20px;
-        height: fit-content;
-        width: fit-content;
-        position: absolute;
-        padding: 5px;
         background-color: transparent;
+        border: none;
+        height: fit-content;
+        padding: 5px;
+        position: absolute;
+        right: 20px;
         top: 10px;
+        width: fit-content;
       }
     }
   }
@@ -90,21 +121,38 @@
   min-width: 250px;
   position: fixed;
   right: 0;
-  top: 85%;
+  max-height: 200px;
+  padding-bottom: 40px;
   width: 45vw;
   z-index: 99;
 
   .wrapper {
-    @include FlexRowCenter;
+    @include FlexColumnCenter;
     @include Maxsize100;
     justify-content: space-evenly;
+    padding: 0 40px;
+
+    .cartBottomButtons {
+      @include FlexRowCenter;
+      @include Maxsize100;
+      justify-content: space-between;
+    }
+    .text {
+      width: 100%;
+    }
+
+    .total {
+      @include FlexRow;
+      justify-content: space-between;
+      width: 100%;
+    }
 
     button {
+      background-color: rgb(185, 184, 184);
       border: none;
+      cursor: pointer;
       height: 40px;
       width: 175px;
-      cursor: pointer;
-      background-color: rgb(185, 184, 184);
 
       &:hover {
         background-color: darkgreen;
@@ -117,11 +165,11 @@
       background-color: black;
       color: white;
       display: flex;
+      font-family: "Lato";
+      font-weight: 500;
       height: 40px;
       justify-content: center;
       width: 175px;
-      font-weight: 500;
-      font-family: "Lato";
 
       &:hover {
         background-color: white;
