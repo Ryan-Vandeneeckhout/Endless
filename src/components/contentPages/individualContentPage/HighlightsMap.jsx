@@ -53,4 +53,8 @@ export const HighlightsMap = [
     name: "EWG Verified",
     image: "./assets/images/highlights/ewg.png",
   },
+  {
+    name: "Canadian",
+    image: "./assets/images/highlights/canadain.jpg",
+  },
 ];

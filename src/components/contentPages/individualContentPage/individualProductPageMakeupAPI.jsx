@@ -307,6 +307,7 @@ export const IndividualProductPageMakeupAPI = () => {
                 product_link={product_link}
                 productid={id}
                 website_link={website_link}
+                cardState={true}
               />
             ) : (
               <IndividualProductInformationPageCard
@@ -315,10 +316,13 @@ export const IndividualProductPageMakeupAPI = () => {
                 product_link={product_link}
                 productid={id}
                 website_link={website_link}
+                cardState={true}
               />
             )}
             <IndividualProductInformationPageReviewsAndRatings
               ItemName={name}
+              headerCardText={"Ratings and Reviews"}
+              productItemId={id}
             />
           </div>
         </div>

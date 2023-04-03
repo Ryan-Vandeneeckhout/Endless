@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 export const IndividualProductInformationPageCard = (props) => {
-  const [cardOpen, setCardOpen] = useState(false);
+  const [cardOpen, setCardOpen] = useState(props.cardState);
 
   const ShowCardContent = () => {
     setCardOpen((cardOpen) => !cardOpen);
@@ -19,7 +19,7 @@ export const IndividualProductInformationPageCard = (props) => {
       <div className={`contentCard${cardOpen ? " addHeight" : " not"}`}>
         <div className="contentRight">
           <p>Item: {props.productid}</p>
-          <a href={props.product_link}>Real Link to product displayed</a>
+          <a href={props.product_link}>Real Link to Product Displayed</a>
           <a href={props.website_link}>Link to Product Website</a>
         </div>
         <div className="contentLeft">
