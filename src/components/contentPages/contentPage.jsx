@@ -173,6 +173,13 @@ export const ContentPage = () => {
                   itemBrand={item.brand}
                   price={item.price}
                 />
+                <p>
+                  {
+                    dataResponseRef.current.filter(
+                      (i) => i.brand === item.brand
+                    ).length
+                  }
+                </p>
               </li>
             );
           })}

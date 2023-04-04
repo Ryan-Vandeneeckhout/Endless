@@ -14,14 +14,16 @@ export const ContentSideMenuSideCatogories = (props) => {
     switch (props.buttonValue) {
       case "Brand":
         return (
-          <RadioButton
-            buttonText={item.buttonText}
-            setStateValue={props.setBrandState}
-            buttonValue={props.buttonValue}
-            buttonValueText={item.buttonValueText}
-            renderData={props.QueryAPIdata}
-            groupradioName={props.asideTextHeader}
-          />
+          <>
+            <RadioButton
+              buttonText={item.buttonText}
+              setStateValue={props.setBrandState}
+              buttonValue={props.buttonValue}
+              buttonValueText={item.buttonValueText}
+              renderData={props.QueryAPIdata}
+              groupradioName={props.asideTextHeader}
+            />
+          </>
         );
       case "Price":
         return (

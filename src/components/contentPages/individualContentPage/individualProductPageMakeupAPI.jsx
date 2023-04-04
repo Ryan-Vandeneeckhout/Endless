@@ -161,7 +161,6 @@ export const IndividualProductPageMakeupAPI = () => {
       tag_list.length === 0
     );
     else {
-      console.log(tag_list);
       let arr1 = HighlightsMap;
       let arr2 = tag_list;
       let res = arr1.filter((item) => arr2.includes(item.name));
@@ -230,6 +229,100 @@ export const IndividualProductPageMakeupAPI = () => {
     );
   };
 
+  const renderBasketShipping = () => {
+    return price !== ("0.0" || "0" || null || undefined || "") ? (
+      <>
+        <div className="shipping">
+          <h4>Get It Shipped</h4>
+          <div className="shippingInput">
+            <div className="input">
+              <RadioButton
+                buttonText={"Same day Shipping"}
+                setStateValue={setShippingState}
+                buttonValue={"Same_Day_Shipping"}
+                buttonValueText={"Same Day Shipping"}
+                renderData={"none"}
+                groupradioName={"shipping"}
+                checked={false}
+              />
+            </div>
+            <FontAwesomeIcon icon={"fa-truck"} />
+          </div>
+          <div className="shippingInput">
+            <div>
+              <RadioButton
+                buttonText={"Standard Shipping"}
+                setStateValue={setShippingState}
+                buttonValue={"Standard_Shipping"}
+                buttonValueText={"Standard Shipping"}
+                renderData={"none"}
+                groupradioName={"shipping"}
+                checked={true}
+              />
+            </div>
+            <FontAwesomeIcon icon={"fa-mail-bulk"} />
+          </div>
+        </div>
+
+        <div className="basket">
+          <OptionNumberInput
+            inputSelectionLength={10}
+            productCount={setProductCount}
+          />
+          <button onClick={updateCart} className="shippingbutton">
+            <span>Add to Basket </span>
+            <span>for {shippingState.replaceAll("_", " ")}</span>
+          </button>
+        </div>
+      </>
+    ) : (
+      <>
+        <div className="shipping disabledClass">
+          <h4>Shipping Unavailable</h4>
+          <div className="shippingInput disabledClass">
+            <div className="input">
+              <RadioButton
+                buttonText={"Same day Shipping"}
+                setStateValue={setShippingState}
+                buttonValue={"Same_Day_Shipping"}
+                buttonValueText={"Same Day Shipping"}
+                renderData={"none"}
+                groupradioName={"shipping"}
+                checked={false}
+              />
+            </div>
+            <FontAwesomeIcon icon={"fa-truck"} />
+          </div>
+          <div className="shippingInput">
+            <div>
+              <RadioButton
+                buttonText={"Standard Shipping"}
+                setStateValue={setShippingState}
+                buttonValue={"Standard_Shipping"}
+                buttonValueText={"Standard Shipping"}
+                renderData={"none"}
+                groupradioName={"shipping"}
+                checked={true}
+              />
+            </div>
+            <FontAwesomeIcon icon={"fa-mail-bulk"} />
+          </div>
+        </div>
+
+        <div className="basket disabledClass">
+          <OptionNumberInput
+            inputSelectionLength={0}
+            productCount={setProductCount}
+          />
+          <button className="shippingbutton">
+            <span>Add to Basket </span>
+            <span>for {shippingState.replaceAll("_", " ")}</span>
+          </button>
+        </div>
+      </>
+    );
+  };
+
   if (loading === false) {
     return (
       <section className="individualContentProductPage">
@@ -255,47 +348,7 @@ export const IndividualProductPageMakeupAPI = () => {
                   <IndividualContentProductPageUserLikes ItemName={name} />
                 </div>
 
-                <div className="shipping">
-                  <h4>Get It Shipped</h4>
-                  <div className="shippingInput">
-                    <div className="input">
-                      <RadioButton
-                        buttonText={"Same day Shipping"}
-                        setStateValue={setShippingState}
-                        buttonValue={"Same_Day_Shipping"}
-                        buttonValueText={"Same Day Shipping"}
-                        renderData={"none"}
-                        groupradioName={"shipping"}
-                        checked={false}
-                      />
-                    </div>
-                    <FontAwesomeIcon icon={"fa-truck"} />
-                  </div>
-                  <div className="shippingInput">
-                    <div>
-                      <RadioButton
-                        buttonText={"Standard Shipping"}
-                        setStateValue={setShippingState}
-                        buttonValue={"Standard_Shipping"}
-                        buttonValueText={"Standard Shipping"}
-                        renderData={"none"}
-                        groupradioName={"shipping"}
-                        checked={true}
-                      />
-                    </div>
-                    <FontAwesomeIcon icon={"fa-mail-bulk"} />
-                  </div>
-                </div>
-                <div className="basket">
-                  <OptionNumberInput
-                    inputSelectionLength={10}
-                    productCount={setProductCount}
-                  />
-                  <button onClick={updateCart} className="shippingbutton">
-                    <span>Add to Basket </span>
-                    <span>for {shippingState.replaceAll("_", " ")}</span>
-                  </button>
-                </div>
+                {renderBasketShipping()}
               </div>
             </div>
             {renderColors()}

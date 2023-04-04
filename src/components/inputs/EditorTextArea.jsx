@@ -8,6 +8,7 @@ const EditorTextArea = (props) => {
       }}
       value={props.messageState}
       placeholder={props.TextInputValue}
+      required
     />
   );
 };

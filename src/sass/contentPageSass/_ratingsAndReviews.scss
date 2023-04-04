@@ -1,0 +1,89 @@
+.createPost {
+  @include FlexColumn;
+  padding: 50px 0;
+  width: 100%;
+
+  form {
+    @include FlexColumn;
+    border: solid lightgrey 1px;
+    border-left: none;
+    border-right: none;
+    height: 100%;
+    justify-content: space-between;
+    padding: 20px 0;
+    width: 100%;
+
+    button {
+      align-self: center;
+      background-color: #9b001a;
+      border-radius: 15px;
+      color: white;
+      cursor: pointer;
+      margin-top: 25px;
+      padding: 10px;
+      transition: background-color 0.5s ease-in;
+      width: 200px;
+
+      &:hover {
+        background-color: darkgreen;
+        transition: background-color 0.5s ease-in;
+      }
+    }
+
+    .content {
+      @include FlexRowCenter;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  .contentRight {
+    @include FlexColumn;
+    height: 100%;
+    padding: 25px 0;
+    justify-content: space-around;
+    width: 40%;
+
+    input {
+      margin-right: 20px;
+    }
+  }
+  .contentLeft {
+    border: solid 1px;
+    width: 50%;
+
+    textarea {
+      height: 150px;
+      resize: none;
+      width: 100%;
+      background-color: rgb(241, 240, 240);
+    }
+  }
+}
+.greenAccent {
+  accent-color: darkgreen;
+}
+
+.redAccent {
+  accent-color: red;
+}
+
+.contentCardRating {
+  @include FlexColumn;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.15s ease-out;
+}
+
+.contentRatingContainer {
+  @include FlexRow;
+
+  .contentRight {
+    width: 40%;
+  }
+
+  .contentLeft {
+    width: 50%;
+  }
+}

@@ -1,0 +1,17 @@
+.checkoutSection {
+  min-height: 100vh;
+  width: 100%;
+
+  .wrapper {
+    @include Maxsize100;
+    padding: 0 10%;
+    .upperContent {
+      padding: 100px 0;
+    }
+    .contentList {
+        ul {
+            @include UlNormalize;
+        }
+    }
+  }
+}

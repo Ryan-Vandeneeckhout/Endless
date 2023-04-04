@@ -21,6 +21,7 @@ import { UserSettingsMenu } from "./components/sideMenus/userSettingsMenu/userSe
 import { ChatIcon } from "./components/sideBarIcons/contactChatMenu/ChatIcon";
 import { ContactMenu } from "./components/sideMenus/contactMenu/contactMenu";
 import { IndividualProductPageMakeupAPI } from "./components/contentPages/individualContentPage/individualProductPageMakeupAPI";
+import { CheckoutPage } from "./components/checkoutPage/CheckoutPage";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -59,6 +60,10 @@ function App() {
 
   //Check local browser storage for user settings
   let htmlElement = document.documentElement;
+  htmlElement.setAttribute(
+    "data-theme",
+    window.localStorage.getItem("dataTheme")
+  );
 
   useEffect(() => {
     const onPageLoad = () => {
@@ -119,6 +124,7 @@ function App() {
           <main>
             <Routes>
               <Route extact path="/" element={<LandingPage />} />
+              <Route extact path="/checkout" element={<CheckoutPage />} />
               <Route
                 extact
                 path="/termsandconditions"

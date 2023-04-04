@@ -15,6 +15,7 @@ export const useLogout = () => {
       .then(() => {
         dispatch({ type: "LOGOUT" });
         setSuccess("Log Out Successful");
+        window.location.href = "/";
       })
       .catch((err) => {
         setError("Logout Failed");
