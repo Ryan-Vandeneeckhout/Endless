@@ -26,6 +26,7 @@ export const ContentSideMenu = (props) => {
                 setPrice={props.setPrice}
                 handlePriceSortOption={props.handlePriceSortOption}
                 setPriceSort={props.setPriceSort}
+                APIDATA={props.APIDATA}
               />
             );
           }

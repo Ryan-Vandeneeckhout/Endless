@@ -13,31 +13,63 @@ export const ContentSideMenuSideCatogories = (props) => {
   const SwitchFunctionContentCatogories = (item) => {
     switch (props.buttonValue) {
       case "Brand":
-        return (
-          <>
-            <RadioButton
-              buttonText={item.buttonText}
-              setStateValue={props.setBrandState}
-              buttonValue={props.buttonValue}
-              buttonValueText={item.buttonValueText}
-              renderData={props.QueryAPIdata}
-              groupradioName={props.asideTextHeader}
-            />
-          </>
-        );
+        if (
+          props.APIDATA.filter((i) => i.brand === item.buttonText).length > 0
+        ) {
+          return (
+            <div className="BrandButtonContainer">
+              <div>
+                <RadioButton
+                  buttonText={item.buttonText}
+                  setStateValue={props.setBrandState}
+                  buttonValue={props.buttonValue}
+                  buttonValueText={item.buttonValueText}
+                  renderData={props.QueryAPIdata}
+                  groupradioName={props.asideTextHeader}
+                />
+              </div>
+              <p>
+                (
+                {
+                  props.APIDATA.filter((i) => i.brand === item.buttonText)
+                    .length
+                }
+                )
+              </p>
+            </div>
+          );
+        } else {
+          return null;
+        }
       case "Price":
-        return (
-          <>
-            <RadioButton
-              buttonText={item.buttonText}
-              setStateValue={props.setPrice}
-              buttonValue={props.buttonValue}
-              buttonValueText={item.buttonValueText}
-              renderData={props.QueryAPIdata}
-              groupradioName={props.asideTextHeader}
-            />
-          </>
-        );
+        if (
+          props.APIDATA.filter((i) => i.price < item.buttonValueText).length > 0
+        ) {
+          return (
+            <div className="BrandButtonContainer">
+              <div>
+                <RadioButton
+                  buttonText={item.buttonText}
+                  setStateValue={props.setPrice}
+                  buttonValue={props.buttonValue}
+                  buttonValueText={item.buttonValueText}
+                  renderData={props.QueryAPIdata}
+                  groupradioName={props.asideTextHeader}
+                />
+              </div>
+              <p>
+                (
+                {
+                  props.APIDATA.filter((i) => i.price < item.buttonValueText)
+                    .length
+                }
+                )
+              </p>
+            </div>
+          );
+        } else {
+          return null;
+        }
       case "Sort_By_Rating":
         return (
           <>

@@ -272,4 +272,13 @@
     }
   }
 }
+
+.BrandButtonContainer {
+  @include FlexRowCenter;
+  justify-content: space-between;
+
+  p{
+    margin: 0;
+  }
+}
 @import "./ratingsAndReviews.scss";

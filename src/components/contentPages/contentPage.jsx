@@ -201,6 +201,7 @@ export const ContentPage = () => {
           setPrice={setPrice}
           handlePriceSortOption={handlePriceSortOption}
           setPriceSort={setPriceSort}
+          APIDATA={dataResponseRef.current}
         />
         <section className="contentReturned">
           <div className="contentWrapper">
