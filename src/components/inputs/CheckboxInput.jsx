@@ -5,19 +5,13 @@ export const CheckboxInput = (props) => {
 
   const checkboxFunction = (event) => {
     if (checkBoxRef.current.checked) {
-      props.setCheckboxState([
-        ...props.checkboxItemRef.current,
-        event.target.value,
-      ]);
+      props.setCheckboxState([...props.checkboxItemRef, event.target.value]);
     } else {
       props.setCheckboxState(
-        props.checkboxItemRef.current.filter(
-          (item) => item !== event.target.value
-        )
+        props.checkboxItemRef.filter((item) => item !== event.target.value)
       );
     }
-    props.callFunctionProps();
-    console.log(props.checkboxItemRef.current);
+    props.renderData();
   };
   return (
     <>

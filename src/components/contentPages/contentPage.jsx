@@ -16,7 +16,7 @@ export const ContentPage = () => {
   const [, setProductTypeState, productTypeStateRef] = useState("");
   const [, , productCatgorySelectedRef] = useState("");
   const [, setPrice, priceRef] = useState("");
-  const [, , TagsArrayRef] = useState([]);
+  const [, setTagsArray, TagsArrayRef] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -195,6 +195,8 @@ export const ContentPage = () => {
           handlePriceSortOption={handlePriceSortOption}
           setPriceSort={setPriceSort}
           APIDATA={dataResponseRef.current}
+          setTagsArray={setTagsArray}
+          TagsArrayRef={TagsArrayRef.current}
         />
         <section className="contentReturned">
           <div className="contentWrapper">

@@ -97,16 +97,35 @@ export const ContentSideMenuSideCatogories = (props) => {
           </>
         );
       case "Sort_By_Tags":
-        return (
-          <CheckboxInput
-            buttonText={item.buttonText}
-            setAPIRating={props.setAPIRating}
-            buttonValue={props.buttonValue}
-            buttonValueText={item.buttonValueText}
-            renderData={props.QueryAPIdata}
-            groupradioName={props.asideTextHeader}
-          />
-        );
+        if (
+          props.APIDATA.filter((i) => i.tag_list.includes(item.buttonValueText))
+            .length > 0
+        ) {
+          return (
+            <div className="BrandButtonContainer">
+              <div>
+                <CheckboxInput
+                  buttonText={item.buttonText}
+                  setCheckboxState={props.setTagsArray}
+                  buttonValue={props.buttonValue}
+                  buttonValueText={item.buttonValueText}
+                  renderData={props.QueryAPIdata}
+                  groupradioName={props.asideTextHeader}
+                  checkboxItemRef={props.TagsArrayRef}
+                />
+              </div>
+              <p>
+                {
+                  props.APIDATA.filter((i) =>
+                    i.tag_list.includes(item.buttonValueText)
+                  ).length
+                }
+              </p>
+            </div>
+          );
+        } else {
+          return null;
+        }
 
       default:
         return null;
