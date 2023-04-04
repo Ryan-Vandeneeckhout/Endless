@@ -63,6 +63,7 @@ export const ContentSideBarButtonMap = [
         buttonText: `zorah biocosmetiques`,
         buttonValueText: "zorah biocosmetiques",
       },
+      { buttonText: `Remove All`, buttonValueText: "" },
     ],
   },
   {
@@ -131,6 +132,7 @@ export const ContentSideBarButtonMap = [
       { buttonText: `purpicks`, buttonValueText: "purpicks" },
       { buttonText: `water free`, buttonValueText: "water free" },
       { buttonText: `silicone free`, buttonValueText: "silicone free" },
+      { buttonText: `Remove All`, buttonValueText: "" },
     ],
   },
 ];

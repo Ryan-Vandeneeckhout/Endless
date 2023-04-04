@@ -14,7 +14,8 @@ export const ContentSideMenuSideCatogories = (props) => {
     switch (props.buttonValue) {
       case "Brand":
         if (
-          props.APIDATA.filter((i) => i.brand === item.buttonText).length > 0
+          props.APIDATA.filter((i) => i.brand === item.buttonText).length > 0 ||
+          item.buttonText === "Remove All"
         ) {
           return (
             <div className="BrandButtonContainer">
@@ -153,6 +154,7 @@ export const ContentSideMenuSideCatogories = (props) => {
               </div>
             );
           })}
+          <p>default</p>
         </>
       ) : null}
     </div>
