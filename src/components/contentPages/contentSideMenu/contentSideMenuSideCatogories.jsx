@@ -154,7 +154,6 @@ export const ContentSideMenuSideCatogories = (props) => {
               </div>
             );
           })}
-          <p>default</p>
         </>
       ) : null}
     </div>
