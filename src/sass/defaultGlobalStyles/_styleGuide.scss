@@ -38,6 +38,7 @@ h4 {
 
 p, input, h4, label, button {
   font-family: $fontBodyType;
+  font-size: clamp(0.75rem, 0.6959rem + 0.2703vw, 1rem);
 }
 html {
   --navColorBackground: hsl(0, 0%, 4%);

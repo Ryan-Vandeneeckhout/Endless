@@ -40,8 +40,10 @@
     padding: 5% 10% 10% 10%;
 
     aside {
+      min-width: fit-content;
       padding-right: 40px;
-      position: relative;
+      position: sticky;
+      top: 60px;
       width: 20%;
 
       h3 {
@@ -71,11 +73,9 @@
           width: 100%;
         }
         input {
-          font-size: 20px;
           margin-bottom: 5px;
         }
         label {
-          font-size: 16px;
           margin-left: 10px;
           margin-bottom: 5px;
           text-transform: capitalize;
@@ -96,8 +96,15 @@
       align-items: baseline;
       display: grid;
       grid-gap: 10px 20px;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
       width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 20px;
+      padding-left: 0;
+      height: 900px;
+      border-top: 1px lightgrey;
+      border-bottom: 1px lightgrey;
 
       .contentItem {
         background-color: transparent;
@@ -126,17 +133,16 @@
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
           display: -webkit-box;
-          font-size: 16px;
           margin: 2px;
           overflow: hidden;
           text-transform: capitalize;
         }
         .imageContainer {
           border: solid black 2px;
-          height: 175px;
+          height:clamp(8.125rem, 7.5169rem + 3.0405vw, 10.9375rem);;
           overflow: hidden;
           position: relative;
-          width: 200px;
+          width: clamp(9.375rem, 8.6993rem + 3.3784vw, 12.5rem);
 
           &:hover img {
             transform: scale(1.1);

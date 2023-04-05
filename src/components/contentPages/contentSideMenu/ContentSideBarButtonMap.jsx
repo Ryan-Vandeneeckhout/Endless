@@ -84,8 +84,8 @@ export const ContentSideBarButtonMap = [
     ButtonType: "Radio",
     buttonValue: "Sort_By_Price",
     arraylist: [
-      { buttonText: `Price: High to Low`, buttonValueText: "false" },
-      { buttonText: `Price: Low to High`, buttonValueText: "true" },
+      { buttonText: `Price: High to Low`, buttonValueText: "true" },
+      { buttonText: `Price: Low to High`, buttonValueText: "false" },
     ],
   },
 

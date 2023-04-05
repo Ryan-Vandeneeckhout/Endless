@@ -7,10 +7,66 @@
     padding: 0 10%;
     .upperContent {
       padding: 100px 0;
+      padding-bottom: 0;
     }
     .contentList {
         ul {
             @include UlNormalize;
+            li {
+                @include FlexRowCenter;
+                max-height: fit-content;
+                max-width: 400px;
+                min-height: 80px;
+                min-width: 300px;
+                outline: dotted 1px lightgrey;
+                padding: 7px 5px;
+                position: relative;
+          
+                .cartItems {
+                  @include FlexRowCenter;
+                  align-items: center;
+                  padding: 0 30px;
+                  span {
+                    margin-left: 30px;
+                    color: rgb(3, 3, 255);
+                    text-decoration: underline;
+                  }
+          
+                  img {
+                    margin-right: 20px;
+                  }
+          
+                  .cartitemsDescription {
+                    h4 {
+                      text-overflow: hidden;
+                    }
+                  }
+                }
+          
+                p,
+                h4 {
+                  margin: 2px;
+                  font-size: 12px;
+                  letter-spacing: normal;
+                }
+          
+                img {
+                  height: 40px;
+                  outline: solid black 2px;
+                  width: 40px;
+                }
+          
+                button {
+                  background-color: transparent;
+                  border: none;
+                  height: fit-content;
+                  padding: 5px;
+                  position: absolute;
+                  right: 20px;
+                  top: 10px;
+                  width: fit-content;
+                }
+              }
         }
     }
   }
