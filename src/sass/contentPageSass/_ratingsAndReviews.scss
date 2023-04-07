@@ -87,3 +87,28 @@
     width: 50%;
   }
 }
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+    .createPost {
+        @include FlexColumn;
+        padding: 50px 0;
+        width: 100%;
+      
+        form {
+          .content {
+            @include FlexColumn;
+            height: 100%;
+            justify-content: space-between;
+            width: 100%;
+          }
+          .contentRight {
+            width: 100%;
+          }
+        
+          .contentLeft {
+            width: 100%;
+          }
+        
+        }
+  }
+}

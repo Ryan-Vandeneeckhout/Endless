@@ -89,7 +89,7 @@ function App() {
   }, [htmlElement]);
 
   return (
-    <>
+    <div className="app">
       {authIsReady && (
         <BrowserRouter>
           <header>
@@ -159,7 +159,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       )}
-    </>
+    </div>
   );
 }
 export default App;

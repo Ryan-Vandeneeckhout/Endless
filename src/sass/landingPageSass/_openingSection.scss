@@ -4,7 +4,7 @@
     min-height: 100vh;
 
     .openingPage {
-        background-image: url("../../../public/assets/images/landingPageImages/titleCard/0071600.webp");
+        background-image: var(--frontPageImage1900);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -16,12 +16,12 @@
             padding: 10%;
 
             .titleCard {
-                background-color: white;
+                background-color: var(--landingPageBoxColor);
                 bottom: 2%;
                 box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
                 -webkit-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
                 -moz-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
-                color: black;
+                color: var( --documentTextColor);
                 left: 2%;
                 padding: clamp(1.25rem, 0.9797rem + 1.3514vw, 2.5rem);
                 position: absolute;

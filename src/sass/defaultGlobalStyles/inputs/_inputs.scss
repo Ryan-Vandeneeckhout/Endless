@@ -8,7 +8,7 @@
 
   a {
     -webkit-transform: none;
-    color: #9b001a;
+    color: var(--arrowInput);
     text-align: center;
     transform: none;
     transition: transform 300ms linear;
@@ -23,7 +23,7 @@
 
 .pausePlayButton {
   align-items: center;
-  background-color: #9b001a;
+  background-color: var(--sidebarIcons);
   border-radius: 90%;
   bottom: 100px;
   color: white;
@@ -38,12 +38,13 @@
   z-index: 99;
   &:hover {
     color: goldenrod;
+    outline: solid goldenrod 2px;
   }
 }
 
 .chatIcon {
   align-items: center;
-  background-color: #9b001a;
+  background-color: var(--sidebarIcons);
   border-radius: 90%;
   bottom: 50px;
   color: white;
@@ -58,5 +59,6 @@
   z-index: 99;
   &:hover {
     color: goldenrod;
+    outline: solid goldenrod 2px;
   }
 }

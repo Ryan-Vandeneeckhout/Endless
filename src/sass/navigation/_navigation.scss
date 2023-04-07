@@ -3,6 +3,7 @@
   height: 60px;
   width: 100%;
   z-index: 99;
+  max-width: 2000px;
 
   .upperNavWrapper {
     position: relative;
@@ -25,7 +26,7 @@
 
   a {
     text-decoration: none;
-    color: var(--navTextColor);
+    color: var(--navSiteTextColor);
     font-family: "Lato";
 
     span {
@@ -40,11 +41,12 @@
     a {
       text-decoration: none;
       text-transform: uppercase;
-      color: var(--navTextColor);
+      color: var(--navSiteTextColor);
     }
 
     button {
       background-color: var(--devButtonColor);
+      color: var(--devButtonTextColor); 
       border-radius: 90%;
       border: none;
       cursor: pointer;

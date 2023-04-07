@@ -21,17 +21,17 @@ const ContentItem = (props) => {
     price,
   } = objectItem;
 
-  if (
-    api_featured_image === null ||
-    api_featured_image === undefined ||
-    api_featured_image === ""
-  );
+  const ReturnText = (props) => {
+    return <p>{props.Text}</p>;
+  };
+
+  if (api_featured_image === (null || undefined || ""));
   else {
     const renderPrice = () => {
       if (price > 1) {
-        return <p>${parseFloat(price).toFixed(2)} </p>;
+        return <ReturnText Text={`$${parseFloat(price).toFixed(2)}`} />;
       } else {
-        return <p>Price not available</p>;
+        return <ReturnText Text={"Price not available"} />;
       }
     };
     return (
@@ -52,14 +52,18 @@ const ContentItem = (props) => {
             <img src={api_featured_image} alt={`${name}`} />
             {showList ? (
               <div className="bottomBar">
-                <p>{product_type}</p>
+                <ReturnText Text={product_type} />
               </div>
             ) : null}
           </div>
           {brand ? <p className="brandp">{brand}</p> : null}
-          <p>{name.replaceAll("&trade;", "")}</p>
+          <ReturnText Text={`${name.replaceAll("&trade;", "")}`} />
           {renderPrice()}
-          {rating ? <p>Rating: {rating}</p> : <p>No Rating Available</p>}
+          {rating ? (
+            <ReturnText Text={`Rating: ${rating} `} />
+          ) : (
+            <ReturnText Text={"No Rating Available"} />
+          )}
         </div>
       </Link>
     );

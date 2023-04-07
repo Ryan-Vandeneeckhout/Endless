@@ -215,6 +215,10 @@ export const IndividualProductPageMakeupAPI = () => {
     }
   };
 
+  const ReturnText = (props) => {
+    return <p className={props.pClassname}>{props.Text}</p>;
+  };
+
   const renderBrandName = () => {
     return brand !== (null || "") ? (
       <p className="boldp uppercapP">Brought to you by - {brand}</p>

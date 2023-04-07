@@ -140,9 +140,9 @@
 }
 
 @mixin boxShadowFrontPage {
-  box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+  box-shadow: -1px -1px 4px var(--boxShadow),
   4px 4px 6px rgba(0, 0, 0, 0.2),
-  inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+  inset -1px -1px 4px var(--boxShadow),
   inset 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 

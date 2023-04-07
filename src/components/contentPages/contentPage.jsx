@@ -77,7 +77,6 @@ export const ContentPage = () => {
     axios(config)
       .then(function (response) {
         setDataResponse(response.data);
-        console.log(response.data);
         setError(false);
       })
       .catch(function () {
@@ -97,25 +96,34 @@ export const ContentPage = () => {
       renderContentAPI();
     }
   };
-
+  const DataLengthResultsText = (props) => {
+    return <p className="resultsReturned">{props.text}</p>;
+  };
   const renderResultsLength = () => {
+    let text = "";
+
     if (error === true) {
-      return (
-        <p className="resultsReturned">Something went wrong please try again</p>
-      );
+      text = "Error: Something went wrong";
+      return <DataLengthResultsText text={text} />;
     } else if (dataResponse === [] || dataResponse === undefined) {
-      return <p className="resultsReturned">No Results Found</p>;
+      text = "No Results Found";
+      return <DataLengthResultsText text={text} />;
+    } else if (dataResponse.length === 0) {
+      text = "Searching for Results...";
+      return <DataLengthResultsText text={text} />;
     } else {
-      return <p className="resultsReturned">{dataResponse.length} Results</p>;
+      text = `${dataResponse.length} Results`;
+      return <DataLengthResultsText text={text} />;
     }
   };
 
   const renderCatogoryName = () => {
+    let headingText = "Endless Demands All Products";
     if (itembuttonText.itembuttonText === (undefined || null)) {
-      return <h2>Endless Demands All Products</h2>;
+      return <h2>{headingText}</h2>;
     } else {
-      let i = itembuttonText.itembuttonText.replaceAll("_", " ");
-      return <h2>{i}</h2>;
+      headingText = itembuttonText.itembuttonText.replaceAll("_", " ");
+      return <h2>{headingText}</h2>;
     }
   };
 

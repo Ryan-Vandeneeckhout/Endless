@@ -1,4 +1,4 @@
-$fontLarge: clamp(1.25rem, 0.9797rem + 1.3514vw, 2.5rem);;
+$fontLarge: clamp(1.25rem, 0.9797rem + 1.3514vw, 2.5rem);
 $fontMedium: clamp(1rem, 0.5135rem + 2.1622vw, 2rem);
 $fontSmall: clamp(0.875rem, 0.7939rem + 0.4054vw, 1.25rem);
 $fontForm: 26px;
@@ -36,65 +36,91 @@ h4 {
   letter-spacing: 0.1rem;
 }
 
-p, input, h4, label, button {
+p,
+input,
+h4,
+label,
+button {
   font-family: $fontBodyType;
   font-size: clamp(0.75rem, 0.6959rem + 0.2703vw, 1rem);
 }
-html {
-  --navColorBackground: hsl(0, 0%, 4%);
-  --navColorButtonHover: hsl(0, 0%, 9%);
-  --devButtonColor: hsl(0, 0%, 4%);
-  --devButtonColorHover: #212121; 
-  --sideMenucolor: #212121;
-  
-}
 
 html {
+  --arrowInput: #9b001a;
+  --boxShadow: rgba(255, 255, 255, 0.05);
+  --devButtonColor: white;
+  --devButtonColorHover: hsl(0, 23%, 95%);
+  --devButtonTextColor: black;
+  --documentTextColor: black;
+  --frontPageImage1900: url("../../../public//assets/images/landingPageImages/titleCard/0071600.webp");
+  --frontPageSectionBackground: white;
+  --landingPageBoxBackgroundColor: white;
+  --landingPageBoxColor: white;
   --navColorBackground: white;
   --navColorButtonHover: hsl(0, 23%, 95%);
-  --devButtonColor: white;
-  --devButtonColorHover: hsl(0, 23%, 95%); 
+  --navSiteTextColor: Black;
+  --sidebarIcons: #9b001a;
   --sideMenucolor: whitesmoke;
-  --documentTextColor: black;
-  
+  --productSliderSection: white;
+  --featuredCategoriesSection: white;
+  --infoCommericalTextBackgroundColor: #9b001a;
 }
 
 html[data-theme="violet"] {
+  --arrowInput: goldenrod;
+  --boxShadow: white;
   --devButtonColor: rgb(60, 6, 69);
-  --navColorBackground: white;
-  --sideMenucolor: rgb(206, 162, 198);
+  --devButtonTextColor: white;
   --documentTextColor: white;
+  --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/download.jpg");
+  --landingPageBoxColor: rgb(60, 6, 69);
+  --navColorBackground: white;
+  --navSiteTextColor: black;
+  --sidebarIcons: rgb(148, 85, 244);
+  --sideMenucolor: rgb(206, 162, 198);
+  --productSliderSection: rgb(44, 5, 49);
+  --featuredCategoriesSection: rgb(44, 5, 49);
+  --infoCommericalTextBackgroundColor: rgb(60, 6, 69);
 }
 html[data-theme="indigo"] {
   --devButtonColor: rgb(74, 43, 122);
   --navColorBackground: white;
   --sideMenucolor: rgb(148, 85, 244);
+  --documentTextColor: white;
+  --navSiteTextColor: Black;
+  --devButtonTextColor: white;
 }
 html[data-theme="blue"] {
   --devButtonColor: rgb(5, 5, 49);
   --navColorBackground: white;
   --sideMenucolor: #006cbe;
+  --documentTextColor: white;
+  --devButtonTextColor: white;
 }
 html[data-theme="green"] {
   --devButtonColor: rgb(15, 39, 14);
   --navColorBackground: white;
   --navIconBackgroundColor: rgb(15, 39, 14);
   --sideMenucolor: rgb(15, 39, 14);
+  --devButtonTextColor: white;
 }
 html[data-theme="orange"] {
   --devButtonColor: rgb(150, 63, 17);
   --navColorBackground: white;
   --sideMenucolor: orange;
+  --devButtonTextColor: white;
 }
 html[data-theme="red"] {
   --devButtonColor: rgb(110, 5, 17);
   --navColorBackground: white;
   --sideMenucolor: rgb(95, 8, 8);
   --documentTextColor: white;
+  --devButtonTextColor: white;
 }
 html[data-theme="rainbow"] {
   --devButtonColor: #360b54;
   --navColorBackground: rgb(5, 5, 49);
+  --devButtonTextColor: white;
 }
 
 .hidden {
