@@ -29,6 +29,7 @@
         -webkit-transform: none;
         transform: none;
         transition: transform 300ms linear;
+        color: var(--arrowInput);
       }
 
       &:hover span {

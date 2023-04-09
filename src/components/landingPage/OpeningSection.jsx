@@ -1,13 +1,23 @@
 import { InputGotoArrow } from "../inputs/inputGotToArrow";
+import { useInView } from "react-intersection-observer";
 
 export const OpeningSection = () => {
+  const [contentItemView, contentItemInView] = useInView({
+    triggerOnce: true,
+  });
   let buttonValueText = "foundation";
 
   return (
     <section className="openingPage">
       <div className="wrapper">
-        <div className="titleCard">
-          <h1>Be Fierce, Be Bold, Be You!</h1>
+        <div
+          className={`titleCard ${
+            contentItemInView
+              ? " animationActiveProject"
+              : " notActiveAnimation"
+          }`}
+        >
+          <h1 ref={contentItemView}>Be Fierce, Be Bold, Be You!</h1>
           <p>
             {`Get Started today and visit the ultimate destination for all your makeup needs! `}
           </p>

@@ -8,8 +8,9 @@ import { RotatingInfoCommericalSliderComponent } from "./rotatingInfoCommericalS
 import { ImageList1 } from "./rotatingInfoCommericalSliderComponents/ImageList1";
 import { ImageList2 } from "./rotatingInfoCommericalSliderComponents/ImageList2";
 import { FeaturedCategories } from "./featuredCategories/FeaturedCatogories";
+import { Survey } from "../survey/Survey";
 
-export const LandingPage = () => {
+export const LandingPage = (props) => {
   const [textH1, setTextH1] = useState("Hot New Styles for All");
   const [textSH1, setTextSH1] = useState("Checkout our newest beauty products");
 
@@ -26,6 +27,7 @@ export const LandingPage = () => {
         subHeadingText="Styles that will bring out the best You!"
         arrayList={LipStickDefaultSearches}
         orderflex1="Order1"
+        imageBClass="lipstickBackgroundImage"
         orderflex2="Order2"
       />
       <RotatingInfoCommericalSliderComponent
@@ -42,6 +44,7 @@ export const LandingPage = () => {
         headingText="Hot and Creamy"
         subHeadingText="The Flawless Foundation to build on has just Arrived!"
         arrayList={FoundationDefaultSearches}
+        imageBClass="foundationBackgroundImage"
         orderflex1="Order2"
         orderflex2="Order1"
       />
@@ -56,6 +59,10 @@ export const LandingPage = () => {
         orderflex2="Order1"
       />
       <FeaturedCategories />
+      <Survey
+        text={"Website feedback? Let us know "}
+        ShowSurveyFunction={props.ShowSurveyFunction}
+      />
     </section>
   );
 };

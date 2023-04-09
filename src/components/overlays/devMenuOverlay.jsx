@@ -2,7 +2,10 @@ const DevMenuOverlay = (props) => {
   return (
     <div
       className={`overlay${
-        props.showMenu || props.showShoppingCart || props.showUserSettingsState
+        props.showMenu ||
+        props.showShoppingCart ||
+        props.showUserSettingsState ||
+        props.ShowSurvey
           ? " displayFlex"
           : " displayNone"
       }`}
@@ -10,6 +13,7 @@ const DevMenuOverlay = (props) => {
         props.setShowMenu(false);
         props.setShowShoppingCart(false);
         props.setShowUserSettingsState(false);
+        props.setShowSurvey(false);
       }}
     />
   );

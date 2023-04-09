@@ -24,7 +24,7 @@ export const RotatingProductsFrontPage = (props) => {
     <section className="productSliderSection">
       <div className="wrapper">
         <div className={`titleCard ${props.orderflex1}`}>
-          <div className="titleCardWrapper">
+          <div className={`titleCardWrapper ${props.imageBClass}`}>
             <h2>{props.headingText ? props.headingText : "Heading Text"}</h2>
             <h3>
               {props.subHeadingText ? props.subHeadingText : "Sub Heading Text"}

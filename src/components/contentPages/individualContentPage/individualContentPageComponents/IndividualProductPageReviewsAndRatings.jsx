@@ -39,7 +39,6 @@ export const IndividualProductInformationPageReviewsAndRatings = (props) => {
   }, [setArrayRef, arrayRef, props.productItemId]);
 
   const renderPosts = () => {
-    console.log(arrayRef.current);
     if (
       arrayRef.current === null ||
       arrayRef.current === undefined ||

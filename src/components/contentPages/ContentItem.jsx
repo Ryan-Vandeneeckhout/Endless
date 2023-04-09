@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ContentItem = (props) => {
-  const [contentItemView, contentItemInView] = useInView({});
+  const [contentItemView, contentItemInView] = useInView({
+    triggerOnce: true,
+  });
   const [showList, setShowList] = useState(false);
 
   const ShowButtonList = () => {
@@ -20,7 +23,48 @@ const ContentItem = (props) => {
     product_type,
     price,
   } = objectItem;
+  //Render Rating Function
+  const renderRating = () => {
+    if (rating !== null) {
+      const ratingStar = rating - Math.floor(rating) !== 0;
+      console.log(rating);
 
+      if (ratingStar) {
+        return (
+          <div className="starRatingContainer">
+            {Array.from({ length: rating - 1 }, (_, index) => (
+              <FontAwesomeIcon
+                key={index}
+                icon={"fa-star"}
+                color={"goldenrod"}
+              />
+            ))}
+            <FontAwesomeIcon icon={"fa-star-half"} color={"goldenrod"} />
+            {Array.from({ length: 5 - rating }, (_, index) => (
+              <FontAwesomeIcon key={index} icon={"fa-star"} />
+            ))}
+          </div>
+        );
+      } else {
+        return (
+          <div className="starRatingContainer">
+            {Array.from({ length: rating }, (_, index) => (
+              <FontAwesomeIcon
+                key={index}
+                icon={"fa-star"}
+                color={"goldenrod"}
+              />
+            ))}
+            {Array.from({ length: 5 - rating }, (_, index) => (
+              <FontAwesomeIcon key={index} icon={"fa-star"} />
+            ))}
+          </div>
+        );
+      }
+    } else if (rating === null) {
+      return <p>No Rating Available</p>;
+    }
+  };
   const ReturnText = (props) => {
     return <p>{props.Text}</p>;
   };
@@ -59,11 +103,8 @@ const ContentItem = (props) => {
           {brand ? <p className="brandp">{brand}</p> : null}
           <ReturnText Text={`${name.replaceAll("&trade;", "")}`} />
           {renderPrice()}
-          {rating ? (
-            <ReturnText Text={`Rating: ${rating} `} />
-          ) : (
-            <ReturnText Text={"No Rating Available"} />
-          )}
+
+          {renderRating()}
         </div>
       </Link>
     );

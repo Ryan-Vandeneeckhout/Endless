@@ -189,34 +189,45 @@ export const IndividualProductPageMakeupAPI = () => {
 
   //Render Rating Function
   const renderRating = () => {
-    if (rating !== (null || "")) {
+    if (rating !== null) {
       const ratingStar = rating - Math.floor(rating) !== 0;
+      console.log(rating);
 
       if (ratingStar) {
         return (
           <div className="starRatingContainer">
-            {Array.from({ length: rating }, (_, index) => (
-              <p key={index}>{index + 1}</p>
+            {Array.from({ length: rating - 1 }, (_, index) => (
+              <FontAwesomeIcon
+                key={index}
+                icon={"fa-star"}
+                color={"goldenrod"}
+              />
             ))}
-            <p>Half star</p>
+            <FontAwesomeIcon icon={"fa-star-half"} color={"goldenrod"} />
+            {Array.from({ length: 5 - rating }, (_, index) => (
+              <FontAwesomeIcon key={index} icon={"fa-star"} />
+            ))}
           </div>
         );
       } else {
         return (
-          <>
+          <div className="starRatingContainer">
             {Array.from({ length: rating }, (_, index) => (
-              <p key={index}>{index + 1}</p>
+              <FontAwesomeIcon
+                key={index}
+                icon={"fa-star"}
+                color={"goldenrod"}
+              />
             ))}
-          </>
+            {Array.from({ length: 5 - rating }, (_, index) => (
+              <FontAwesomeIcon key={index} icon={"fa-star"} />
+            ))}
+          </div>
         );
       }
-    } else {
-      return null;
+    } else if (rating === null) {
+      return <p>No Rating Available</p>;
     }
-  };
-
-  const ReturnText = (props) => {
-    return <p className={props.pClassname}>{props.Text}</p>;
   };
 
   const renderBrandName = () => {

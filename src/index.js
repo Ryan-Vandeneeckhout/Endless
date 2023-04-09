@@ -35,6 +35,8 @@ import {
   faTruck,
   faMailBulk,
   faHeart,
+  faStar,
+  faStarHalf,
 } from "@fortawesome/free-solid-svg-icons";
 // FontAwesome Global Icons Added
 library.add(
@@ -66,7 +68,9 @@ library.add(
   faUserCircle,
   faMinus,
   faMailBulk,
-  faHeart
+  faHeart,
+  faStar,
+  faStarHalf
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

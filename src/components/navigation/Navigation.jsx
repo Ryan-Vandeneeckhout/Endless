@@ -8,6 +8,7 @@ import { MakeupMap } from "./submenuMaps/makeupMap.jsx";
 import { useAuthContext } from "../hooks/firebase/useAuthContext.js";
 import { NavButton } from "./NavButton.jsx";
 import { NavSubMenuButton } from "./NavSubMenuButton.jsx";
+import { ShoppingCartCheckCart } from "./shoppingCartIconCheckCart.jsx";
 
 const Navigation = (props) => {
   const [hoverOpen, setHoverOpen] = useState(false);
@@ -15,6 +16,7 @@ const Navigation = (props) => {
   const [subMenu, setSubMenu] = useState("");
   const location = useLocation();
   const { user } = useAuthContext();
+  const AccountId = window.localStorage.getItem("dataNumber");
 
   //destructuring pathname from location
   const { pathname } = location;
@@ -81,6 +83,25 @@ const Navigation = (props) => {
     }
   };
 
+  const checkShoppingCartLength = () => {
+    return (
+      <>
+        {user && (
+          <ShoppingCartCheckCart
+            shoppingCartOpen={shoppingCartOpen}
+            userid={user.uid}
+          />
+        )}
+        {!user && (
+          <ShoppingCartCheckCart
+            shoppingCartOpen={shoppingCartOpen}
+            userid={AccountId}
+          />
+        )}
+      </>
+    );
+  };
+
   return (
     <section className="upperNavSection">
       <div className="upperNavWrapper">
@@ -103,9 +124,7 @@ const Navigation = (props) => {
             })}
           </ul>
           <div className="userIcons">
-            <div className="shoppingCartIcon" onClick={shoppingCartOpen}>
-              <FontAwesomeIcon size="1x" icon="fa-shopping-bag" />
-            </div>
+            {checkShoppingCartLength()}
             {user ? (
               <div className="userIcon">
                 {" "}

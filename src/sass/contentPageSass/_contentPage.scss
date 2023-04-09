@@ -4,7 +4,7 @@
   min-height: 100vh;
 
   .bannerContent {
-    background-color: rgb(228, 224, 224);
+    background-color: var(--featuredCategoriesSection);
     color: red;
     height: 10vh;
     min-height: 250px;

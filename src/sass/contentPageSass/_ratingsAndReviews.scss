@@ -23,6 +23,7 @@
       padding: 10px;
       transition: background-color 0.5s ease-in;
       width: 200px;
+      border: none;
 
       &:hover {
         background-color: darkgreen;
@@ -50,13 +51,14 @@
     }
   }
   .contentLeft {
-    border: solid 1px;
     width: 50%;
 
     textarea {
       height: 150px;
+      margin: 0;
       resize: none;
       width: 100%;
+      padding: 15px;
       background-color: rgb(241, 240, 240);
     }
   }

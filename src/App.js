@@ -22,10 +22,12 @@ import { ChatIcon } from "./components/sideBarIcons/contactChatMenu/ChatIcon";
 import { ContactMenu } from "./components/sideMenus/contactMenu/contactMenu";
 import { IndividualProductPageMakeupAPI } from "./components/contentPages/individualContentPage/individualProductPageMakeupAPI";
 import { CheckoutPage } from "./components/checkoutPage/CheckoutPage";
+import { SurveyForm } from "./components/survey/SurveyForm";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showShoppingCart, setShowShoppingCart] = useState(false);
+  const [showSurvey, setShowSurvey] = useState(false);
   const [chatState, setChatState] = useState(false);
   const [showUserSettingsState, setShowUserSettingsState] = useState(false);
   const [MusicPlaying, setMusicPlaying] = useState(false);
@@ -45,6 +47,10 @@ function App() {
   const ShowShoppingCart = () => {
     setShowShoppingCart((x) => !x);
     setShowUserSettingsState(false);
+  };
+
+  const ShowSurveyFunction = () => {
+    setShowSurvey((x) => !x);
   };
 
   const showUserSettings = () => {
@@ -121,9 +127,19 @@ function App() {
             showUserSettingsState={showUserSettingsState}
             showUserSettings={showUserSettings}
           />
+          <SurveyForm
+            ShowSurveyFunction={ShowSurveyFunction}
+            ShowSurvey={showSurvey}
+          />
           <main>
             <Routes>
-              <Route extact path="/" element={<LandingPage />} />
+              <Route
+                extact
+                path="/"
+                element={
+                  <LandingPage ShowSurveyFunction={ShowSurveyFunction} />
+                }
+              />
               <Route extact path="/checkout" element={<CheckoutPage />} />
               <Route
                 extact
@@ -154,6 +170,8 @@ function App() {
               setShowUserSettingsState={setShowUserSettingsState}
               showShoppingCart={showShoppingCart}
               showUserSettingsState={showUserSettingsState}
+              ShowSurvey={showSurvey}
+              setShowSurvey={setShowSurvey}
             />
           </main>
           <Footer />
