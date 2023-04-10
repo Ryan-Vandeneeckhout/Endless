@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import { ShoppingCartItem } from "../sideMenus/shoppingCartMenu/ShoppingCartItem";
 import { TotalCart } from "../sideMenus/shoppingCartMenu/TotalCart.js";
 import { TotalCartUser } from "../sideMenus/shoppingCartMenu/TotalCartUser.js";
-import EmailAndPasswordInput from "../inputs/EmailAndPassInput.jsx";
-import TextInput from "../inputs/TextInput.jsx";
 import { ShippingInfo } from "./ShippingInfo.jsx";
 
 export const CheckoutPage = () => {
@@ -75,7 +73,7 @@ export const CheckoutPage = () => {
         <section className="Payment">
           <h3>Payment</h3>
         </section>
-        <section>
+        <section className="promoSection">
           <h3>Offers</h3>
           <button onClick={showOfferInputFunction}>Apply a Promo Code</button>
           {showOfferInputState ? (
