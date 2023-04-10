@@ -9,6 +9,7 @@ import { ImageList1 } from "./rotatingInfoCommericalSliderComponents/ImageList1"
 import { ImageList2 } from "./rotatingInfoCommericalSliderComponents/ImageList2";
 import { FeaturedCategories } from "./featuredCategories/FeaturedCatogories";
 import { Survey } from "../survey/Survey";
+import { FeaturedStories } from "./featuredStories/FeaturedStories";
 
 export const LandingPage = (props) => {
   const [textH1, setTextH1] = useState("Hot New Styles for All");
@@ -40,6 +41,7 @@ export const LandingPage = (props) => {
         orderflex1="Order1"
         orderflex2="Order2"
       />
+      <FeaturedStories />
       <RotatingProductsFrontPage
         headingText="Hot and Creamy"
         subHeadingText="The Flawless Foundation to build on has just Arrived!"

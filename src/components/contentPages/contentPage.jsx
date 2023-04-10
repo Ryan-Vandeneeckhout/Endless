@@ -6,6 +6,7 @@ import { BrandsMap } from "../makeupMaps/BrandsMap";
 import useState from "react-usestateref";
 import { ContentSideMenu } from "./contentSideMenu/contentSideMenu";
 import { ScrollupButton } from "../inputs/ScrollupButton";
+import { TextInputWithButton } from "../inputs/TextInputWithButton";
 
 export const ContentPage = () => {
   const itembuttonText = useParams();
@@ -208,6 +209,18 @@ export const ContentPage = () => {
         />
         <section className="contentReturned">
           <div className="contentWrapper">
+            <div className="upperContentListFunctions">
+              <select>
+                <option aria-label={`product`} value={1}>
+                  CAD
+                </option>
+              </select>
+              <TextInputWithButton
+                buttonNeeded={true}
+                placeholderInput="Search Current Selection"
+                TextButton="Search"
+              />
+            </div>
             {renderResultsLength()}
             <ul className="contentList">{renderContentAPI()}</ul>
           </div>

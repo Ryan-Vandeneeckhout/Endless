@@ -1,0 +1,40 @@
+.shippingInfoSection {
+  width: 100%;
+  max-width: 500px;
+  .shippingContent {
+    width: 100%;
+  }
+  form {
+    width: 100%;
+    .name {
+      width: 100%;
+      @include FlexRowCenter;
+      justify-content: space-between;
+      .labelsEmail:first-child {
+        width: 90%;
+        margin-right: 20px;
+
+      }
+    }
+    .labelsEmail {
+      @include FlexColumn;
+      width: 100%;
+    }
+    label {
+      text-transform: uppercase;
+      margin: 20px 0;
+      margin-top: 0;
+      display: none;
+    }
+    input {
+      background-color: white;
+      border: none;
+      outline: solid 1px lightgrey;
+      height: 30px;
+      margin-bottom: 20px;
+      padding: 5px;
+      text-transform: capitalize;
+      width: 100%;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 export default function EmailAndPasswordInput(props) {
   const onKeyDownFunction = (e) => {
+    e.preventDefault();
     props.InputRef.current.classList.remove("redTextO");
   };
   return (

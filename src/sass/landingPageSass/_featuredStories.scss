@@ -1,0 +1,29 @@
+.FeaturedStoriesSection {
+  .wrapper {
+    @include FlexColumn;
+    padding: 2.5% 10%;
+    justify-content: space-between;
+
+    h2 {
+      margin: 0;
+      margin-bottom: 20px;
+    }
+    .contentContainer {
+      @include FlexRow;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    a {
+      height: 250px;
+      min-height: 250px;
+      width: 400px;
+      min-width: 400px;
+      margin-left: 20px;
+
+      img {
+        @include Maxsize100;
+      }
+    }
+  }
+}

@@ -64,6 +64,7 @@ html {
   --productSliderSection: white;
   --featuredCategoriesSection: white;
   --infoCommericalTextBackgroundColor: #9b001a;
+  --footerBackgroundColor: black;
 }
 
 html[data-theme="violet"] {
@@ -81,6 +82,7 @@ html[data-theme="violet"] {
   --productSliderSection: rgb(44, 5, 49);
   --featuredCategoriesSection: rgb(44, 5, 49);
   --infoCommericalTextBackgroundColor: rgb(60, 6, 69);
+  --footerBackgroundColor: rgb(60, 6, 69);
 }
 html[data-theme="indigo"] {
   --devButtonColor: rgb(74, 43, 122);
@@ -89,6 +91,7 @@ html[data-theme="indigo"] {
   --documentTextColor: white;
   --navSiteTextColor: Black;
   --devButtonTextColor: white;
+  --footerBackgroundColor: rgb(44, 5, 49);
 }
 html[data-theme="blue"] {
   --devButtonColor: rgb(5, 5, 49);
@@ -110,12 +113,26 @@ html[data-theme="green"] {
   --navIconBackgroundColor: rgb(15, 39, 14);
   --sideMenucolor: rgb(15, 39, 14);
   --devButtonTextColor: white;
+  --documentTextColor: white;
+  --landingPageBoxColor: rgb(15, 39, 14);
+  --sidebarIcons: green;
+  --sideMenucolor: green;
+  --productSliderSection: darkgreen;
+  --featuredCategoriesSection: rgb(15, 39, 14);
+  --infoCommericalTextBackgroundColor: darkgreen;
 }
 html[data-theme="orange"] {
   --devButtonColor: rgb(150, 63, 17);
   --navColorBackground: white;
   --sideMenucolor: orange;
   --devButtonTextColor: white;
+  --documentTextColor: white;
+  --landingPageBoxColor: rgb(150, 63, 17);
+  --sidebarIcons: orange;
+  --sideMenucolor: orange;
+  --productSliderSection: rgb(235, 154, 25);
+  --featuredCategoriesSection: rgb(150, 63, 17);
+  --infoCommericalTextBackgroundColor: rgb(235, 154, 25);
 }
 html[data-theme="red"] {
   --devButtonColor: rgb(110, 5, 17);
@@ -123,6 +140,16 @@ html[data-theme="red"] {
   --sideMenucolor: rgb(95, 8, 8);
   --documentTextColor: white;
   --devButtonTextColor: white;
+
+
+  --documentTextColor: white;
+  --landingPageBoxColor: rgb(183, 9, 29);
+  --sidebarIcons: rgb(165, 8, 26);
+  --sideMenucolor: rgb(165, 8, 26);
+  --productSliderSection: rgb(110, 5, 17);
+  --featuredCategoriesSection: rgb(110, 5, 17);
+  --infoCommericalTextBackgroundColor: rgb(110, 5, 17);
+  --footerBackgroundColor: black;
 }
 html[data-theme="rainbow"] {
   --devButtonColor: #360b54;

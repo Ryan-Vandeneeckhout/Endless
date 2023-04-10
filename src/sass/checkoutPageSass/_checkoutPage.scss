@@ -1,16 +1,13 @@
 .checkoutSection {
   min-height: 100vh;
   width: 100%;
-  background-color: black;
+  background-color: white;
 
   .wrapper {
     @include Maxsize100;
-    padding: 0 10%;
+    padding: 100px 10%;
     background-color: white;
-    .upperContent {
-      padding: 100px 0;
-      padding-bottom: 0;
-    }
+    
     .contentList {
         ul {
             @include UlNormalize;
@@ -73,3 +70,4 @@
     }
   }
 }
+@import "./shippingInfo.scss";

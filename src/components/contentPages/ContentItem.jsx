@@ -32,7 +32,7 @@ const ContentItem = (props) => {
       if (ratingStar) {
         return (
           <div className="starRatingContainer">
-            {Array.from({ length: rating - 1 }, (_, index) => (
+            {Array.from({ length: rating }, (_, index) => (
               <FontAwesomeIcon
                 key={index}
                 icon={"fa-star"}
@@ -40,9 +40,6 @@ const ContentItem = (props) => {
               />
             ))}
             <FontAwesomeIcon icon={"fa-star-half"} color={"goldenrod"} />
-            {Array.from({ length: 5 - rating }, (_, index) => (
-              <FontAwesomeIcon key={index} icon={"fa-star"} />
-            ))}
           </div>
         );
       } else {

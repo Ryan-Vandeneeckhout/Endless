@@ -28,12 +28,12 @@
     border-left: solid grey 1px;
     border-right: solid grey 1px;
     border-top: solid grey 1px;
-    bottom: 0;
+    bottom: 5%;
     flex-direction: column;
     max-width: 520px;
     width: clamp(18.75rem, 15.9652rem + 13.9241vw, 32.5rem);
     position: fixed;
-    top: 60px;
+    top: 160px;
     width: 45vw;
     z-index: 99;
     left: 50%;

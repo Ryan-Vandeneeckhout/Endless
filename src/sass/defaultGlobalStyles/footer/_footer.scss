@@ -1,5 +1,5 @@
 footer {
-  background-color: black;
+  background-color: var(--footerBackgroundColor);
   color: lightgrey;
   height: fit-content;
   min-height: 150px;
@@ -29,7 +29,37 @@ footer {
       @include FlexColumn;
       justify-content: center;
       text-align: left;
-      width: 80%;
+    }
+    .newlettersignup {
+      @include FlexColumnCenter;
+      justify-content: center;
+      text-align: left;
+
+      input {
+        background-color: white;
+        height: 25px;
+        min-width: 200px;
+        padding-left: 10px;
+      }
+
+      button {
+        background-color: lightgrey;
+        border: none;
+        cursor: pointer;
+        height: 25px;
+        margin-left: 10px;
+        padding: 0 15px;
+
+        &:hover {
+          background-color: darkgreen;
+          color: white;
+        }
+      }
+
+      h3, p {
+        margin: 0;
+        margin-bottom: 20px;
+      }
     }
 
     aside {
