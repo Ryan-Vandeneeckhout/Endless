@@ -23,12 +23,16 @@ export const RotatingProductsFrontPage = (props) => {
   return (
     <section className="productSliderSection">
       <div className="wrapper">
-        <div className={`titleCard ${props.orderflex1}`}>
-          <div className={`titleCardWrapper ${props.imageBClass}`}>
-            <h2>{props.headingText ? props.headingText : "Heading Text"}</h2>
-            <h3>
-              {props.subHeadingText ? props.subHeadingText : "Sub Heading Text"}
-            </h3>
+        <div className={`containerTitle ${props.orderflex1}`}>
+          <div className={`titleCard`}>
+            <div className={`titleCardWrapper ${props.imageBClass}`}>
+              <h2>{props.headingText ? props.headingText : "Heading Text"}</h2>
+              <h3>
+                {props.subHeadingText
+                  ? props.subHeadingText
+                  : "Sub Heading Text"}
+              </h3>
+            </div>
           </div>
         </div>
         <div className={`productSliderContainer ${props.orderflex2}`}>

@@ -29,7 +29,16 @@
   .wrapper {
     @include FlexRow;
     @include Maxsize100;
-    padding: 0 2.5%;
+    padding: 0 5%;
+
+    .containerTitle {
+      min-height: 100%;
+      display: flex;
+      padding: 30px 0;
+      margin: 0 60px;
+      min-width: 400px;
+      z-index: 2;
+    }
 
     .titleCard {
       @include FlexColumnCenter;
@@ -38,15 +47,14 @@
         inset -1px -1px 4px rgba(255, 255, 255, 0.05),
         inset 1px 1px 1px rgba(0, 0, 0, 0.1);
       color: white;
-      justify-content: center;
       min-width: 300px;
       outline: solid 1px black;
-      padding: 50px;
+      padding: 30px;
       text-align: center;
+      height: 300px;
       width: 100%;
-      max-height: 400px;
-      max-width: 600px;
-      z-index: 2;
+      max-width: 400px;
+ 
 
       .titleCardWrapper {
         @include FlexColumnCenter;
@@ -70,7 +78,6 @@
     .productSliderContainer {
       @include FlexRow;
       height: 100%;
-      padding: 0 2.5%;
       position: relative;
       width: 100%;
 

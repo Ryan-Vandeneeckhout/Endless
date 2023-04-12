@@ -9,7 +9,9 @@ export const RotatingInfoCommericalSliderComponent = (props) => {
   const [, setTextSH1, textSH1Ref] = useState(
     "Checkout our newest beauty products"
   );
-  const [contentItemView, contentItemInView] = useInView({});
+  const [contentItemView, contentItemInView] = useInView({
+    threshold: 0.1,
+  });
   useEffect(() => {
     if (props.bannerProps === true) {
       setTextH1("Hot New Styles for All");
@@ -88,9 +90,11 @@ export const RotatingInfoCommericalSliderComponent = (props) => {
   };
 
   return (
-    <section className="rotatingInfoCommericalSliderSection">
+    <section
+      ref={contentItemView}
+      className="rotatingInfoCommericalSliderSection"
+    >
       <div
-        ref={contentItemView}
         className={`infoCommericalSliderImageContainer ${props.orderflex1} ${
           contentItemInView ? " animationLeft" : " animationZero"
         }`}

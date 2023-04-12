@@ -5,7 +5,9 @@ import { useSlideLeftSlideRight } from "../../hooks/slider/useSlideLeftSlideRigh
 import { useInView } from "react-intersection-observer";
 
 export const FeaturedCategories = () => {
-  const [contentItemView, contentItemInView] = useInView({});
+  const [contentItemView, contentItemInView] = useInView({
+    threshold: 0.1,
+  });
   const { nextSlide, preSlide, arrayList } = useSlideLeftSlideRight(MakeupMap);
 
   if (!Array.isArray(MakeupMap) || MakeupMap.length <= 0) {
@@ -13,7 +15,7 @@ export const FeaturedCategories = () => {
   }
 
   return (
-    <section className="featuredCategoriesSection">
+    <section ref={contentItemView} className="featuredCategoriesSection">
       <div className="wrapper">
         <h2>Featured Categories</h2>
         <div className={`gallerySliderContainer `}>
@@ -21,7 +23,6 @@ export const FeaturedCategories = () => {
             className={` ${
               contentItemInView ? " animationLeft" : " animationUP"
             }`}
-            ref={contentItemView}
           >
             {arrayList.slice(0, 4).map((item, index) => {
               return (

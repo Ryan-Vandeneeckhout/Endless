@@ -2,9 +2,7 @@ import { InputGotoArrow } from "../inputs/inputGotToArrow";
 import { useInView } from "react-intersection-observer";
 
 export const OpeningSection = () => {
-  const [contentItemView, contentItemInView] = useInView({
-    triggerOnce: true,
-  });
+  const [contentItemView, contentItemInView] = useInView({});
   let buttonValueText = "foundation";
 
   return (
@@ -12,9 +10,7 @@ export const OpeningSection = () => {
       <div className="wrapper">
         <div
           className={`titleCard ${
-            contentItemInView
-              ? " animationActiveProject"
-              : " notActiveAnimation"
+            contentItemInView ? " animationLeft" : " animationUP"
           }`}
         >
           <h1 ref={contentItemView}>Be Fierce, Be Bold, Be You!</h1>
