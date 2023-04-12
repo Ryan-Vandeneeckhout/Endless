@@ -27,6 +27,10 @@
     display: flex;
     position: relative;
     transition: transform 0.5s, color 0.5s;
+
+    button {
+      transform: rotate(45deg);
+    }
     max-width: 600px;
 
     &:hover button {
@@ -43,6 +47,8 @@
     span {
       height: 50%;
     }
+
+   
     @mixin ArrowSettings {
       -webkit-transform: none;
       background-color: transparent;
@@ -62,6 +68,7 @@
     .slideArrowLeft {
       @include ArrowSettings;
       left: 2.5%;
+      
     }
 
     .currentSlide {

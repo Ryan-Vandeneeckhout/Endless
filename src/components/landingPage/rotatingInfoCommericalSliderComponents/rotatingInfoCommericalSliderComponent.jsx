@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import useState from "react-usestateref";
+import { useInView } from "react-intersection-observer";
 
 export const RotatingInfoCommericalSliderComponent = (props) => {
   const [, setCurrent, currentRef] = useState(0);
@@ -8,7 +9,7 @@ export const RotatingInfoCommericalSliderComponent = (props) => {
   const [, setTextSH1, textSH1Ref] = useState(
     "Checkout our newest beauty products"
   );
-
+  const [contentItemView, contentItemInView] = useInView({});
   useEffect(() => {
     if (props.bannerProps === true) {
       setTextH1("Hot New Styles for All");
@@ -88,7 +89,12 @@ export const RotatingInfoCommericalSliderComponent = (props) => {
 
   return (
     <section className="rotatingInfoCommericalSliderSection">
-      <div className={`infoCommericalSliderImageContainer ${props.orderflex1}`}>
+      <div
+        ref={contentItemView}
+        className={`infoCommericalSliderImageContainer ${props.orderflex1} ${
+          contentItemInView ? " animationLeft" : " animationZero"
+        }`}
+      >
         <button
           aria-label="Prev Product"
           onClick={nextSlide}
@@ -134,7 +140,11 @@ export const RotatingInfoCommericalSliderComponent = (props) => {
           </div>
         </div>
       </div>
-      <div className={`contentInfoCommericalContainer ${props.orderflex2}`}>
+      <div
+        className={`contentInfoCommericalContainer ${props.orderflex2} ${
+          contentItemInView ? " animationLeft" : " animationZero2"
+        }`}
+      >
         <div className="wrapper">
           <h2>{textH1Ref.current}</h2>
           <h3>{textSH1Ref.current}</h3>

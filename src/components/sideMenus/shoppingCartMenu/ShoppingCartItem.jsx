@@ -4,16 +4,21 @@ export const ShoppingCartItem = (props) => {
   return (
     <>
       {props.dataArray.map((post, index) => (
-        <>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+          key={index}
+        >
           <ShoppingCartQuantityList
-            key={index}
             name={post.name}
             image={post.image}
             count={post.count}
             index={index}
             price={post.price}
           />
-        </>
+        </div>
       ))}
     </>
   );

@@ -18,7 +18,7 @@
 
             .titleCard {
                 background-color: var(--landingPageBoxColor);
-                bottom: 2%;
+                bottom: 60px;
                 box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
                 -webkit-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
                 -moz-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
@@ -27,6 +27,8 @@
                 padding: clamp(1.25rem, 0.9797rem + 1.3514vw, 2.5rem);
                 position: absolute;
                 width: clamp(18.75rem, 14.6959rem + 20.2703vw, 37.5rem);
+                transition: transform 750ms;
+                will-change: transform;
 
                 h1 {
                     @include boxShadowFrontPage;
@@ -37,6 +39,9 @@
 
                 p {
                     font-weight: 600;
+                }
+                &:hover {
+                    transform: translateY(30px);
                 }
             }
         }

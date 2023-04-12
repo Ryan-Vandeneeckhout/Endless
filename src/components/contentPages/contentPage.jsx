@@ -11,6 +11,7 @@ import { TextInputWithButton } from "../inputs/TextInputWithButton";
 export const ContentPage = () => {
   const itembuttonText = useParams();
   const [error, setError] = useState(null);
+  const [, setHoldAPIDataState, holdAPIdataStateRef] = useState([]);
   const [, setPriceSort, sortPriceRef] = useState("");
   const [dataResponse, setDataResponse, dataResponseRef] = useState([]);
   const [, setBrandState, brandStateRef] = useState("");
@@ -18,6 +19,8 @@ export const ContentPage = () => {
   const [, , productCatgorySelectedRef] = useState("");
   const [, setPrice, priceRef] = useState("");
   const [, setTagsArray, TagsArrayRef] = useState([]);
+  const [searchTermState, setSearchTermState] = useState("");
+  const [statusText, setStatusText] = useState("");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -43,12 +46,13 @@ export const ContentPage = () => {
     axios(config)
       .then(function (response) {
         setDataResponse(response.data);
+        setHoldAPIDataState(response.data);
         setError(false);
       })
       .catch(function () {
         setError(true);
       });
-  }, [itembuttonText.itembuttonText, setDataResponse]);
+  }, [itembuttonText.itembuttonText, setDataResponse, setHoldAPIDataState]);
 
   const QueryAPIdata = () => {
     let urlCode = `https://web-production-5976.up.railway.app/https://makeup-api.herokuapp.com/api/v1/products.json`;
@@ -78,11 +82,48 @@ export const ContentPage = () => {
     axios(config)
       .then(function (response) {
         setDataResponse(response.data);
+        setHoldAPIDataState(response.data);
         setError(false);
       })
       .catch(function () {
         setError(true);
       });
+  };
+
+  const filterAPIDataUsingSearchInput = (e) => {
+    e.preventDefault();
+    const options = {
+      caseSensitive: false,
+      excludedKeys: ["api_image_url", "website_link", "product_link"],
+    };
+
+    const customFind = (collection, term, opts) => {
+      const filterBy = () => {
+        const searchTerms = !opts.caseSensitive
+          ? new RegExp(term, "i")
+          : new RegExp(term);
+        return (obj) => {
+          for (const key of Object.keys(obj)) {
+            if (searchTerms.test(obj[key]) && !opts.excludedKeys.includes(key))
+              return true;
+          }
+          return false;
+        };
+      };
+      return collection.filter(filterBy(term));
+    };
+
+    const found = customFind(
+      holdAPIdataStateRef.current,
+      searchTermState,
+      options
+    );
+    setDataResponse(found);
+    if ((found = [])) {
+      setStatusText("No Results Found");
+    } else {
+      setStatusText("");
+    }
   };
 
   const handlePriceSortOption = () => {
@@ -210,15 +251,12 @@ export const ContentPage = () => {
         <section className="contentReturned">
           <div className="contentWrapper">
             <div className="upperContentListFunctions">
-              <select>
-                <option aria-label={`product`} value={1}>
-                  CAD
-                </option>
-              </select>
               <TextInputWithButton
                 buttonNeeded={true}
-                placeholderInput="Search Current Selection"
+                placeholderInput="Search current"
                 TextButton="Search"
+                setTextInput={setSearchTermState}
+                callFunctionProps={filterAPIDataUsingSearchInput}
               />
             </div>
             {renderResultsLength()}

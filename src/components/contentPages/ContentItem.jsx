@@ -27,8 +27,6 @@ const ContentItem = (props) => {
   const renderRating = () => {
     if (rating !== null) {
       const ratingStar = rating - Math.floor(rating) !== 0;
-      console.log(rating);
-
       if (ratingStar) {
         return (
           <div className="starRatingContainer">

@@ -16,32 +16,46 @@
   .buttonContainer {
     margin-top: 50px;
     width: 100%;
+    padding: 0 10%;
+    @include FlexRowCenter;
+    justify-content: space-between;
 
     button {
-      background-color: transparent;
+   
+      align-items: center;
+      background-color: black;
       border: none;
       cursor: pointer;
+      display: flex;
       font-size: 50px;
-      height: 50px;
-      width: 50%;
+      height: 40px;
+      justify-content: center;
+      margin: 0 20px;
+      outline: white 1px solid;
+      transform: rotate(45deg);
+      width: 40px;
 
       span {
-        -webkit-transform: none;
-        transform: none;
-        transition: transform 300ms linear;
-        color: var(--arrowInput);
+        color: goldenrod;
+        font-size: 25px;
+        svg {
+          transform: rotate(-45deg);
+        }
       }
 
       &:hover span {
-        transform: translatey(25px);
-        color: red;
+        color: white;
+      }
+      &:hover {
+        background-color: goldenrod;
+        outline: white 1px solid;
       }
     }
   }
   .wrapper {
     @include FlexColumn;
     @include Maxsize100;
-    padding: 0 5%;
+    padding: 2% 5%;
 
     ul {
       @include FlexRow;
