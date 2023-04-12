@@ -119,11 +119,8 @@ export const ContentPage = () => {
       options
     );
     setDataResponse(found);
-    if ((found = [])) {
-      setStatusText("No Results Found");
-    } else {
-      setStatusText("");
-    }
+    console.log(statusText);
+    setStatusText("");
   };
 
   const handlePriceSortOption = () => {
