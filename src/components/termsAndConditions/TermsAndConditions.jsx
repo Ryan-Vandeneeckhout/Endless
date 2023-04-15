@@ -27,11 +27,14 @@ export const TermsAndConditions = () => {
                 Contents: <span onClick={showTableContentFunction}>Hide</span>
               </h3>
             </div>
-            <ol>
-              <li>
-                <a>Fuck</a>
-              </li>
-            </ol>
+
+            {showContentTableState ? (
+              <ol>
+                <li>
+                  <a>Fuck</a>
+                </li>
+              </ol>
+            ) : null}
           </div>
 
           <ul>
