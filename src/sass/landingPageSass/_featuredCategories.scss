@@ -1,9 +1,16 @@
 .featuredCategoriesSection {
-  background-color: var(--featuredCategoriesSection);
-  color: var(--documentText);
+  background-image: linear-gradient(
+    to right,  var(--featuredCategoriesSection)
+    40%, rgb(243, 182, 30) 
+    60%
+  );
+  background-size: 300% 100%;
+  background-position: 100%;
+  color: var(--documentTextColor);
   min-height: 450px;
-  width: 100%;
   padding: 2.5% 5%;
+  transition: background-position 1.5s;
+  width: 100%;
 
   h2 {
     font-size: 30px;
@@ -14,16 +21,16 @@
     padding: 2.5% 0;
   }
   .buttonContainer {
-    margin-top: 50px;
-    width: 100%;
-    padding: 0 10%;
     @include FlexRowCenter;
     justify-content: space-between;
+    margin-top: 50px;
+    padding: 0 10%;
+    width: 100%;
 
     button {
-   
-      align-items: center;
-      background-color: black;
+      background-image: linear-gradient(to right, goldenrod 40%, black 60%);
+      background-position: 100%;
+      background-size: 300% 100%;
       border: none;
       cursor: pointer;
       display: flex;
@@ -32,9 +39,11 @@
       justify-content: center;
       margin: 0 20px;
       outline: white 1px solid;
-      will-change: transform;
       transform: rotate(45deg);
+      transition: background-position 0.5s;
       width: 40px;
+      will-change: transform;
+      align-items: center;
 
       span {
         color: goldenrod;
@@ -48,7 +57,7 @@
         color: white;
       }
       &:hover {
-        background-color: goldenrod;
+        background-position: 0%;
         outline: white 1px solid;
       }
     }
@@ -68,11 +77,11 @@
         @include FlexColumn;
         background-color: black;
         color: black;
-        height: 350px;
-        max-height: 350px;
+        height: 375px;
+        max-height: 375px;
         justify-content: space-between;
         outline: solid 1px lightgrey;
-        padding: 20px;
+        padding: 30px;
         text-decoration: none;
         transform: scale(1);
         transition: transform 300ms linear, color 2s;
@@ -86,6 +95,7 @@
 
         img {
           @include Maxsize100;
+          padding: 10px;
         }
 
         &:hover h3 {
@@ -162,4 +172,7 @@
       }
     }
   }
+}
+.color1 {
+  background-position: 0;
 }

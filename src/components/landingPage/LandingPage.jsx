@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BannerFrontPage } from "./bannerFrontPage";
 import { OpeningSection } from "./OpeningSection";
 import { RotatingProductsFrontPage } from "./rotatingProductSliderComponents/RotatingProductsFrontPage";
 import { LipStickDefaultSearches } from "../landingPage/rotatingProductSliderComponents/defaultSearches/LipstickDefaultSearches.jsx";
@@ -22,7 +21,9 @@ export const LandingPage = (props) => {
   return (
     <section className="landingPage">
       <OpeningSection />
-      <BannerFrontPage />
+      <section className="discounts">
+        <p>15% off all NYX products storewide!</p>
+      </section>
       <RotatingProductsFrontPage
         headingText="Our Newest Lipsticks"
         subHeadingText="Styles that will bring out the best You!"

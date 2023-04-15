@@ -1,11 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RotatingDefaultSearchesCard } from "./RotatingDefaultSearchCard";
+import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 export const RotatingProductsFrontPage = (props) => {
   const [arrayList, setArray] = useState(props.arrayList);
-
+  const [contentItemView, contentItemInView] = useInView({
+    threshold: 0.1,
+  });
   if (!Array.isArray(props.arrayList) || props.arrayList.length <= 0) {
     return null;
   }
@@ -21,10 +24,14 @@ export const RotatingProductsFrontPage = (props) => {
   };
 
   return (
-    <section className="productSliderSection">
+    <section className="productSliderSection" ref={contentItemView}>
       <div className="wrapper">
         <div className={`containerTitle ${props.orderflex1}`}>
-          <div className={`titleCard`}>
+          <div
+            className={`titleCard ${
+              contentItemInView ? " animationLeft" : " animationZero"
+            }`}
+          >
             <div className={`titleCardWrapper ${props.imageBClass}`}>
               <h2>{props.headingText ? props.headingText : "Heading Text"}</h2>
               <h3>
@@ -35,7 +42,11 @@ export const RotatingProductsFrontPage = (props) => {
             </div>
           </div>
         </div>
-        <div className={`productSliderContainer ${props.orderflex2}`}>
+        <div
+          className={`productSliderContainer ${props.orderflex2} ${
+            contentItemInView ? " animationLeft" : " animationZero2"
+          }`}
+        >
           <button
             aria-label="Previous Product"
             className="sideButtons left"

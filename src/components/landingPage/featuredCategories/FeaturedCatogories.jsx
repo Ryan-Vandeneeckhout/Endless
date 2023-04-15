@@ -15,7 +15,12 @@ export const FeaturedCategories = () => {
   }
 
   return (
-    <section ref={contentItemView} className="featuredCategoriesSection">
+    <section
+      ref={contentItemView}
+      className={` featuredCategoriesSection${
+        contentItemInView ? " color1" : " animationUP"
+      }`}
+    >
       <div className="wrapper">
         <h2>Featured Categories</h2>
         <div className={`gallerySliderContainer `}>

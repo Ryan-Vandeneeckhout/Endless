@@ -1,7 +1,14 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TermsAndConditionsItem } from "./TermsAndConditionsItem";
 import { TermsandConditionsNewUserTermsMap } from "./TermsandConditionsMap";
+import { useState } from "react";
 
 export const TermsAndConditions = () => {
+  const [showContentTableState, setShowContentTableState] = useState(true);
+
+  const showTableContentFunction = () => {
+    setShowContentTableState((x) => !x);
+  };
   return (
     <section className="TermsandConditions">
       <div className="wrapper">
@@ -13,6 +20,20 @@ export const TermsAndConditions = () => {
             their respective owners. The site is not intended as a actual makeup
             store site and all prices are fictitious.
           </p>
+          <div className="contentTable">
+            <div className="upperContent">
+              <FontAwesomeIcon icon="fa-bars" />
+              <h3>
+                Contents: <span onClick={showTableContentFunction}>Hide</span>
+              </h3>
+            </div>
+            <ol>
+              <li>
+                <a>Fuck</a>
+              </li>
+            </ol>
+          </div>
+
           <ul>
             {TermsandConditionsNewUserTermsMap.map((item, index) => {
               return (

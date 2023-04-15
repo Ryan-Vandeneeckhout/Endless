@@ -67,6 +67,23 @@ html {
   --footerBackgroundColor: black;
 }
 
+html[data-theme="black"] {
+  --arrowInput: goldenrod;
+  --boxShadow: white;
+  --devButtonColor: rgb(60, 6, 69);
+  --devButtonTextColor: white;
+  --documentTextColor: white;
+  --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/black.jpg");
+  --landingPageBoxColor: rgb(60, 6, 69);
+  --navColorBackground: white;
+  --navSiteTextColor: black;
+  --sidebarIcons: rgb(148, 85, 244);
+  --sideMenucolor: rgb(206, 162, 198);
+  --productSliderSection: rgb(44, 5, 49);
+  --featuredCategoriesSection: rgb(44, 5, 49);
+  --infoCommericalTextBackgroundColor: rgb(60, 6, 69);
+  --footerBackgroundColor: rgb(60, 6, 69);
+}
 html[data-theme="violet"] {
   --arrowInput: goldenrod;
   --boxShadow: white;
@@ -117,9 +134,11 @@ html[data-theme="green"] {
   --landingPageBoxColor: rgb(15, 39, 14);
   --sidebarIcons: green;
   --sideMenucolor: green;
-  --productSliderSection: darkgreen;
+  --productSliderSection: rgba(3, 48, 3, 0.767);
   --featuredCategoriesSection: rgb(15, 39, 14);
-  --infoCommericalTextBackgroundColor: darkgreen;
+  --infoCommericalTextBackgroundColor: rgb(15, 39, 14);
+  --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/greenbackground.jpg");
+
 }
 html[data-theme="orange"] {
   --devButtonColor: rgb(150, 63, 17);
@@ -140,7 +159,7 @@ html[data-theme="red"] {
   --sideMenucolor: rgb(95, 8, 8);
   --documentTextColor: white;
   --devButtonTextColor: white;
-
+  --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/redbackground.jpg");
 
   --documentTextColor: white;
   --landingPageBoxColor: rgb(183, 9, 29);
@@ -179,6 +198,7 @@ html[data-theme="rainbow"] {
   transform: translatex(0px);
   transition: transform 300ms linear;
   will-change: transform;
+  z-index: 2;
 }
 
 .animationZero {
@@ -193,6 +213,7 @@ html[data-theme="rainbow"] {
   transform: translatex(600px);
   transition: transform 200ms linear;
   will-change: transform;
+  z-index: 2;
 }
 
 .animationUP {

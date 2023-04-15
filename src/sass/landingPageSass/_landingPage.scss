@@ -1,6 +1,16 @@
-@import "./openingSection.scss";
-@import "./frontPageBanner.scss";
-@import "./productSlider.scss";
-@import "./infoCommericalSlider.scss";
 @import "./featuredCategories.scss";
 @import "./featuredStories.scss";
+@import "./frontPageBanner.scss";
+@import "./infoCommericalSlider.scss";
+@import "./openingSection.scss";
+@import "./productSlider.scss";
+
+.discounts {
+  @include FlexRowCenter;
+  border: solid white 5px;
+  border-left: none;
+  border-right: none;
+  justify-content: center;
+  padding: 0 10%;
+  text-transform: capitalize;
+}

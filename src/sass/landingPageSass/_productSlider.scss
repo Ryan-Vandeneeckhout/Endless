@@ -228,19 +228,26 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 799px) {
+
+  .productSliderSection .wrapper .productSliderContainer .productSliderCardAndButtonContainer .cardContainer {
+
+
+    justify-content: center;
+    align-content: center;
+
+  }
+
+
+
   .productSliderSection {
     .wrapper {
       @include FlexColumnCenter;
       .productSliderCardAndButtonContainer {
-        .cardContainer {
-          justify-content: space-evenly;
-        }
-
         .productCard {
           width: 250px;
           height: 300px;
         }
-        .productCard:nth-child(n + 3) {
+        .productCard:nth-child(n + 2) {
           display: none;
         }
       }

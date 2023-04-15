@@ -114,11 +114,14 @@ function App() {
             MusicPlayingTrackerButton={MusicPlayingTrackerButton}
           />
           <ContactMenu showMenu={chatState} showChat={showChat} />
-          <MusicIcon
-            MusicPlayingTracker={MusicPlayingTracker}
-            MusicPlaying={MusicPlaying}
-          />
-          <ChatIcon showChat={showChat} chatState={chatState} />
+          <div className="sidebarMenu">
+            <MusicIcon
+              MusicPlayingTracker={MusicPlayingTracker}
+              MusicPlaying={MusicPlaying}
+            />
+            <ChatIcon showChat={showChat} chatState={chatState} />
+          </div>
+
           <ShoppingCart
             showShoppingCart={showShoppingCart}
             ShowShoppingCart={ShowShoppingCart}

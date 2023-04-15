@@ -1,33 +1,64 @@
 import { PlayPauseMusic } from "./PlayPauseMusicFunction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 export const MusicIcon = (props) => {
   //Music Global Button Component
-  const { Play } = PlayPauseMusic();
-  const { Pause } = PlayPauseMusic();
+  const { Play, Pause } = PlayPauseMusic();
+  const [buttonHoverState, setButtonHoverState] = useState(false);
+  const [TextButton, setText] = useState("Music Settings");
 
   const MusicPlayingTrackerButton = () => {
     Play();
     props.MusicPlayingTracker();
+    setText("Play Music");
   };
 
   const MusicPlayingTrackerButton1 = () => {
     Pause();
     props.MusicPlayingTracker();
+    setText("Pause Music");
   };
   return (
-    <div className="pausePlayButton">
+    <div
+      className={`buttonSideIconContainer ${
+        buttonHoverState ? "showText" : "hideText"
+      }`}
+      onMouseLeave={() => {
+        setButtonHoverState(false);
+      }}
+    >
+      <p className={buttonHoverState ? "showTextButton" : "hideTextButton"}>
+        {TextButton}
+      </p>
+
       {props.MusicPlaying ? (
-        <FontAwesomeIcon
+        <div
+          className="icon"
           onClick={MusicPlayingTrackerButton}
-          className="globalPlayButton green"
-          icon="fa-play"
-        />
+          onMouseEnter={() => {
+            setButtonHoverState(true);
+          }}
+        >
+          <FontAwesomeIcon
+            color="green"
+            className="globalPlayButton"
+            icon="fa-play"
+          />
+        </div>
       ) : (
-        <FontAwesomeIcon
+        <div
+          className="icon"
+          onMouseEnter={() => {
+            setButtonHoverState(true);
+          }}
           onClick={MusicPlayingTrackerButton1}
-          className="globalPlayButton red"
-          icon="fa-pause"
-        />
+        >
+          <FontAwesomeIcon
+            color="red"
+            className="globalPlayButton"
+            icon="fa-pause"
+          />
+        </div>
       )}
     </div>
   );

@@ -12,10 +12,24 @@
     padding: 0% clamp(1.875rem, -1.7736rem + 18.2432vw, 18.75rem);
 
     .content {
-        background-color: rgb(233, 231, 231);
-        height: 100%;
-        max-width: 800px;
-        padding: 100px 20px;
+      background-color: rgb(233, 231, 231);
+      height: 100%;
+      max-width: 800px;
+      padding: 100px 20px;
+    }
+
+    .contentTable {
+      outline: solid black 2px;
+      width: fit-content;
+      .upperContent {
+        @include FlexRowCenter;
+        outline: solid black 2px;
+        padding: 10px;
+
+        svg {
+          margin-right: 10px;
+        }
+      }
     }
     ul {
       @include UlNormalize;
@@ -24,8 +38,9 @@
       }
       .height0 {
         height: 0;
+
       }
-      p{
+      p {
         overflow: hidden;
       }
 

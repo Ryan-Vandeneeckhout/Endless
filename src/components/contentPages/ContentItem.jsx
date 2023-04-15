@@ -67,8 +67,14 @@ const ContentItem = (props) => {
   if (api_featured_image === (null || undefined || ""));
   else {
     const renderPrice = () => {
-      if (price > 1) {
+      if (price > 1 && brand !== "nyx") {
         return <ReturnText Text={`$${parseFloat(price).toFixed(2)}`} />;
+      } else if (price > 1 && brand === "nyx") {
+        return (
+          <ReturnText
+            Text={`$${parseFloat(price - price * 0.15).toFixed(2)}`}
+          />
+        );
       } else {
         return <ReturnText Text={"Price not available"} />;
       }

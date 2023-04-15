@@ -21,44 +21,66 @@
   }
 }
 
-.pausePlayButton {
-  align-items: center;
-  background-color: var(--sidebarIcons);
-  border-radius: 90%;
-  bottom: 100px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  outline: white solid 2px;
+.sidebarMenu {
+  @include FlexColumn;
+  bottom: 75px;
   position: fixed;
-  right: 2.5%;
-  width: 40px;
+  right: 0px;
   z-index: 99;
-  &:hover {
-    color: goldenrod;
-    outline: solid goldenrod 2px;
-  }
-}
+  width: fit-content;
+  height: fit-content;
 
-.chatIcon {
-  align-items: center;
-  background-color: var(--sidebarIcons);
-  border-radius: 90%;
-  bottom: 50px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  outline: white solid 2px;
-  position: fixed;
-  right: 2.5%;
-  width: 40px;
-  z-index: 99;
-  &:hover {
-    color: goldenrod;
-    outline: solid goldenrod 2px;
+  .buttonSideIconContainer {
+    @include FlexRowCenter;
+    justify-content: space-between;
+    margin: 20px 20px;
+    border-radius: 25px;
+    height: 40px;
+    color: white;
+
+    p {
+      color: black;
+    }
+  }
+
+  .showText {
+    outline: white solid 2px;
+    opacity: 1;
+    transition: opacity ease-in 100ms, outline linear 100ms;
+    background-image: linear-gradient(
+      to right,
+      var(--sidebarIcons) 40%,
+      rgb(243, 182, 30) 60%
+    );
+    background-size: 300% 100%;
+    transition: background-position 0.5s;
+    background-position: 100%;
+    text-transform: uppercase;
+    padding-left: 10px;
+  }
+
+  .hideTextButton {
+    opacity: 0;
+    transition: opacity ease-out 0.5s;
+  }
+
+  .showTextButton {
+    opacity: 1;
+    transition: opacity ease-in 100ms;
+  }
+
+  .icon {
+    align-items: center;
+    background-color: var(--sidebarIcons);
+    border-radius: 90%;
+    bottom: 100px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    margin-left: 10px;
+    justify-content: center;
+    outline: white solid 2px;
+    width: 40px;
   }
 }

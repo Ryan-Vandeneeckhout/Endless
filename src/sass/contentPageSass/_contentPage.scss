@@ -17,7 +17,6 @@
     }
   }
 
-
   .bannerContent {
     background-color: var(--featuredCategoriesSection);
     color: red;
@@ -33,10 +32,6 @@
       justify-content: center;
       padding: 0% 10%;
       padding-top: 60px;
-
-    
-
-  
     }
 
     h2 {
@@ -111,8 +106,6 @@
 
       form {
         @include FlexRowCenter;
-        justify-content: space-between;
-        width: 250px;
         height: 30px;
         label {
           display: none;
@@ -126,7 +119,8 @@
         }
         button {
           height: 100%;
-          padding: 0  10px;
+          padding: 0 10px;
+          margin-left: 20px;
         }
       }
     }
@@ -178,7 +172,7 @@
         }
         .imageContainer {
           border: solid black 2px;
-          height:clamp(8.125rem, 7.5169rem + 3.0405vw, 10.9375rem);;
+          height: clamp(8.125rem, 7.5169rem + 3.0405vw, 10.9375rem);
           overflow: hidden;
           position: relative;
           width: clamp(9.375rem, 8.6993rem + 3.3784vw, 12.5rem);
@@ -239,14 +233,12 @@
   }
 }
 @keyframes fadein {
-  
   0% {
     opacity: 0;
   }
 
   100% {
     opacity: 1;
-
   }
 }
 
@@ -257,6 +249,16 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 499px) {
+  .contentPageSection {
+    .wrapper {
+      aside {
+        display: none;
+      }
+    }
   }
 }
 

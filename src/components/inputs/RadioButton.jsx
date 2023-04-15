@@ -5,7 +5,7 @@ export const RadioButton = (props) => {
   };
 
   return (
-    <>
+    <div className="radioButton">
       {props.checked ? (
         <input
           type="radio"
@@ -25,6 +25,6 @@ export const RadioButton = (props) => {
       <label htmlFor={props.buttonText}>
         {props.buttonText} <span>{props.extraText}</span>
       </label>
-    </>
+    </div>
   );
 };
