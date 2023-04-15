@@ -30,9 +30,7 @@ export const TermsAndConditions = () => {
 
             {showContentTableState ? (
               <ol>
-                <li>
-                  <a>Fuck</a>
-                </li>
+                <li></li>
               </ol>
             ) : null}
           </div>

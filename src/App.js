@@ -23,6 +23,7 @@ import { ContactMenu } from "./components/sideMenus/contactMenu/contactMenu";
 import { IndividualProductPageMakeupAPI } from "./components/contentPages/individualContentPage/individualProductPageMakeupAPI";
 import { CheckoutPage } from "./components/checkoutPage/CheckoutPage";
 import { SurveyForm } from "./components/survey/SurveyForm";
+import { RotateThemeDaily } from "./components/hooks/globalhooks/useRotateThemeDaily";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -83,6 +84,7 @@ function App() {
         );
       }
     };
+    RotateThemeDaily();
 
     // Check if the page has already loaded
     if (document.readyState === "complete") {
