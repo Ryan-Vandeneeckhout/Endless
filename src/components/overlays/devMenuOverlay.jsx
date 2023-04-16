@@ -5,6 +5,7 @@ const DevMenuOverlay = (props) => {
         props.showMenu ||
         props.showShoppingCart ||
         props.showUserSettingsState ||
+        props.showPrompt ||
         props.ShowSurvey
           ? " displayFlex"
           : " displayNone"
@@ -14,6 +15,7 @@ const DevMenuOverlay = (props) => {
         props.setShowShoppingCart(false);
         props.setShowUserSettingsState(false);
         props.setShowSurvey(false);
+        props.setPromptState(false);
       }}
     />
   );

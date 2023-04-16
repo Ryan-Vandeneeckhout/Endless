@@ -63,3 +63,56 @@ input:placeholder-shown {
     color: grey;
     margin-top: 0;
 }
+
+.globalPrompt {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: center;
+  background-color: white;
+  border: solid black 2px;
+  bottom: 2.5%;
+  flex-direction: column;
+  left: 50%;
+  width: fit-content;
+  max-width: 320px;
+  min-width: 320px;
+  height: 200px;
+  position: fixed;
+  top: 30%;
+  transform: translateX(-50%);
+  z-index: 99;
+
+  .wrapper {
+    width: 100%;
+    padding: 20px;
+    h3 {
+      text-align: center;
+    }
+    p{
+      line-height: 20px;
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    background-color: var(--sideMenucolor);
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    width: 30px;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayFlex {
+  display: flex;
+}

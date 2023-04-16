@@ -24,6 +24,8 @@ import { IndividualProductPageMakeupAPI } from "./components/contentPages/indivi
 import { CheckoutPage } from "./components/checkoutPage/CheckoutPage";
 import { SurveyForm } from "./components/survey/SurveyForm";
 import { RotateThemeDaily } from "./components/hooks/globalhooks/useRotateThemeDaily";
+import { FeaturedStoriesLandingPage } from "./components/featuredStories/featuredStoriesLandingPage";
+import { GlobalPrompt } from "./components/globalPrompt/GlobalPrompt";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -33,6 +35,9 @@ function App() {
   const [showUserSettingsState, setShowUserSettingsState] = useState(false);
   const [MusicPlaying, setMusicPlaying] = useState(false);
   const { user, authIsReady } = useAuthContext();
+  const [promptBodyTextState, setPromptBodyTextState] = useState("");
+  const [promptHeadingTextState, setPromptHeadingTextState] = useState("");
+  const [showGlobalPromptState, setGlobalPromptState] = useState(false);
 
   const MusicPlayingTracker = () => {
     setMusicPlaying(!MusicPlaying);
@@ -66,26 +71,29 @@ function App() {
   };
 
   //Check local browser storage for user settings
-  let htmlElement = document.documentElement;
-  htmlElement.setAttribute(
-    "data-theme",
-    window.localStorage.getItem("dataTheme")
-  );
 
   useEffect(() => {
-    const onPageLoad = () => {
-      if (
-        window.localStorage.getItem("dataNumber") === undefined ||
-        window.localStorage.getItem("dataNumber") === null
-      ) {
-        window.localStorage.setItem(
-          "dataNumber",
-          Math.floor(100000 + Math.random() * 900000)
-        );
-      }
-    };
+    let htmlElement = document.documentElement;
+    htmlElement.setAttribute(
+      "data-theme",
+      window.localStorage.getItem("dataTheme")
+    );
     RotateThemeDaily();
+    const onPageLoad = () => {
+      const AccountNumberLocalMachine = () => {
+        if (
+          window.localStorage.getItem("dataNumber") === undefined ||
+          window.localStorage.getItem("dataNumber") === null
+        ) {
+          window.localStorage.setItem(
+            "dataNumber",
+            Math.floor(100000 + Math.random() * 900000)
+          );
+        }
+      };
 
+      AccountNumberLocalMachine();
+    };
     // Check if the page has already loaded
     if (document.readyState === "complete") {
       onPageLoad();
@@ -94,7 +102,7 @@ function App() {
       // Remove the event listener when component unmounts
       return () => window.removeEventListener("load", onPageLoad);
     }
-  }, [htmlElement]);
+  }, []);
 
   return (
     <div className="app">
@@ -136,6 +144,12 @@ function App() {
             ShowSurveyFunction={ShowSurveyFunction}
             ShowSurvey={showSurvey}
           />
+          <GlobalPrompt
+            showPrompt={showGlobalPromptState}
+            headingText={promptHeadingTextState}
+            bodyText={promptBodyTextState}
+            setPromptState={setGlobalPromptState}
+          />
           <main>
             <Routes>
               <Route
@@ -156,6 +170,12 @@ function App() {
                 path="/signin"
                 element={<LandingPageSignUpLogin />}
               />
+              <Route
+                extact
+                path="/trending"
+                element={<FeaturedStoriesLandingPage />}
+              />
+
               {!user && <Route extact path="/login" element={<LoginPage />} />}
               {!user && <Route extact path="/signup" element={<Signup />} />}
               {user && <Route extact path="/login" element={<LogoutPage />} />}
@@ -177,9 +197,15 @@ function App() {
               showUserSettingsState={showUserSettingsState}
               ShowSurvey={showSurvey}
               setShowSurvey={setShowSurvey}
+              showPrompt={showGlobalPromptState}
+              setPromptState={setGlobalPromptState}
             />
           </main>
-          <Footer />
+          <Footer
+            setPromptState={setGlobalPromptState}
+            setPromptBodyTextState={setPromptBodyTextState}
+            setPromptHeadingTextState={setPromptHeadingTextState}
+          />
         </BrowserRouter>
       )}
     </div>

@@ -47,20 +47,4 @@ export const NavigationButtonMap = [
       { buttonText: `misa`, buttonValueText: "misa" },
     ],
   },
-  {
-    NavText: "Trending",
-    href: "user/blog",
-    ariaLabel: "Collection of stories by site users",
-    ButtonColor: "darkgreen",
-    ButtonType: false,
-    arraylist: [
-      { buttonText: `annabelle`, buttonValueText: "annabelle" },
-      { buttonText: `benefit`, buttonValueText: "benefit" },
-      { buttonText: `boosh`, buttonValueText: "boosh" },
-      { buttonText: `almay`, buttonValueText: "almay" },
-      { buttonText: `alva`, buttonValueText: "alva" },
-      { buttonText: `clinique`, buttonValueText: "clinique" },
-      { buttonText: `covergirl`, buttonValueText: "covergirl" },
-    ],
-  },
 ];

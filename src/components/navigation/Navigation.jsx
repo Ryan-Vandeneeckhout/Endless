@@ -122,6 +122,16 @@ const Navigation = (props) => {
                 />
               );
             })}
+
+            <li>
+              <Link
+                aria-label="Collection of stories by site users"
+                to={"/trending"}
+              >
+                {" "}
+                <span>Trending</span>
+              </Link>
+            </li>
           </ul>
           <div className="userIcons">
             {checkShoppingCartLength()}

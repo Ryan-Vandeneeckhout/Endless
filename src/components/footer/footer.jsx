@@ -7,24 +7,36 @@ import { updateDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../hooks/firebase/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const Footer = () => {
+export const Footer = (props) => {
   const [email, setEmail] = useState("");
 
-  const writeUserData = async () => {
-    const docSnap = await getDoc(doc(db, "emailList", "emailListNewsletter"));
+  const writeUserData = async (e) => {
+    e.preventDefault();
+    props.setPromptState(true);
+    if (email.length > 5 || email.includes("@")) {
+      props.setPromptBodyTextState(
+        "Thank you for your sign up, however Endless Demands is not a real makeup store, therefore, expect no email for discounts."
+      );
+      props.setPromptHeadingTextState("Thank You!");
+      const docSnap = await getDoc(doc(db, "emailList", "emailListNewsletter"));
 
-    if (docSnap.exists()) {
-      await updateDoc(doc(db, "emailList", "emailListNewsletter"), {
-        emailList: arrayUnion(email),
-      });
+      if (docSnap.exists()) {
+        await updateDoc(doc(db, "emailList", "emailListNewsletter"), {
+          emailList: arrayUnion(email),
+        });
+      } else {
+        await setDoc(doc(db, "emailList", "emailListNewsletter"), {
+          emailList: [email],
+        });
+      }
     } else {
-      await setDoc(doc(db, "emailList", "emailListNewsletter"), {
-        emailList: [email],
-      });
+      props.setPromptBodyTextState(
+        "Please check your email and try again. Email must include an @ symbol and be minmum length of 5 characters!"
+      );
+      props.setPromptHeadingTextState("Error: Something went wrong!");
     }
   };
 
-  writeUserData();
   return (
     <footer>
       <div className="wrapper">
