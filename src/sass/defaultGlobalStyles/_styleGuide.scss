@@ -51,6 +51,7 @@ html {
   --devButtonColor: white;
   --devButtonColorHover: hsl(0, 23%, 95%);
   --devButtonTextColor: black;
+  --shoppingCartItem: rgb(243, 242, 242); 
   --documentTextColor: black;
   --frontPageImage1900: url("../../../public//assets/images/landingPageImages/titleCard/0071600.webp");
   --frontPageSectionBackground: white;
@@ -158,6 +159,7 @@ html[data-theme="orange"] {
 }
 html[data-theme="red"] {
   --arrowInput: white;
+  --shoppingCartItem: rgb(100, 2, 2); 
   --devButtonColor: rgb(110, 5, 17);
   --navColorBackground: white;
   --sideMenucolor: rgb(95, 8, 8);

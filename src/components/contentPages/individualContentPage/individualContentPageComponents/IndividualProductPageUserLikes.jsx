@@ -2,22 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../hooks/firebase/config";
 import { useAuthContext } from "../../../hooks/firebase/useAuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const IndividualContentProductPageUserLikes = (props) => {
   const [LikedItem, setLikedItem] = useState(false);
   const { user } = useAuthContext();
   const AccountId = window.localStorage.getItem("dataNumber");
 
-  const getItemData = async () => {
-    const dataLikedDocument = async (Account) => {
+  useEffect(() => {
+    const writeUserData = async (Account) => {
       const docSnap = await getDoc(
-        doc(db, "Likes", Account, Account, props.ItemName)
+        doc(db, "LikedProduct", Account, Account, props.ItemName)
       );
-
-      if (docSnap === (undefined || null)) {
-        setLikedItem(false);
-      }
 
       if (docSnap.exists()) {
         setLikedItem(true);
@@ -27,28 +23,31 @@ export const IndividualContentProductPageUserLikes = (props) => {
     };
     if (user === null) {
       let Account = AccountId;
-      dataLikedDocument(Account);
+      writeUserData(Account);
     } else {
-      let Account = user.id;
-      dataLikedDocument(Account);
+      let Account = `${user.uid}`;
+      writeUserData(Account);
     }
-  };
+  }, [AccountId, user, props.ItemName]);
 
-  getItemData();
-
-  const getLikedItem = () => {
-    const writeUserData = async () => {
+  const updateLike = () => {
+    const writeUserData = async (Account) => {
       const docSnap = await getDoc(
-        doc(db, "Likes", AccountId, AccountId, props.ItemName)
+        doc(db, "LikedProduct", Account, Account, props.ItemName)
       );
 
       if (docSnap.exists()) {
-        await deleteDoc(doc(db, "Likes", AccountId, AccountId, props.ItemName));
+        await deleteDoc(
+          doc(db, "LikedProduct", Account, Account, props.ItemName)
+        );
         setLikedItem(false);
       } else {
-        await setDoc(doc(db, "Likes", AccountId, AccountId, props.ItemName), {
-          Like: true,
-        });
+        await setDoc(
+          doc(db, "LikedProduct", Account, Account, props.ItemName),
+          {
+            Like: true,
+          }
+        );
         setLikedItem(true);
       }
     };
@@ -56,12 +55,12 @@ export const IndividualContentProductPageUserLikes = (props) => {
       let Account = AccountId;
       writeUserData(Account);
     } else {
-      let Account = user.id;
+      let Account = `${user.uid}`;
       writeUserData(Account);
     }
   };
   return (
-    <div className="likesContainer" onClick={getLikedItem}>
+    <div className="likesContainer" onClick={updateLike}>
       {LikedItem ? (
         <>
           <p>Already Added to your Favs List! </p>{" "}

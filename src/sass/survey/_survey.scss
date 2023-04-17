@@ -32,27 +32,24 @@
   max-width: 520px;
   min-width: 320px;
   position: fixed;
-  top: clamp(5rem, 4.0476rem + 4.7619vw, 10rem);
   transform: translateX(-50%);
   width: 100%;
   z-index: 99;
 
   .wrapper {
-    padding: 2.5% 30px;
+    padding: 2.5% 60px;
     text-align: center;
   }
 
   p {
     text-align: left;
-    
+    margin-bottom: 5px
   }
 
   .Questions {
     @include FlexColumn;
     margin-bottom: 20px;
-    .buttonRating:not(first-of-type) {
-      margin-left: 10px;
-    }
+    flex-wrap: wrap;
 
     .flexRow {
       @include FlexRowCenter;
@@ -69,8 +66,7 @@
     .ratingScale {
       @include FlexRowCenter;
       width: 100%;
-      justify-content: center;
-      flex-direction: row;
+      justify-content: space-between;
       transform: scaleX(-1);
     }
 
@@ -85,9 +81,10 @@
     .buttonRating {
       background: black;
       color: white;
-      height: 25px;
+      height: 30px;
+      text-align: center;
       transform: scaleX(-1);
-      width: 25px;
+      width: 30px;
 
       &:hover {
         background: goldenrod;
@@ -109,6 +106,13 @@
       outline: solid 1px black;
       padding: 5px 15px;
     }
+
+    textarea {
+      width: 100%;
+      overflow-x: hidden;
+      resize: none;
+      height: 150px;
+    }
    
   }
 }
@@ -116,6 +120,7 @@
   cursor: pointer;
   height: 40px;
   width: 150px;
+  border: none;
 
   &:hover {
     background-color: black;

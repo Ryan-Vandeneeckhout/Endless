@@ -41,7 +41,7 @@ const DevMenu = (props) => {
         <Link to="/">
           {SiteName}
           <span className="moblieNav">
-            <FontAwesomeIcon icon="fa-spa" />
+            <FontAwesomeIcon color="goldenrod" icon="fa-spa" />
           </span>
         </Link>
       </h3>

@@ -13,6 +13,7 @@ import { db } from "../../hooks/firebase/config";
 import { useAuthContext } from "../../hooks/firebase/useAuthContext";
 import { IndividualProductInformationPageReviewsAndRatings } from "./individualContentPageComponents/IndividualProductPageReviewsAndRatings";
 import { IndividualContentProductPageUserLikes } from "./individualContentPageComponents/IndividualProductPageUserLikes";
+import { CartItemAdded } from "./CartItemAdded";
 
 export const IndividualProductPageMakeupAPI = () => {
   const [individualProducts, setIndividualProduct] = useState({});
@@ -20,6 +21,7 @@ export const IndividualProductPageMakeupAPI = () => {
   const [loading, setLoading] = useState(true);
   const [, setProductCount, productCountRef] = useState(1);
   const { user } = useAuthContext();
+  const [itemAddedState, setItemAddedState] = useState(false);
 
   const AccountId = window.localStorage.getItem("dataNumber");
 
@@ -66,6 +68,11 @@ export const IndividualProductPageMakeupAPI = () => {
   } = individualProducts;
 
   const updateCart = () => {
+    setItemAddedState(true);
+    setTimeout(() => {
+      setItemAddedState(false);
+    }, 2000);
+
     if (user === null) {
       const writeUserData = async () => {
         const docSnap = await getDoc(doc(db, "Cart", AccountId));
@@ -341,6 +348,12 @@ export const IndividualProductPageMakeupAPI = () => {
   if (loading === false) {
     return (
       <section className="individualContentProductPage">
+        <CartItemAdded
+          image={api_featured_image}
+          name={name}
+          count={productCountRef.current}
+          showItem={itemAddedState}
+        />
         <div className="wrapper">
           <div className="content">
             <div className="uppperContent">

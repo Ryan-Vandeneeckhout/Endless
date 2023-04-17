@@ -4,6 +4,9 @@ import { useInView } from "react-intersection-observer";
 export const OpeningSection = () => {
   const [contentItemView, contentItemInView] = useInView({});
   let buttonValueText = "foundation";
+  let h1Text = "Be Fierce, Be Bold, Be You!";
+  let PText =
+    "Get started today and visit the ultimate destination for all your makeup needs!";
 
   return (
     <section className="openingPage">
@@ -13,10 +16,8 @@ export const OpeningSection = () => {
             contentItemInView ? " animationLeft" : " animationUP"
           }`}
         >
-          <h1 ref={contentItemView}>Be Fierce, Be Bold, Be You!</h1>
-          <p>
-            {`Get Started today and visit the ultimate destination for all your makeup needs! `}
-          </p>
+          <h1 ref={contentItemView}>{h1Text}</h1>
+          <h4>{PText}</h4>
           <InputGotoArrow link={`content/${buttonValueText}`} />
         </div>
       </div>
