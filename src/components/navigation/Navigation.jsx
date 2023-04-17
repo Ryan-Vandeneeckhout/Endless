@@ -9,6 +9,7 @@ import { useAuthContext } from "../hooks/firebase/useAuthContext.js";
 import { NavButton } from "./NavButton.jsx";
 import { NavSubMenuButton } from "./NavSubMenuButton.jsx";
 import { ShoppingCartCheckCart } from "./shoppingCartIconCheckCart.jsx";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons/faUserCircle";
 
 const Navigation = (props) => {
   const [hoverOpen, setHoverOpen] = useState(false);
@@ -103,7 +104,13 @@ const Navigation = (props) => {
   };
 
   return (
-    <section className="upperNavSection">
+    <section
+      className={`upperNavSection ${
+        props.contentItemView
+          ? "backgroundcolorFill"
+          : "backgroundColorTransparent"
+      }`}
+    >
       <div className="upperNavWrapper">
         <nav className="navBarUppersite">
           <DevMenu
@@ -141,7 +148,7 @@ const Navigation = (props) => {
                 <FontAwesomeIcon
                   onClick={props.showUserSettings}
                   size="1x"
-                  icon="fa-user-circle"
+                  icon={faUserCircle}
                 />
               </div>
             ) : (
@@ -156,9 +163,7 @@ const Navigation = (props) => {
               >
                 <FontAwesomeIcon
                   size="1x"
-                  icon={
-                    hoverOpenIcon ? "fa-user-circle" : " thinn fa-user-circle"
-                  }
+                  icon={hoverOpenIcon ? faUserCircle : faUserCircle}
                 />
               </Link>
             )}

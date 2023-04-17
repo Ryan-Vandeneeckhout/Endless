@@ -54,7 +54,7 @@ export const MusicIcon = (props) => {
           onClick={MusicPlayingTrackerButton1}
         >
           <FontAwesomeIcon
-            color="red"
+            color="goldenrod"
             className="globalPlayButton"
             icon="fa-pause"
           />

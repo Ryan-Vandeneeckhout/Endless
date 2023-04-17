@@ -37,9 +37,12 @@ import {
   faHeart,
   faStar,
   faStarHalf,
+  faCartShopping,
+  fas,
 } from "@fortawesome/free-solid-svg-icons";
 // FontAwesome Global Icons Added
 library.add(
+  faCartShopping,
   faAngleDown,
   faTruck,
   faAngleLeft,
@@ -70,7 +73,8 @@ library.add(
   faMailBulk,
   faHeart,
   faStar,
-  faStarHalf
+  faStarHalf,
+  fas
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

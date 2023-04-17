@@ -22,7 +22,7 @@ export const ShoppingCartCheckCart = (props) => {
   }, [setArrayRef, arrayRef, props.userid]);
   return (
     <div className="shoppingCartIcon" onClick={props.shoppingCartOpen}>
-      <FontAwesomeIcon size="1x" icon="fa-shopping-bag" />
+      <FontAwesomeIcon size="1x" icon="fa-cart-shopping" />
       {arrayRef.current.length ? <p>{arrayRef.current.length}</p> : null}
     </div>
   );

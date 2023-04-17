@@ -24,48 +24,53 @@ export const LandingPage = (props) => {
       <section className="discounts">
         <p>15% off all NYX products storewide!</p>
       </section>
-      <RotatingProductsFrontPage
-        headingText="Our Newest Lipsticks"
-        subHeadingText="Styles that will bring out the best You!"
-        arrayList={LipStickDefaultSearches}
-        orderflex1="Order1"
-        imageBClass="lipstickBackgroundImage"
-        orderflex2="Order2"
-      />
-      <RotatingInfoCommericalSliderComponent
-        bannerProps={true}
-        setTextH1={setTextH1}
-        setTextSH1={setTextSH1}
-        textH1={textH1}
-        textSH1={textSH1}
-        ImageList={ImageList2}
-        orderflex1="Order1"
-        orderflex2="Order2"
-      />
-      <FeaturedStories />
-      <RotatingProductsFrontPage
-        headingText="Hot and Creamy"
-        subHeadingText="The Flawless Foundation to build on has just Arrived!"
-        arrayList={FoundationDefaultSearches}
-        imageBClass="foundationBackgroundImage"
-        orderflex1="Order2"
-        orderflex2="Order1"
-      />
-      <RotatingInfoCommericalSliderComponent
-        bannerProps={false}
-        setTextH1={setTextH2}
-        setTextSH1={setTextSH2}
-        textH2={textH2}
-        textSH2={textSH2}
-        ImageList={ImageList1}
-        orderflex1="Order2"
-        orderflex2="Order1"
-      />
-      <FeaturedCategories />
-      <Survey
-        text={"Website feedback? Let us know "}
-        ShowSurveyFunction={props.ShowSurveyFunction}
-      />
+      <section
+        className="contentContainerLandingPage"
+        ref={props.contentItemViewNav}
+      >
+        <RotatingProductsFrontPage
+          headingText="Our Newest Lipsticks"
+          subHeadingText="Styles that will bring out the best You!"
+          arrayList={LipStickDefaultSearches}
+          orderflex1="Order1"
+          imageBClass="lipstickBackgroundImage"
+          orderflex2="Order2"
+        />
+        <RotatingInfoCommericalSliderComponent
+          bannerProps={true}
+          setTextH1={setTextH1}
+          setTextSH1={setTextSH1}
+          textH1={textH1}
+          textSH1={textSH1}
+          ImageList={ImageList2}
+          orderflex1="Order1"
+          orderflex2="Order2"
+        />
+        <FeaturedStories />
+        <RotatingProductsFrontPage
+          headingText="Hot and Creamy"
+          subHeadingText="The Flawless Foundation to build on has just Arrived!"
+          arrayList={FoundationDefaultSearches}
+          imageBClass="foundationBackgroundImage"
+          orderflex1="Order2"
+          orderflex2="Order1"
+        />
+        <RotatingInfoCommericalSliderComponent
+          bannerProps={false}
+          setTextH1={setTextH2}
+          setTextSH1={setTextSH2}
+          textH2={textH2}
+          textSH2={textSH2}
+          ImageList={ImageList1}
+          orderflex1="Order2"
+          orderflex2="Order1"
+        />
+        <FeaturedCategories />
+        <Survey
+          text={"Website feedback? Let us know "}
+          ShowSurveyFunction={props.ShowSurveyFunction}
+        />
+      </section>
     </section>
   );
 };

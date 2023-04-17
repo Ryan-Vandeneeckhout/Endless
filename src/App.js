@@ -27,6 +27,8 @@ import { RotateThemeDaily } from "./components/hooks/globalhooks/useRotateThemeD
 import { FeaturedStoriesLandingPage } from "./components/featuredStories/featuredStoriesLandingPage";
 import { GlobalPrompt } from "./components/globalPrompt/GlobalPrompt";
 
+import { useInView } from "react-intersection-observer";
+
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showShoppingCart, setShowShoppingCart] = useState(false);
@@ -38,7 +40,7 @@ function App() {
   const [promptBodyTextState, setPromptBodyTextState] = useState("");
   const [promptHeadingTextState, setPromptHeadingTextState] = useState("");
   const [showGlobalPromptState, setGlobalPromptState] = useState(false);
-
+  const [contentItemView, contentItemInView] = useInView({});
   const MusicPlayingTracker = () => {
     setMusicPlaying(!MusicPlaying);
   };
@@ -116,6 +118,7 @@ function App() {
               setShowShoppingCart={setShowShoppingCart}
               ShowShoppingCart={ShowShoppingCart}
               showUserSettings={showUserSettings}
+              contentItemView={contentItemInView}
             />
           </header>
           <SideMenu
@@ -156,7 +159,10 @@ function App() {
                 extact
                 path="/"
                 element={
-                  <LandingPage ShowSurveyFunction={ShowSurveyFunction} />
+                  <LandingPage
+                    contentItemViewNav={contentItemView}
+                    ShowSurveyFunction={ShowSurveyFunction}
+                  />
                 }
               />
               <Route extact path="/checkout" element={<CheckoutPage />} />

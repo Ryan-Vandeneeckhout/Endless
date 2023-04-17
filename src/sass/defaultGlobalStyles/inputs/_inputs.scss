@@ -23,7 +23,7 @@
 
 .sidebarMenu {
   @include FlexColumn;
-  bottom: 75px;
+  bottom: 25px;
   position: fixed;
   right: 0px;
   z-index: 99;

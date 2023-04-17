@@ -69,23 +69,25 @@ html {
 
 html[data-theme="black"] {
   --arrowInput: goldenrod;
+  --shoppingCartItem:#212121; 
   --boxShadow: white;
-  --devButtonColor: rgb(60, 6, 69);
+  --devButtonColor: #212121;
+  --devButtonColorHover: #0a0a0a;
   --devButtonTextColor: white;
   --documentTextColor: white;
-  --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/black.jpg");
-  --landingPageBoxColor: rgb(60, 6, 69);
+  --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/blackBackground.jpg");
+  --landingPageBoxColor: black;
   --navColorBackground: white;
   --navSiteTextColor: black;
-  --sidebarIcons: rgb(148, 85, 244);
-  --sideMenucolor: rgb(206, 162, 198);
-  --productSliderSection: rgb(44, 5, 49);
-  --featuredCategoriesSection: rgb(44, 5, 49);
-  --infoCommericalTextBackgroundColor: rgb(60, 6, 69);
-  --footerBackgroundColor: rgb(60, 6, 69);
+  --sidebarIcons: #0a0a0a;
+  --sideMenucolor: black;
+  --productSliderSection: #212121;
+  --featuredCategoriesSection: #212121;
+  --infoCommericalTextBackgroundColor: #212121;
+  --footerBackgroundColor: black;
 }
 html[data-theme="violet"] {
-  --arrowInput: goldenrod;
+  --arrowInput: white;
   --boxShadow: white;
   --devButtonColor: rgb(60, 6, 69);
   --devButtonTextColor: white;
@@ -155,6 +157,7 @@ html[data-theme="orange"] {
   --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/orangeBackground.jpg");
 }
 html[data-theme="red"] {
+  --arrowInput: white;
   --devButtonColor: rgb(110, 5, 17);
   --navColorBackground: white;
   --sideMenucolor: rgb(95, 8, 8);
