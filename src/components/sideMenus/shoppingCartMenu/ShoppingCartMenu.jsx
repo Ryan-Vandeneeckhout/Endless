@@ -29,6 +29,7 @@ export const ShoppingCartMenu = (props) => {
       arrayRef.current === undefined ||
       arrayRef.current === []
     ) {
+      return <h3>Shopping Bag Empty</h3>;
     } else {
       return <ShoppingCartItem dataArray={arrayRef.current} />;
     }
