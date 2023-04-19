@@ -4,7 +4,7 @@ export const SurveyQuestions = [
   },
 
   {
-    buttonText: `update mu account or track an order`,
+    buttonText: `Update my account or track an order`,
   },
   {
     buttonText: `Redeem Birthday gift code`,

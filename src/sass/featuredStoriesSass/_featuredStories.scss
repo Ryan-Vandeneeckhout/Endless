@@ -1,0 +1,54 @@
+.featuredStoriesLandingPage {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
+  width: 100%;
+  .wrapper {
+    @include FlexColumnCenter;
+    padding: 100px clamp(1.25rem, -0.8929rem + 10.7143vw, 12.5rem);
+    width: 100%;
+    h2 {
+      align-self: flex-start;
+      margin: 0;
+    }
+    h4 {
+      align-self: flex-start;
+    }
+    .contentList {
+      @include FlexRow;
+      height: fit-content;
+      width: 100%;
+
+      aside {
+        min-height: 100%;
+        min-width: 300px;
+        outline: solid lightgrey 1px;
+        padding: 10px;
+      }
+    }
+
+    .content {
+      display: grid;
+      grid-gap: 10px 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 500px));
+      justify-content: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 100%;
+    }
+    .storyItem {
+      @include FlexColumnCenter;
+
+      .imageContainer {
+        background-color: white;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: lightgrey 2px solid;
+        height: 200px;
+        min-height: 200px;
+        width: 100%;
+      }
+    }
+  }
+}
