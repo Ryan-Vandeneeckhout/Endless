@@ -183,7 +183,7 @@ export const IndividualProductPageMakeupAPI = () => {
                 return (
                   <div className="highlightItem" key={index}>
                     <img src={product.image} alt={product.name} />
-                    <p>{product.name}</p>
+                    <p>{`${product.name.replaceAll("&trade;", "")}`}</p>
                   </div>
                 );
               })}
@@ -368,7 +368,7 @@ export const IndividualProductPageMakeupAPI = () => {
               <div className="productInfomation">
                 {renderBrandName()}
                 <p>
-                  {name} - {product_type}
+                  {`${name.replaceAll("&trade;", "")}`} - {product_type}
                 </p>
                 {renderRating()}
                 <div className="priceLikeAskQuestionContainer">
@@ -411,7 +411,7 @@ export const IndividualProductPageMakeupAPI = () => {
     );
   } else {
     return (
-      <section className="individualContentProductPage">
+      <section className="LoadingSection">
         <div className="wrapper">
           <h2>Loading...</h2>
         </div>

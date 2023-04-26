@@ -1,31 +1,24 @@
-import { PlayPauseMusic } from "./PlayPauseMusicFunction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { PlayPauseMusic } from "./PlayPauseMusicFunction";
+
 export const MusicIcon = (props) => {
-  //Music Global Button Component
   const { Play, Pause } = PlayPauseMusic();
   const [buttonHoverState, setButtonHoverState] = useState(false);
   const [TextButton, setText] = useState("Music Settings");
 
-  const MusicPlayingTrackerButton = () => {
-    Play();
+  const handleMusicPlayingTrackerButton = (action) => {
+    action();
     props.MusicPlayingTracker();
-    setText("Play Music");
+    setText(action === Play ? "Play Music" : "Pause Music");
   };
 
-  const MusicPlayingTrackerButton1 = () => {
-    Pause();
-    props.MusicPlayingTracker();
-    setText("Pause Music");
-  };
   return (
     <div
       className={`buttonSideIconContainer ${
         buttonHoverState ? "showText" : "hideText"
       }`}
-      onMouseLeave={() => {
-        setButtonHoverState(false);
-      }}
+      onMouseLeave={() => setButtonHoverState(false)}
     >
       <p className={buttonHoverState ? "showTextButton" : "hideTextButton"}>
         {TextButton}
@@ -34,10 +27,8 @@ export const MusicIcon = (props) => {
       {props.MusicPlaying ? (
         <div
           className="icon"
-          onClick={MusicPlayingTrackerButton}
-          onMouseEnter={() => {
-            setButtonHoverState(true);
-          }}
+          onClick={() => handleMusicPlayingTrackerButton(Play)}
+          onMouseEnter={() => setButtonHoverState(true)}
         >
           <FontAwesomeIcon
             color="green"
@@ -48,10 +39,8 @@ export const MusicIcon = (props) => {
       ) : (
         <div
           className="icon"
-          onMouseEnter={() => {
-            setButtonHoverState(true);
-          }}
-          onClick={MusicPlayingTrackerButton1}
+          onClick={() => handleMusicPlayingTrackerButton(Pause)}
+          onMouseEnter={() => setButtonHoverState(true)}
         >
           <FontAwesomeIcon
             color="goldenrod"

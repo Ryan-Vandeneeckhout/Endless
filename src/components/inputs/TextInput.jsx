@@ -1,26 +1,30 @@
-const TextInput = (props) => {
-  //Used For File Name, Build Name and Creator Name inputs//
+const TextInput = ({
+  labelText,
+  placeholderInput,
+  setTextInput,
+  callFunctionProps,
+}) => {
   const handleUserInput = (e) => {
-    props.setTextInput(`${e.target.value}`);
+    setTextInput(`${e.target.value}`);
     e.preventDefault();
   };
 
   const callFunction = (e) => {
     if (e.key === "Enter") {
-      props.callFunctionProps();
+      callFunctionProps();
       e.preventDefault();
     }
   };
 
   return (
     <>
-      <label htmlFor="builder-Name-Input">{props.labelText}</label>
+      <label htmlFor="builder-Name-Input">{labelText}</label>
       <input
         aria-label="builder-Name-Input"
         type="text"
         onChange={handleUserInput}
         className="textinput"
-        placeholder={props.placeholderInput}
+        placeholder={placeholderInput}
         onKeyDown={callFunction}
       />
     </>

@@ -1,23 +1,22 @@
 import { useRef } from "react";
 
-export const OptionNumberInput = (props) => {
-  const SelectCurrentRef = useRef(null);
+export const OptionNumberInput = ({ productCount, inputSelectionLength }) => {
+  const selectRef = useRef(null);
 
-  const changeProductCount = () => {
-    props.productCount(SelectCurrentRef.current.value);
-    console.log(SelectCurrentRef.current.value);
+  const handleProductCountChange = () => {
+    const value = selectRef.current.value;
+    productCount(value);
   };
+
+  const options = Array.from({ length: inputSelectionLength }, (_, index) => (
+    <option key={index} value={index + 1} aria-label={`${index + 1} product`}>
+      {index + 1}
+    </option>
+  ));
+
   return (
-    <select ref={SelectCurrentRef} onInput={changeProductCount}>
-      {Array.from({ length: `${props.inputSelectionLength}` }, (_, index) => (
-        <option
-          aria-label={`${index + 1} product`}
-          value={index + 1}
-          key={index}
-        >
-          {index + 1}
-        </option>
-      ))}
+    <select ref={selectRef} onChange={handleProductCountChange}>
+      {options}
     </select>
   );
 };

@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ThemeMenuButton = (props) => {
+  const [currentThemeState, setCurrentThemeState] = useState(null);
   const ButtonRef = useRef(null);
   let htmlElement = document.documentElement;
 
@@ -13,6 +14,11 @@ const ThemeMenuButton = (props) => {
     ButtonRef.current.style.color = "white";
   };
 
+  useEffect(() => {
+    if (htmlElement.getAttribute("data-theme") === props.ThemeHTML) {
+      setCurrentThemeState(true);
+    }
+  }, [props.ThemeHTML, htmlElement]);
   return (
     <button
       ref={ButtonRef}
@@ -24,8 +30,14 @@ const ThemeMenuButton = (props) => {
       style={{ backgroundColor: props.ButtonColor, color: "white" }}
       onMouseEnter={ButtonEntered}
       onMouseLeave={ButtonLeft}
+      onFocus={() => {
+        setCurrentThemeState(true);
+      }}
+      onBlur={() => {
+        setCurrentThemeState(false);
+      }}
     >
-      {props.ButtonText}
+      {props.ButtonText} {currentThemeState ? <span>Current Theme</span> : null}
     </button>
   );
 };

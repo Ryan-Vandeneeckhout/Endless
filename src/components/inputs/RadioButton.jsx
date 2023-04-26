@@ -1,29 +1,28 @@
-export const RadioButton = (props) => {
-  const RadioChange = (event) => {
-    props.setStateValue(event.target.value);
-    props.renderData();
+export const RadioButton = ({
+  checked,
+  setStateValue,
+  renderData,
+  groupradioName,
+  buttonValueText,
+  buttonText,
+  extraText,
+}) => {
+  const onRadioChange = (event) => {
+    setStateValue(event.target.value);
+    renderData();
   };
 
   return (
     <div className="radioButton">
-      {props.checked ? (
-        <input
-          type="radio"
-          onChange={RadioChange}
-          name={props.groupradioName}
-          defaultChecked
-          value={props.buttonValueText}
-        />
-      ) : (
-        <input
-          type="radio"
-          onChange={RadioChange}
-          name={props.groupradioName}
-          value={props.buttonValueText}
-        />
-      )}
-      <label htmlFor={props.buttonText}>
-        {props.buttonText} <span>{props.extraText}</span>
+      <input
+        type="radio"
+        onChange={onRadioChange}
+        name={groupradioName}
+        checked={checked}
+        value={buttonValueText}
+      />
+      <label htmlFor={buttonText}>
+        {buttonText} <span>{extraText}</span>
       </label>
     </div>
   );

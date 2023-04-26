@@ -46,6 +46,7 @@
   .mainMenuContainer {
     @include Maxsize100;
     @include FlexColumn;
+    overflow-y: auto;
 
     a {
       align-items: center;
@@ -61,6 +62,8 @@
     button {
       border: none;
       height: 60px;
+      min-height: 60px;
+      max-height: 60px;
 
       svg {
         margin-left: 15px;
@@ -99,6 +102,7 @@
 .themeMenu,
 .musicMenu {
   flex-direction: column;
+  overflow-y: auto;
 }
 .fontAweIconSideMenu {
   margin-right: 10px;
