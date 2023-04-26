@@ -413,7 +413,12 @@ export const IndividualProductPageMakeupAPI = () => {
     return (
       <section className="LoadingSection">
         <div className="wrapper">
-          <h2>Loading...</h2>
+          <h2 className="saving">
+            Loading
+            {Array.from({ length: 3 }, (_, index) => (
+              <span key={index}>.</span>
+            ))}
+          </h2>
         </div>
       </section>
     );
