@@ -23,6 +23,8 @@
     justify-content: space-between;
     padding: 10px 10%;
     width: 100%;
+    background-color: var(--sidebarIcons);
+    color: var(--devButtonTextColor);
   }
 
   ul {
@@ -65,23 +67,27 @@
       @include FlexRowCenter;
       max-height: fit-content;
       min-height: 80px;
-      outline: dotted 1px lightgrey;
+      outline: dotted 1px white;
       padding: 7px 5px;
       position: relative;
       transform: scaleX(-1);
       width: 100%;
       background-color: var(--shoppingCartItem);
-      color:white;
+      color: white;
 
       .cartItems {
         @include FlexRowCenter;
         align-items: center;
         padding: 0 30px;
-       
+
         span {
+          color: goldenrod;
           margin-left: 30px;
-          color: rgb(3, 3, 255);
           text-decoration: underline;
+          cursor: pointer;
+          &:hover {
+            color: green;
+          }
         }
 
         img {
@@ -117,6 +123,7 @@
         right: 20px;
         top: 10px;
         width: fit-content;
+        color: var(--documentTextColor);
       }
     }
   }
@@ -125,9 +132,9 @@
   font-weight: 900;
 }
 .shoppingCartBottom {
-  background-color: rgb(225, 225, 225);
+  background-color: var(--shoppingCartBottom);
   border-left: 1px solid black;
-  border-top: 1px solid black;
+  border-top: 1px dotted white;
   bottom: 0;
   max-width: 450px;
   min-width: 250px;
@@ -136,6 +143,7 @@
   height: 150px;
   padding-bottom: 40px;
   width: 45vw;
+  color: var(--shoppingCartBottomColor);
   z-index: 99;
 
   .wrapper {
@@ -160,40 +168,55 @@
     }
 
     button {
-      background-color: rgb(185, 184, 184);
+      background-image: linear-gradient(
+        to right,
+        darkgreen 40%,
+        var(--shoppingButton) 60%
+      );
+      background-position: 100%;
+      background-size: 300% 100%;
       border: none;
       cursor: pointer;
-      height: 40px;
-      width: 175px;
+      font-family: "Lato";
       font-size: 12px;
+      font-weight: 500;
+      height: 40px;
       margin-right: 20px;
       padding: 5px;
-
+      text-transform: uppercase;
+      transition: background-position 0.5s;
+      width: 175px;
+    
       &:hover {
-        background-color: darkgreen;
         color: white;
+        background-position: 0%;
       }
     }
 
     a {
       align-items: center;
-      background-color: black;
-      color: white;
+      color: black;
       display: flex;
       font-family: "Lato";
       font-size: 12px;
       font-weight: 500;
       height: 40px;
       justify-content: center;
+      text-transform: uppercase;
       width: 175px;
+      background-image: linear-gradient(
+        to right,
+        darkgreen 40%,
+        var(--shoppingButton) 60%
+      );
+      background-size: 300% 100%;
+      transition: background-position 0.5s;
+      background-position: 100%;
 
       &:hover {
-        background-color: white;
-        color: black;
+        background-position: 0%;
       }
-    }
-    .greyOutButton {
-      background-color: #817f7f;
+
     }
   }
 }

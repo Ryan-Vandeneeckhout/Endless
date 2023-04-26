@@ -66,6 +66,9 @@ html {
   --featuredCategoriesSection: white;
   --infoCommericalTextBackgroundColor: #9b001a;
   --footerBackgroundColor: black;
+  --shoppingButton: rgb(118, 116, 116); 
+  --shoppingCartBottom: white;
+  --shoppingCartBottomColor: black;
 }
 
 html[data-theme="black"] {
@@ -86,6 +89,9 @@ html[data-theme="black"] {
   --featuredCategoriesSection: #212121;
   --infoCommericalTextBackgroundColor: #212121;
   --footerBackgroundColor: black;
+  --shoppingButton: white;
+  --shoppingCartBottom: #212121;
+  --shoppingCartBottomColor: white;
 }
 html[data-theme="violet"] {
   --arrowInput: white;
@@ -104,6 +110,9 @@ html[data-theme="violet"] {
   --featuredCategoriesSection: rgb(44, 5, 49);
   --infoCommericalTextBackgroundColor: rgb(60, 6, 69);
   --footerBackgroundColor: rgb(60, 6, 69);
+  --shoppingButton: goldenrod;
+  --shoppingCartBottom: rgb(60, 6, 69);
+  --shoppingCartBottomColor: white;
 }
 html[data-theme="indigo"] {
   --devButtonColor: rgb(74, 43, 122);
@@ -114,6 +123,7 @@ html[data-theme="indigo"] {
   --devButtonTextColor: white;
   --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/indigeo.jpg");
   --footerBackgroundColor: rgb(44, 5, 49);
+  --shoppingCartBottom: rgb(74, 43, 122);
 }
 html[data-theme="blue"] {
   --devButtonColor: rgb(5, 5, 49);
@@ -129,6 +139,10 @@ html[data-theme="blue"] {
   --productSliderSection: rgb(5, 5, 49);
   --featuredCategoriesSection: rgb(5, 5, 49);
   --infoCommericalTextBackgroundColor: rgb(5, 5, 49);
+  --shoppingCartItem:rgb(5, 5, 49); 
+  --shoppingButton: goldenrod;
+  --shoppingCartBottom: rgb(5, 5, 49);
+  --shoppingCartBottomColor: white;
 }
 html[data-theme="green"] {
   --devButtonColor: rgb(15, 39, 14);
@@ -144,6 +158,10 @@ html[data-theme="green"] {
   --featuredCategoriesSection: rgb(15, 39, 14);
   --infoCommericalTextBackgroundColor: rgb(15, 39, 14);
   --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/greenbackground.jpg");
+  --shoppingCartItem:rgb(3, 48, 3); 
+  --shoppingCartBottomColor: white;
+  --shoppingCartBottom: rgb(3, 48, 3);
+  --shoppingButton: goldenrod;
 
 }
 html[data-theme="orange"] {
@@ -159,6 +177,10 @@ html[data-theme="orange"] {
   --featuredCategoriesSection: rgb(150, 63, 17);
   --infoCommericalTextBackgroundColor: rgb(235, 154, 25);
   --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/orangeBackground.jpg");
+  --shoppingCartItem:rgb(150, 63, 17); 
+  --shoppingCartBottomColor: white;
+  --shoppingCartBottom: rgb(150, 63, 17);
+  --shoppingButton: goldenrod;
 }
 html[data-theme="red"] {
   --arrowInput: white;
@@ -178,6 +200,9 @@ html[data-theme="red"] {
   --featuredCategoriesSection: rgb(110, 5, 17);
   --infoCommericalTextBackgroundColor: rgb(110, 5, 17);
   --footerBackgroundColor: black;
+  --shoppingCartBottomColor: white;
+  --shoppingCartBottom: rgb(110, 5, 17);
+  --shoppingButton: goldenrod;
 }
 html[data-theme="rainbow"] {
   --devButtonColor: #360b54;
