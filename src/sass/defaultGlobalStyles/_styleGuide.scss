@@ -68,6 +68,7 @@ html {
   --footerBackgroundColor: black;
   --shoppingButton: rgb(118, 116, 116); 
   --shoppingCartBottom: white;
+  --lightTextP: lightgrey;
   --shoppingCartBottomColor: black;
 }
 
@@ -92,6 +93,7 @@ html[data-theme="black"] {
   --shoppingButton: white;
   --shoppingCartBottom: #212121;
   --shoppingCartBottomColor: white;
+  --lightTextP: white;
 }
 html[data-theme="violet"] {
   --arrowInput: white;
@@ -113,6 +115,7 @@ html[data-theme="violet"] {
   --shoppingButton: goldenrod;
   --shoppingCartBottom: rgb(60, 6, 69);
   --shoppingCartBottomColor: white;
+  --lightTextP: white;
 }
 html[data-theme="indigo"] {
   --devButtonColor: rgb(74, 43, 122);
@@ -124,6 +127,7 @@ html[data-theme="indigo"] {
   --frontPageImage1900: url("../../../public/assets/images/landingPageImages/titleCard/indigeo.jpg");
   --footerBackgroundColor: rgb(44, 5, 49);
   --shoppingCartBottom: rgb(74, 43, 122);
+  --lightTextP: white;
 }
 html[data-theme="blue"] {
   --devButtonColor: rgb(5, 5, 49);
@@ -143,6 +147,7 @@ html[data-theme="blue"] {
   --shoppingButton: goldenrod;
   --shoppingCartBottom: rgb(5, 5, 49);
   --shoppingCartBottomColor: white;
+  --lightTextP: white;
 }
 html[data-theme="green"] {
   --devButtonColor: rgb(15, 39, 14);
@@ -162,6 +167,7 @@ html[data-theme="green"] {
   --shoppingCartBottomColor: white;
   --shoppingCartBottom: rgb(3, 48, 3);
   --shoppingButton: goldenrod;
+  --lightTextP: white;
 
 }
 html[data-theme="orange"] {
@@ -181,6 +187,7 @@ html[data-theme="orange"] {
   --shoppingCartBottomColor: white;
   --shoppingCartBottom: rgb(150, 63, 17);
   --shoppingButton: goldenrod;
+  --lightTextP: white;
 }
 html[data-theme="red"] {
   --arrowInput: white;
@@ -203,6 +210,7 @@ html[data-theme="red"] {
   --shoppingCartBottomColor: white;
   --shoppingCartBottom: rgb(110, 5, 17);
   --shoppingButton: goldenrod;
+  --lightTextP: white;
 }
 html[data-theme="rainbow"] {
   --devButtonColor: #360b54;
