@@ -1,39 +1,40 @@
-export const RotateThemeDaily = () => {
-  let htmlElement = document.documentElement;
+export const rotateThemeDaily = () => {
+  const htmlElement = document.documentElement;
+  const dataTheme = window.localStorage.getItem("dataTheme");
 
-  if (
-    window.localStorage.getItem("dataTheme") === null ||
-    window.localStorage.getItem("dataTheme") === undefined
-  ) {
-    switch (new Date().getDay()) {
+  if (!dataTheme) {
+    const dayOfWeek = new Date().getDay();
+    let theme;
+
+    switch (dayOfWeek) {
       case 0:
-        htmlElement.setAttribute("data-theme", "red");
-        break;
-
       case 1:
-        htmlElement.setAttribute("data-theme", "red");
+      case 6:
+        theme = "red";
         break;
 
       case 2:
-        htmlElement.setAttribute("data-theme", "green");
+        theme = "green";
         break;
 
       case 3:
-        htmlElement.setAttribute("data-theme", "blue");
+        theme = "blue";
         break;
 
       case 4:
-        htmlElement.setAttribute("data-theme", "darkmode");
+        theme = "darkmode";
         break;
 
       case 5:
-        htmlElement.setAttribute("data-theme", "violet");
+        theme = "violet";
         break;
 
-      case 6:
-        htmlElement.setAttribute("data-theme", "red");
-        break;
       default:
+        break;
     }
+
+    htmlElement.setAttribute("data-theme", theme);
+  } else {
+    htmlElement.setAttribute("data-theme", dataTheme);
   }
 };

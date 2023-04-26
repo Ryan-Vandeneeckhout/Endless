@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navigation from "./components/navigation/Navigation";
@@ -23,11 +23,11 @@ import { ContactMenu } from "./components/sideMenus/contactMenu/contactMenu";
 import { IndividualProductPageMakeupAPI } from "./components/contentPages/individualContentPage/individualProductPageMakeupAPI";
 import { CheckoutPage } from "./components/checkoutPage/CheckoutPage";
 import { SurveyForm } from "./components/survey/SurveyForm";
-import { RotateThemeDaily } from "./components/hooks/globalhooks/useRotateThemeDaily";
 import { FeaturedStoriesLandingPage } from "./components/featuredStories/featuredStoriesLandingPage";
 import { GlobalPrompt } from "./components/globalPrompt/GlobalPrompt";
 
 import { useInView } from "react-intersection-observer";
+import usePageLoad from "./components/hooks/globalhooks/usePageLoad";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -41,6 +41,8 @@ function App() {
   const [promptHeadingTextState, setPromptHeadingTextState] = useState("");
   const [showGlobalPromptState, setGlobalPromptState] = useState(false);
   const [contentItemView, contentItemInView] = useInView({});
+
+  usePageLoad();
   const MusicPlayingTracker = () => {
     setMusicPlaying(!MusicPlaying);
   };
@@ -71,40 +73,6 @@ function App() {
     setShowShoppingCart(false);
     setShowUserSettingsState(false);
   };
-
-  //Check local browser storage for user settings
-
-  useEffect(() => {
-    let htmlElement = document.documentElement;
-    htmlElement.setAttribute(
-      "data-theme",
-      window.localStorage.getItem("dataTheme")
-    );
-    RotateThemeDaily();
-    const onPageLoad = () => {
-      const AccountNumberLocalMachine = () => {
-        if (
-          window.localStorage.getItem("dataNumber") === undefined ||
-          window.localStorage.getItem("dataNumber") === null
-        ) {
-          window.localStorage.setItem(
-            "dataNumber",
-            Math.floor(100000 + Math.random() * 900000)
-          );
-        }
-      };
-
-      AccountNumberLocalMachine();
-    };
-    // Check if the page has already loaded
-    if (document.readyState === "complete") {
-      onPageLoad();
-    } else {
-      window.addEventListener("load", onPageLoad);
-      // Remove the event listener when component unmounts
-      return () => window.removeEventListener("load", onPageLoad);
-    }
-  }, []);
 
   return (
     <div className="app">
